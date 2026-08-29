@@ -1,7 +1,29 @@
-# browser-harness heredoc body: batch-drive scribe_C over consults (real-time via BlackHole).
-# Flow (validated on consult08): New encounter -> Start encounter -> scribe_C_play.sh <wav> (real-time
-# ~7-10min) -> Generate note -> poll -> Copy note -> pbpaste -> save scribe_C_notes/primock__<id>.txt.
-# Reads /tmp/scribe_C_files.json [{id, wav}]. Writes /tmp/scribe_C_batch_results.json. Defensive per-consult.
+"""A record of how Scribe C's notes were captured. Not a script you can run.
+
+Scribe C offered neither an API nor an audio upload, so it had to be dictated to. Each
+consultation's synthesised audio was played into a virtual audio device in real time - the
+seven to ten minutes the recording actually lasts - while the product listened as it would
+to a live consultation, and the note it produced afterwards was copied out of the page.
+This file is the program that did that, kept as the evidence of what the capture actually
+did.
+
+It is not self-contained Python, and it is not meant to be. `js` and `screenshot` are
+neither defined nor imported here: the file was fed to `browser-harness`, a command-line
+browser-automation tool of ours, which executed it with those names bound to a live Chrome
+instance over the DevTools Protocol. That tool is not part of this release. Nor is
+`scribe_C_play.sh`, the shell script called below to do the real-time playback, which
+depended on a macOS virtual audio device routing the file into the browser's microphone
+input. Running this file with a Python interpreter raises NameError at the first call.
+
+Flow, validated end to end on one consultation: New encounter -> Start encounter -> play
+the wav in real time -> Generate note -> poll for the clinical headings -> Copy note ->
+read the clipboard -> save scribe_C_notes/primock__<id>.txt. Reads
+/tmp/scribe_C_files.json ([{id, wav}]) and writes /tmp/scribe_C_batch_results.json, one
+consultation at a time, with a screenshot on failure and no model calls anywhere.
+
+The element selectors and button labels below are that product's interface as it stood in
+August 2026 and have no reason to still match.
+"""
 import json, time, subprocess, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))

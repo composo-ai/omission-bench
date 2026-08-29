@@ -1,8 +1,10 @@
 """check_manifests.py - W1 gates G1/G3 (specs/w1-reproducibility.md section 6, amended 2026-07-29).
 
 Modes:
-    python check_manifests.py
-        Walk results/, validate every run manifest: status complete, git_dirty false,
+    python check_manifests.py [--results DIR] [--inputs-root DIR | --no-inputs]
+        Walk a tree of <family>/<run>/manifest.json (default: results/ beside this
+        script; the released manifests are the dataset repository's judgements/judges/),
+        and validate every run manifest: status complete, git_dirty false,
         models non-empty with resolved IDs (+ v2: provider/route/k_impl), input sha256s
         still match the files on disk, cost_usd present, calls.errors == 0.
 
@@ -18,13 +20,26 @@ Modes:
         harness root - {filename: sha256}, appended at the W-A freeze), or a plan-path
         entry's output file lacks an embedded manifest block (relaxed mode, R3).
 
+Each manifest also records the input files that run read, with their sha256, and by
+default those are resolved against this script's directory and re-hashed. The released
+manifests name the study's own construction corpora, which are not part of the release, so
+validating the released manifests means turning that check off:
+
+    python check_manifests.py --results <dataset>/judgements/judges --no-inputs
+
 Exit code 0 = all pass, 1 = any failure. manifest_version 2 required; v1 accepted for
 pre-amendment w1-smoke runs only.
 """
 import argparse, glob, hashlib, json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+#: Root of the manifest tree, one level above <run>/. Overridden by --results.
 RESULTS = os.path.join(HERE, "results")
+#: What a manifest's recorded input paths are resolved against. Separate from RESULTS: a
+#: manifest names its inputs relative to the harness root, not relative to the run.
+INPUTS_ROOT = HERE
+#: Set by --no-inputs, for validating manifests whose input files are not to hand.
+CHECK_INPUTS = True
 FREEZE_FILE = os.path.join(HERE, "freeze_hashes.json")
 MASTER_PAIRS = "pairs_master_frozen.json"
 
@@ -85,8 +100,8 @@ def validate_manifest(path, problems, warnings=None):
                 problems.append(f"{rid}: role {mm.get('role')!r} missing route (A3 manifest addition)")
             if not mm.get("k_impl"):
                 problems.append(f"{rid}: role {mm.get('role')!r} missing k_impl (A3 manifest addition)")
-    for inp in m.get("inputs") or []:
-        f = os.path.join(HERE, inp["file"])
+    for inp in (m.get("inputs") or []) if CHECK_INPUTS else []:
+        f = os.path.join(INPUTS_ROOT, inp["file"])
         if not os.path.exists(f):
             problems.append(f"{rid}: input {inp['file']} missing from disk")
         elif _sha256(f) != inp.get("sha256"):
@@ -104,7 +119,7 @@ def walk_results():
     problems, warnings, by_id = [], [], {}
     paths = sorted(glob.glob(os.path.join(RESULTS, "*", "*", "manifest.json")))
     if not paths:
-        problems.append("no manifests found under results/")
+        problems.append(f"no <family>/<run>/manifest.json found under {RESULTS}")
     for p in paths:
         m = validate_manifest(p, problems, warnings)
         if m and m.get("run_id"):
@@ -124,7 +139,7 @@ def check_paper(paper_file, by_id, valid_ids, problems):
         if isinstance(entry, list):  # bare run_id list shorthand
             entry = {"runs": entry}
         if entry.get("plan_path"):
-            f = os.path.join(HERE, entry.get("file", ""))
+            f = os.path.join(INPUTS_ROOT, entry.get("file", ""))
             if not entry.get("file") or not os.path.exists(f):
                 problems.append(f"{stat}: plan-path file {entry.get('file')!r} missing")
                 continue
@@ -167,10 +182,27 @@ def check_paper(paper_file, by_id, valid_ids, problems):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Validate results/ manifests (W1 gates G1/G3)")
+    global RESULTS, INPUTS_ROOT, CHECK_INPUTS, FREEZE_FILE
+    ap = argparse.ArgumentParser(description="Validate run manifests (W1 gates G1/G3)")
     ap.add_argument("--paper", metavar="PAPER_NUMBERS_JSON",
                     help="gate-G1 mode: validate every run behind every paper number")
+    ap.add_argument("--results", metavar="DIR", default=RESULTS,
+                    help="tree of <family>/<run>/manifest.json to validate. Default: "
+                         "results/ beside this script. The released manifests are at "
+                         "judgements/judges/ in the dataset repository.")
+    ap.add_argument("--inputs-root", metavar="DIR",
+                    help="root the manifests' recorded input paths resolve against, for the "
+                         "sha256 re-check. Default: this script's directory.")
+    ap.add_argument("--no-inputs", action="store_true",
+                    help="skip the input-file checks. Use this on the released manifests: "
+                         "they name construction corpora the release does not ship, and "
+                         "without it every run reports its inputs as missing.")
     args = ap.parse_args()
+    RESULTS = os.path.abspath(args.results)
+    if args.inputs_root:
+        INPUTS_ROOT = os.path.abspath(args.inputs_root)
+    CHECK_INPUTS = not args.no_inputs
+    FREEZE_FILE = os.path.join(INPUTS_ROOT, "freeze_hashes.json")
 
     by_id, problems, warnings = walk_results()
     base_problem_ids = {p.split(":")[0] for p in problems}
@@ -178,7 +210,8 @@ def main():
     if args.paper:
         check_paper(args.paper, by_id, valid_ids, problems)
 
-    print(f"checked {len(by_id)} manifest(s) under results/"
+    print(f"checked {len(by_id)} manifest(s) under {RESULTS}"
+          + ("" if CHECK_INPUTS else " (input files not checked)")
           + (f" + paper map {args.paper}" if args.paper else ""))
     for w in warnings:
         print(f"  WARN {w}")

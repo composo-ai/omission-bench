@@ -22,7 +22,7 @@ Four read-outs, all on the same 151 held-out pairs + 47 clean twins (§19.1):
   4. The gpt-5.4 baselines       recomputed from confirm-B2/B3.jsonl and checked against
                                 FINDINGS §19 before anything is reported.
 
-Measure conventions are imported from `paper/figures/extract_data.py`, the module that
+Measure conventions are imported from `figures/extract_data.py`, the module that
 reproduces FINDINGS; nothing is reimplemented here. If the §19 baselines do not reproduce,
 this script STOPS rather than print a comparison whose reference column is unverified.
 
@@ -49,7 +49,7 @@ FINDINGS_19 = {"B2_paired": 0.801, "B3_paired": 0.752, "B2_complete": 0.936,
 
 
 def load_extract_data():
-    path = os.path.join(HERE, "paper", "figures", "extract_data.py")
+    path = os.path.join(HERE, "figures", "extract_data.py")
     if not os.path.exists(path):
         raise SystemExit(f"cannot find {path} - the shared measure conventions live there")
     spec = importlib.util.spec_from_file_location("_sf_extract_data", path)
@@ -59,7 +59,7 @@ def load_extract_data():
     for fn in ("arm_block", "wilson", "two_prop_z", "sweep", "best_at_fa", "load",
                "residual_level_of", "IS_OMIT"):
         if not hasattr(mod, fn):
-            raise SystemExit(f"paper/figures/extract_data.py has no {fn}() - stopping")
+            raise SystemExit(f"figures/extract_data.py has no {fn}() - stopping")
     return mod
 
 
@@ -511,7 +511,7 @@ def write_summary_md(out, path, X):
     A(f"- Monolithic comparator: `{MONO_STORE}` restricted to `{CONFIRM_SUBSET}`")
     A(f"- Reused instrument: `results/w2-pipeline/_cache/{{facts,audit}}_*.json`")
     A(f"- Analysis: `results/{EXPERIMENT}/analysis.json`; measure conventions imported from "
-      f"`paper/figures/extract_data.py`")
+      f"`figures/extract_data.py`")
     A(f"- Model pin: `models.lock.json` role `judge-gemini`; runner `w2_pipeline.py "
       f"--check-role judge-gemini --check-effort minimal --experiment {EXPERIMENT}`")
     L.append("")

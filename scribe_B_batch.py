@@ -1,8 +1,28 @@
-# browser-harness heredoc body: batch-drive scribe_B over an audio manifest.
-# Pure UI automation (NO claude -p / Claude-plan usage). Reads /tmp/scribe_B_files.json
-# [{id, mp3, source}], processes each (new session -> upload -> wait note -> scrape via
-# Copy->pbpaste), saves scribe_B_notes/<source>__<id>.txt, and writes /tmp/scribe_B_batch_results.json.
-# Defensive: per-file try/except, bounded polling, screenshot on failure, continue.
+"""A record of how Scribe B's notes were captured. Not a script you can run.
+
+Scribe B offered no API for this, so its notes were captured by driving the product's own
+web interface: start a session, upload the consultation audio, wait for the note to appear
+in the editor, read it back. This file is the program that did the driving, kept as the
+evidence of what the capture actually did.
+
+It is not self-contained Python, and it is not meant to be. `js`, `click`, `screenshot`,
+`upload_file` and `cdp` are neither defined nor imported here: the file was fed to
+`browser-harness`, a command-line browser-automation tool of ours, which executed it with
+those five names bound to a live Chrome instance over the DevTools Protocol - evaluate
+JavaScript in the page, click at a viewport coordinate, save a screenshot, attach a file to
+a file input, and issue a raw protocol command. That tool is not part of this release, so
+running this file with a Python interpreter raises NameError at the first call.
+
+Reads /tmp/scribe_B_files.json ([{id, mp3, source}]) and writes
+/tmp/scribe_B_batch_results.json; each note is saved to
+scribe_B_notes/<source>__<id>.txt. Defensive throughout: per-file try/except, bounded
+polling, a screenshot on failure, one retry, and no model calls anywhere.
+
+The element selectors and menu labels below are that product's interface as it stood in
+August 2026 and have no reason to still match. `scribe_B_overnight.py` is the maintained
+form of the same capture: it invokes the same tool as a subprocess instead of being fed to
+it, and it verifies by content which consultation a captured note belongs to.
+"""
 import json, time, subprocess, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))

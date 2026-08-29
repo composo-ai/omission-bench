@@ -50,7 +50,9 @@ POOLED = {"FC-score-k8_omissions": 0.634, "FC-score-k8_complete": 0.690,
 
 
 def load_extract_data():
-    path = os.path.join(HERE, "paper", "figures", "extract_data.py")
+    path = os.path.join(HERE, "figures", "extract_data.py")
+    if not os.path.exists(path):
+        raise SystemExit(f"cannot find {path} - the shared measure conventions live there")
     spec = importlib.util.spec_from_file_location("_rb_extract_data", path)
     mod = importlib.util.module_from_spec(spec)
     sys.modules["_rb_extract_data"] = mod

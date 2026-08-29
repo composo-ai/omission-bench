@@ -3,7 +3,18 @@
 Import from here so experiment scripts stay thin and consistent:
     from common import claude, scribe_AClient, make_composo, load_primock, DANGEROUS_MODES, HERE
 
-All LLM calls run on the lead author's Claude plan via `claude -p` (no API key).
+Two model transports live here and they are not interchangeable. `llm()` is the
+paper-bound one: every benchmark and judge call goes through it, on OpenRouter, against a
+role pinned in `models.lock.json`, and it asserts that provider rather than accepting
+another. `claude()` and `claude_json()` are the construction-and-audit transport: they
+shell out to the local `claude` command-line binary, which runs against a Claude
+subscription rather than an API key, and they carry fact-sheet extraction, scenario
+authoring, the critique panels and the census instruments. `claude()` has no OpenRouter
+route of its own - a stage that needed one calls `llm()` instead, which is what
+`taxonomy_common.route_call` does by default - but setting BATCH_LLM=openai sends every
+`claude()`/`claude_json()` call to an OpenAI model instead, and the study used that
+whenever the subscription's session limit was reached.
+
 Composo via the cp- key in secrets.env. scribe_A via OAuth client-creds in secrets.env.
 """
 import json, os, re, subprocess, threading, time
@@ -33,7 +44,7 @@ def _openai_client():
 
 def _openai_call(prompt, timeout):
     m = os.environ.get("BATCH_OPENAI_MODEL", "gpt-5.5")
-    reff = os.environ.get("BATCH_OPENAI_REASONING", "none")   # gpt-5.5 supports 'none' (= a colleague's ref)
+    reff = os.environ.get("BATCH_OPENAI_REASONING", "none")   # gpt-5.5 supports 'none'
     kw = {"model": m, "messages": [{"role": "user", "content": prompt}]}
     if reff:
         kw["reasoning_effort"] = reff

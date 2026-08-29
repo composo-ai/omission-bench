@@ -4,7 +4,7 @@ date: 2026-08-13
 ---
 # W-F v2: the best-judge experiment (GEPA on the strongest architecture + checklist decomposition)
 
-Rewritten 2026-08-13 after the grid completed and the review pass settled its reading. Supersedes the 12 Aug versions of this file (git history). Written before this campaign ran, and kept as the design of record. Expected cost \~\$150-250, hard cap \$300, OpenRouter.
+Rewritten 2026-08-13 after the grid completed and the review pass settled its reading. Supersedes the 12 Aug versions of this file (git history). Written before this campaign ran, and kept as the design of record.
 
 ## Why this experiment exists
 
@@ -61,7 +61,7 @@ Design rules: extraction NEVER sees the note under judgement (transcript only - 
 - **B beats the grid at matched FA** (my expectation): the constructive result - omission detection is possible, but only by restructuring the task around enumerable facts; connects directly to the paper's ground-truth protocol (fact sheets ARE checklists).
 - **Neither helps**: the strongest possible negative, stated with the strongest possible baseline.
 
-## Budget and mechanics (revised 2026-08-13 23:55 - the lead author's target: finish the whole project with \~\$1k of the \$3k left)
+## Budget and mechanics (revised 2026-08-13 23:55)
 
 Staged, minimal-first, per the lead author ("we don't need to run the B3 judge on very much, just enough to see if it works, and if it does, then a few more to prove it"):
 

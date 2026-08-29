@@ -1,7 +1,6 @@
 # W-F - the GEPA-optimized omission judge
 
 Spec: `specs/w-f-gepa-omission-judge.md`. Arm slot: `gepa-optimized` in `w2_arms.py`.
-Provenance: claude-draft, 2026-08-12.
 
 This directory holds an optimizer, the prompt it found, and the full record of how it got
 there. The prompt is the deliverable: `gepa/judge_prompt.txt` is the file `w2_arms.py`
@@ -200,9 +199,8 @@ transport. `gepa_optimize.py` is \~450 lines and the whole trajectory is in `lin
 
 ## Cost and budget
 
-Hard cap \$120 of OpenRouter credits, enforced in-process (`Budget`), on top of the
-project-cumulative tripwires in `w2_common.SpendGuard` (warn \$700 / stop \$900), which are
-fed live rather than at the end. Judge responses are cached by `(prompt sha, seed)` in
+Hard cap \$120 of OpenRouter credits, enforced in-process (`Budget`), on top of a
+project-cumulative guard in `w2_common.SpendGuard`, fed live rather than at the end. Judge responses are cached by `(prompt sha, seed)` in
 `gepa/cache/judge_cache.jsonl`, which matters more than it sounds: a surviving parent is
 re-scored every time it is selected, and without the cache the search would re-buy the same
 answers dozens of times.

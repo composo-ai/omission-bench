@@ -1,7 +1,7 @@
 """w2_secondfamily_analyze.py - the second-family replication's metrics and summary.
 
 The measure conventions are NOT reimplemented here. They are imported from
-paper/figures/extract_data.py, which is the module that builds the paper's floats and
+figures/extract_data.py, which is the module that builds the paper's floats and
 which refuses to write unless its recomputation reproduces docs/FINDINGS.md. Using the
 same `arm_block` on the new store is what makes the comparison a comparison: any
 difference between the two families is the judge, not the arithmetic.
@@ -46,8 +46,8 @@ FLAG_RULE = {"sf-F-bin-k1": "FAIL verdict", "sf-FC-score-k1": "score <= 7",
 
 
 def load_extract_data():
-    """Import paper/figures/extract_data.py as a module without running its main()."""
-    path = os.path.join(HERE, "paper", "figures", "extract_data.py")
+    """Import figures/extract_data.py as a module without running its main()."""
+    path = os.path.join(HERE, "figures", "extract_data.py")
     if not os.path.exists(path):
         raise SystemExit(f"cannot find {path} - the shared measure conventions live there")
     spec = importlib.util.spec_from_file_location("_w2_extract_data", path)
@@ -56,7 +56,7 @@ def load_extract_data():
     spec.loader.exec_module(mod)
     for fn in ("arm_block", "paired_over_reps", "wilson", "two_prop_z", "load"):
         if not hasattr(mod, fn):
-            raise SystemExit(f"paper/figures/extract_data.py has no {fn}() - "
+            raise SystemExit(f"figures/extract_data.py has no {fn}() - "
                              "the shared conventions moved; stopping rather than guessing")
     return mod
 
@@ -469,7 +469,7 @@ def write_summary_md(out, path):
     A(f"- Dataset: `master/dataset_v2.json` version "
       f"{', '.join(str(v) for v in out['dataset']['file'])}, sha "
       f"{', '.join(s[:12] for s in out['dataset']['pairs_sha256_from_manifests'])}")
-    A(f"- Measure conventions imported from `paper/figures/extract_data.py` "
+    A(f"- Measure conventions imported from `figures/extract_data.py` "
       f"(`arm_block`), the module that reproduces FINDINGS §17.1")
     A(f"- Model pin: `models.lock.json` role `judge-gemini`")
     L.append("")
@@ -682,7 +682,7 @@ def main():
                       "+ half the tie mass, per replicate then averaged; chance 0.500",
             "absolute": "flag rate at the design's own grid threshold, beside the same "
                         "design's false-alarm rate on the clean twins",
-            "source": "paper/figures/extract_data.py arm_block() - the same function that "
+            "source": "figures/extract_data.py arm_block() - the same function that "
                       "reproduces FINDINGS 17.1",
         },
         "baseline_gpt54_grid": {

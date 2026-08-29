@@ -47,7 +47,9 @@ POWER_ARMS = ["power-FC-med", "power-FC-high", "power-factlist-high", "power-gep
 
 
 def load_extract_data():
-    path = os.path.join(HERE, "paper", "figures", "extract_data.py")
+    path = os.path.join(HERE, "figures", "extract_data.py")
+    if not os.path.exists(path):
+        raise SystemExit(f"cannot find {path} - the shared measure conventions live there")
     spec = importlib.util.spec_from_file_location("_pw_extract", path)
     mod = importlib.util.module_from_spec(spec)
     sys.modules["_pw_extract"] = mod
