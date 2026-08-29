@@ -1,0 +1,521 @@
+{
+  "what": "lever attribution: what each remedy bought in paired discrimination on omissions, and what it did to the judge's operating point",
+  "lands_at": "Section 7, 'Scope, format and voting move the point, not the curve'",
+  "columns": {
+    "lever": "the remedy, in the terms a practitioner chooses it in",
+    "delta_display": "paired delta with its basis; a span where the lever has four matched per-design comparisons",
+    "operating_point": "what the same change did to single-note detection and false alarms",
+    "substrate": "the pairs, clean twins and replicates the row is measured over"
+  },
+  "reading_rule": {
+    "rule": "strict win rates must never be quoted across designs that differ in sample count: a finer aggregate splits ties and inflates the count",
+    "example": {
+      "designs": [
+        "FC-score-k1",
+        "FC-score-k8"
+      ],
+      "strict_win_rate": [
+        0.2696,
+        0.4266
+      ],
+      "tie_rate": [
+        0.6303,
+        0.4141
+      ],
+      "tie_adjusted_paired": [
+        0.5848,
+        0.6337
+      ],
+      "n_pairs": 293
+    }
+  },
+  "lever_detail": {
+    "criterion": {
+      "pairs": [
+        {
+          "from": "F-bin-k1",
+          "to": "FC-bin-k1",
+          "delta": 0.039,
+          "delta_exact": 0.03924914675767921
+        },
+        {
+          "from": "F-bin-k8",
+          "to": "FC-bin-k8",
+          "delta": 0.082,
+          "delta_exact": 0.08248009101251419
+        },
+        {
+          "from": "F-score-k1",
+          "to": "FC-score-k1",
+          "delta": 0.036,
+          "delta_exact": 0.03583617747440271
+        },
+        {
+          "from": "F-score-k8",
+          "to": "FC-score-k8",
+          "delta": 0.052,
+          "delta_exact": 0.05176336746302623
+        }
+      ],
+      "deltas": [
+        0.0392,
+        0.0825,
+        0.0358,
+        0.0518
+      ],
+      "min": 0.036,
+      "max": 0.082,
+      "mean": 0.052,
+      "exact": {
+        "min": 0.03583617747440271,
+        "max": 0.08248009101251419,
+        "mean": 0.052332195676905585
+      },
+      "det_from": [
+        0.095563,
+        0.095563,
+        0.010239,
+        0.023891
+      ],
+      "det_to": [
+        0.40273,
+        0.423208,
+        0.046644,
+        0.083049
+      ],
+      "fa_from": [
+        0.089286,
+        0.074405,
+        0.014881,
+        0.020833
+      ],
+      "fa_to": [
+        0.318452,
+        0.321429,
+        0.056548,
+        0.065476
+      ]
+    },
+    "format": {
+      "pairs": [
+        {
+          "from": "F-bin-k1",
+          "to": "F-score-k1",
+          "delta": 0.049,
+          "delta_exact": 0.04891922639362911
+        },
+        {
+          "from": "F-bin-k8",
+          "to": "F-score-k8",
+          "delta": 0.073,
+          "delta_exact": 0.07337883959044367
+        },
+        {
+          "from": "FC-bin-k1",
+          "to": "FC-score-k1",
+          "delta": 0.046,
+          "delta_exact": 0.04550625711035261
+        },
+        {
+          "from": "FC-bin-k8",
+          "to": "FC-score-k8",
+          "delta": 0.043,
+          "delta_exact": 0.04266211604095571
+        }
+      ],
+      "deltas": [
+        0.0489,
+        0.0734,
+        0.0455,
+        0.0427
+      ],
+      "min": 0.043,
+      "max": 0.073,
+      "mean": 0.053,
+      "exact": {
+        "min": 0.04266211604095571,
+        "max": 0.07337883959044367,
+        "mean": 0.052616609783845275
+      },
+      "det_from": [
+        0.095563,
+        0.095563,
+        0.40273,
+        0.423208
+      ],
+      "det_to": [
+        0.010239,
+        0.023891,
+        0.046644,
+        0.083049
+      ],
+      "fa_from": [
+        0.089286,
+        0.074405,
+        0.318452,
+        0.321429
+      ],
+      "fa_to": [
+        0.014881,
+        0.020833,
+        0.056548,
+        0.065476
+      ]
+    },
+    "ensemble": {
+      "pairs": [
+        {
+          "from": "F-bin-k1",
+          "to": "F-bin-k8",
+          "delta": 0.009,
+          "delta_exact": 0.008532423208191142
+        },
+        {
+          "from": "F-score-k1",
+          "to": "F-score-k8",
+          "delta": 0.033,
+          "delta_exact": 0.0329920364050057
+        },
+        {
+          "from": "FC-bin-k1",
+          "to": "FC-bin-k8",
+          "delta": 0.052,
+          "delta_exact": 0.05176336746302612
+        },
+        {
+          "from": "FC-score-k1",
+          "to": "FC-score-k8",
+          "delta": 0.049,
+          "delta_exact": 0.04891922639362922
+        }
+      ],
+      "deltas": [
+        0.0085,
+        0.033,
+        0.0518,
+        0.0489
+      ],
+      "min": 0.009,
+      "max": 0.052,
+      "mean": 0.036,
+      "exact": {
+        "min": 0.008532423208191142,
+        "max": 0.05176336746302612,
+        "mean": 0.035551763367463046
+      },
+      "det_from": [
+        0.095563,
+        0.010239,
+        0.40273,
+        0.046644
+      ],
+      "det_to": [
+        0.095563,
+        0.023891,
+        0.423208,
+        0.083049
+      ],
+      "fa_from": [
+        0.089286,
+        0.014881,
+        0.318452,
+        0.056548
+      ],
+      "fa_to": [
+        0.074405,
+        0.020833,
+        0.321429,
+        0.065476
+      ]
+    }
+  },
+  "wording_family": {
+    "v14-asis": {
+      "paired_omissions": 0.5179,
+      "paired_commissions": 0.8861,
+      "det": 0.163823,
+      "det_k": 96,
+      "det_n": 586,
+      "fa": 0.120536,
+      "fa_k": 27,
+      "fa_n": 224,
+      "z": 1.535
+    },
+    "v14-noexcl": {
+      "paired_omissions": 0.5051,
+      "paired_commissions": 0.8899,
+      "det": 0.131399,
+      "det_k": 77,
+      "det_n": 586,
+      "fa": 0.120536,
+      "fa_k": 27,
+      "fa_n": 224,
+      "z": 0.413
+    },
+    "v14-incl": {
+      "paired_omissions": 0.5563,
+      "paired_commissions": 0.8874,
+      "det": 0.255973,
+      "det_k": 150,
+      "det_n": 586,
+      "fa": 0.120536,
+      "fa_k": 27,
+      "fa_n": 224,
+      "z": 4.172
+    }
+  },
+  "optimisation": {
+    "per_fact_checker": {
+      "valid_baseline": 0.7917,
+      "valid_winner": 0.8438,
+      "valid_fa_baseline": 0.1,
+      "valid_fa_winner": 0.05,
+      "valid_det_baseline": 0.3333,
+      "valid_det_winner": 0.3333,
+      "test": {
+        "n_omissions_compared": 131,
+        "n_consultations": 47,
+        "candidate": {
+          "paired": {
+            "paired": 0.7786,
+            "n": 131,
+            "wins": 80,
+            "ties": 44,
+            "losses": 7
+          },
+          "det10": 0.16793893129770993,
+          "fa10": 0.0851063829787234,
+          "thr10": 0.883721,
+          "n_clean": 47,
+          "det_ci": {
+            "k": 22,
+            "n": 131,
+            "p": 0.1679,
+            "lo": 0.1136,
+            "hi": 0.2412
+          },
+          "det_vs_fa_z": {
+            "z": 1.379,
+            "p": 0.167774
+          }
+        },
+        "baseline": {
+          "paired": {
+            "paired": 0.8015,
+            "n": 131,
+            "wins": 84,
+            "ties": 42,
+            "losses": 5
+          },
+          "det10": 0.16030534351145037,
+          "fa10": 0.0851063829787234,
+          "thr10": 0.894737,
+          "n_clean": 47,
+          "det_ci": {
+            "k": 21,
+            "n": 131,
+            "p": 0.1603,
+            "lo": 0.1073,
+            "hi": 0.2327
+          },
+          "det_vs_fa_z": {
+            "z": 1.273,
+            "p": 0.203057
+          }
+        },
+        "delta_paired": -0.0229,
+        "delta_det10_pp": 0.76,
+        "sign_test_candidate_vs_baseline": {
+          "n_informative": 21,
+          "wins": 8,
+          "losses": 13,
+          "p": 0.38331032
+        },
+        "cluster_bootstrap_95ci_paired": [
+          -0.0736,
+          0.0265
+        ],
+        "mcnemar_flags": {
+          "candidate_only": 3,
+          "baseline_only": 2,
+          "exact_p": 1.0
+        },
+        "n_keys": 131
+      }
+    },
+    "monolithic": {
+      "valid_baseline": 0.6146,
+      "valid_winner": 0.6875,
+      "gate": {
+        "passed": true,
+        "winner": "v3m-08",
+        "baseline": "seed_fc_score",
+        "delta_paired_pp": 7.29,
+        "delta_det10_pp": 22.92,
+        "threshold_pp": 2.0,
+        "decision": "confirm on TEST at k=8",
+        "why": "v3m-08 beats seed_fc_score on VALID by +7.3pp paired and +22.9pp det@FA<=10%; the gate needs >2pp on both"
+      },
+      "test": {
+        "n_omissions_compared": 131,
+        "n_consultations": 47,
+        "candidate": {
+          "paired": {
+            "paired": 0.626,
+            "n": 131,
+            "wins": 61,
+            "ties": 42,
+            "losses": 28
+          },
+          "det10": 0.08396946564885496,
+          "fa10": 0.06382978723404255,
+          "thr10": 8.0,
+          "n_clean": 47,
+          "det_ci": {
+            "k": 11,
+            "n": 131,
+            "p": 0.084,
+            "lo": 0.0475,
+            "hi": 0.1441
+          },
+          "det_vs_fa_z": {
+            "z": 0.44,
+            "p": 0.659931
+          }
+        },
+        "baseline": {
+          "paired": {
+            "paired": 0.6221,
+            "n": 131,
+            "wins": 55,
+            "ties": 53,
+            "losses": 23
+          },
+          "det10": 0.1297709923664122,
+          "fa10": 0.06382978723404255,
+          "thr10": 8.0,
+          "n_clean": 47,
+          "det_ci": {
+            "k": 17,
+            "n": 131,
+            "p": 0.1298,
+            "lo": 0.0826,
+            "hi": 0.198
+          },
+          "det_vs_fa_z": {
+            "z": 1.228,
+            "p": 0.219437
+          }
+        },
+        "delta_paired": 0.0039,
+        "delta_det10_pp": -4.58,
+        "sign_test_candidate_vs_baseline": {
+          "n_informative": 76,
+          "wins": 40,
+          "losses": 36,
+          "p": 0.73100888
+        },
+        "cluster_bootstrap_95ci_paired": [
+          -0.126,
+          0.1331
+        ],
+        "mcnemar_flags": {
+          "candidate_only": 2,
+          "baseline_only": 8,
+          "exact_p": 0.10938
+        },
+        "n_keys": 131
+      }
+    },
+    "exploratory_winner": {
+      "name": "gepa-04",
+      "dev_fa": 0.09090909090909091,
+      "dev_n_clean": 22,
+      "dev_omission_detection_severity_weighted": 0.2857142857142857,
+      "eval_paired": 0.5495,
+      "eval_det": 0.230375,
+      "eval_det_k": 135,
+      "eval_det_n": 586,
+      "eval_fa": 0.21875,
+      "eval_fa_k": 49,
+      "eval_fa_n": 224
+    }
+  },
+  "caption": "**What each lever bought, and what it did to the judge's operating point.** Paired discrimination is the tie-adjusted probability that an errored note scores below its own verified-clean twin, so 0.500 is a coin flip and a lever worth +0.04 buys four correctly ordered pairs in every hundred, only where a clean twin exists to compare against. The first three levers are quoted as the span of four per-design deltas, each holding the other two choices fixed, because a single headline delta would hide how far the spans overlap: criterion and format are indistinguishable on the mean (+0.052 against +0.053) and ensembling is smallest (+0.036). The reading rule this table carries: strict win rates must never be quoted across designs that differ in sample count, because a finer aggregate splits ties and inflates the count. The completeness-scored pair is the case in point. Asking eight times rather than once takes the strict win rate on omissions from 27% to 43%, but over the same 293 pairs the tie rate falls from 63% to 41%, and once half the tie mass is counted the paired figure moves 0.585 to 0.634. That is a lever worth +0.049, not sixteen points. Every paired figure in this paper is tie-adjusted for that reason.",
+  "rows": [
+    {
+      "lever": "What the judge is told to check",
+      "change": "faithfulness only, to faithfulness and completeness",
+      "delta_display": "+0.036 to +0.082 (mean +0.052)",
+      "delta_basis": "four per-design deltas, holding format and sample count fixed",
+      "deltas": [
+        0.0392,
+        0.0825,
+        0.0358,
+        0.0518
+      ],
+      "operating_point": "Detection rises in all four comparisons, from 1.0-9.6% before to 4.7-42.3% after, and false alarms rise with it, 1.5-8.9% to 5.7-32.1%; of the eight designs only the two yes/no completeness ones have detection that clears their own false alarms (z 2.71 and 3.25), and they do it at 31.8% and 32.1% false alarms.",
+      "substrate": "the eight designs, 495-pair evaluation set, 3 replicates (879 omission records, 336 clean records)"
+    },
+    {
+      "lever": "How it answers",
+      "change": "a yes/no verdict, to a 0-to-10 score",
+      "delta_display": "+0.043 to +0.073 (mean +0.053)",
+      "delta_basis": "four per-design deltas, holding criterion and sample count fixed",
+      "deltas": [
+        0.0489,
+        0.0734,
+        0.0455,
+        0.0427
+      ],
+      "operating_point": "Both rates fall together, detection from 9.6-42.3% to 1.0-8.3% and false alarms from 7.4-32.1% to 1.5-6.5%, so the scored designs are quieter rather than sharper: their detection never clears their own false alarms by more than 1.02 standard errors.",
+      "substrate": "the eight designs, 495-pair evaluation set, 3 replicates (879 omission records, 336 clean records)"
+    },
+    {
+      "lever": "How many times it is asked",
+      "change": "once, to eight times with the extremes trimmed",
+      "delta_display": "+0.009 to +0.052 (mean +0.036)",
+      "delta_basis": "four per-design deltas, holding criterion and format fixed",
+      "deltas": [
+        0.0085,
+        0.033,
+        0.0518,
+        0.0489
+      ],
+      "operating_point": "The operating point barely moves: the largest change is the completeness-scored pair, detection 4.7% to 8.3% at false alarms 5.7% to 6.5%, and no scored design's detection separates from its own false alarms at either sample count.",
+      "substrate": "the eight designs, 495-pair evaluation set, 3 replicates (879 omission records, 336 clean records)"
+    },
+    {
+      "lever": "How the prompt words the omission instruction",
+      "change": "the deployed faithfulness judge in three wordings, as shipped, with its omissions-are-not-errors exclusion deleted, and with an affirmative instruction to report omissions added",
+      "delta_display": "+0.051 (one comparison, not a span)",
+      "delta_basis": "the affirmative instruction against the same prompt with the exclusion merely deleted; paired 0.518 as shipped, 0.505 deleted, 0.556 affirmative",
+      "deltas": [
+        0.0512
+      ],
+      "operating_point": "The affirmative instruction takes detection from 13.1% to 25.6% (77 and 150 of 586 omission judgements, against 16.4% as shipped) while false alarms hold at 27 of 224 clean judgements (12.1%) for all three wordings, the same rate though not the same notes; deleting the exclusion on its own takes paired discrimination from 0.518 to 0.505 and detection from 16.4% to 13.1%.",
+      "substrate": "three wordings of the deployed judge, 495-pair evaluation set, 2 replicates (586 omission records, 224 clean records)"
+    },
+    {
+      "lever": "Letting an optimiser rewrite the prompt",
+      "change": "reflective prompt evolution, aimed at the per-fact checker and at the best monolithic judge",
+      "delta_display": "+0.052 and +0.073 on the acceptance sets, -0.023 and +0.004 held out",
+      "delta_basis": "two search legs, each measured on the 20-consultation acceptance set that chose the winner and then once on the 47-consultation held-out set",
+      "deltas": [
+        0.0521,
+        0.0729,
+        -0.0229,
+        0.0039
+      ],
+      "operating_point": "Held out, the per-fact checker's winner gains 0.8 points of detection (22 against 21 of 131 omissions) at the same 8.5% false alarms, and the monolithic winner loses 4.6 points (11 against 17 of 131) at the same 6.4%. The earlier campaign's winner carried a false-alarm rate of 9.1% (2 of 22 clean development notes) to 21.9% (49 of 224) on data it had never seen, at 23.0% detection (135 of 586).",
+      "substrate": "acceptance set 48 omission pairs and 20 clean twins; held-out set 131 omission pairs and 47 clean twins, one replicate; the earlier campaign's winner on the 495-pair evaluation set, 2 replicates"
+    }
+  ],
+  "sources": [
+    "results/w2-ablation/_state/grid-main2.jsonl",
+    "paper/figures/_recomputed.json (grid and arms blocks)",
+    "w2_results_main.json (OD_cell strict win rates)",
+    "gepa/v3_results.json",
+    "gepa/results.json"
+  ]
+}

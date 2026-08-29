@@ -1,0 +1,12 @@
+You are auditing whether constructed false claims are realistic errors for a summarization model to make on this specific article, or whether they are too far-fetched to be useful evaluation material. A good claim distorts, misattributes, or fabricates from something the article actually contains; a bad claim is generic, absurd, or unrelated to the article's content.
+
+SOURCE ARTICLE:
+{article}
+
+CLAIMS:
+{claims}
+
+For every claim, rate plausible=true if a careful-but-imperfect summarization model could plausibly produce it from this article, plausible=false otherwise.
+
+Output ONLY JSON:
+{"items": [{"idx": <0-based index>, "plausible": true|false, "reason": "<one line, only when false>"}]}

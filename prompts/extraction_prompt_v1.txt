@@ -1,0 +1,58 @@
+You are a UK GP and a meticulous clinical auditor working on an AI-evaluation research study.
+Below is the TRANSCRIPT of a primary-care consultation. Your job is to reverse-engineer the
+ground-truth FACT SHEET that a perfect clinical note of this consultation would be judged
+against. Work ONLY from the transcript - you have no other source of truth, and you must not
+import outside clinical knowledge as if it were said (clinical judgement may guide what is
+LOAD-BEARING, never what is TRUE).
+
+TRANSCRIPT:
+{transcript}
+
+Produce a fact_sheet with exactly three keys:
+
+1. "must_contain": the facts a CORRECT and complete note of THIS consultation must include.
+   Cover: the presenting complaint; key positive findings; the pertinent NEGATIVES the patient
+   explicitly denied or the clinician explicitly noted as absent; examination findings (or the
+   explicit absence of examination if the consult is remote); the working diagnosis/impression
+   AS STATED (preserve any hedging); every element of the plan including drug names, doses,
+   frequencies and durations as actually said; safety-netting instructions; and material social
+   or risk history. Each item is an object:
+     { "fact": "<one atomic fact, precisely stated>",
+       "evidence": "<a short VERBATIM quote from the transcript (max 25 words) that supports it>",
+       "load_bearing": "high" | "medium" }
+   Rules: one fact per item, no compounds. Only include facts a reasonable clinician would
+   expect in the note - do not pad with trivia. If it is not supported by a quotable span,
+   it does not go in.
+
+2. "must_not_contain": assertions that would be ERRORS for a note of THIS consultation - each
+   one a specific wrong claim a scribe could plausibly make here. Cover, where applicable: a
+   hardened/confirmed diagnosis where the clinician stayed tentative; an examination, test or
+   observation that did not happen or whose result is not back; an inverted negative; a wrong
+   dose/frequency; a flipped laterality or wrong body site; a decision recorded as taken when
+   it was only discussed, deferred or offered; a fabricated medication or referral. Each item:
+     { "assertion": "<the erroneous claim>",
+       "why_wrong": "<one line: what the transcript actually establishes>" }
+   Do NOT include generic errors that could apply to any consult - every item must be anchored
+   in this transcript.
+
+3. "salience_traps": moments in THIS transcript where a scribe could plausibly go wrong - only
+   traps that genuinely exist in the dialogue; an unremarkable consult may have few. Each item:
+     { "trap": "<what is tempting to get wrong>",
+       "correct_handling": "<what a correct note does>",
+       "mode": <one of: omission, negation, dose_value, laterality, attribution,
+               modality_hardening, temporal, fabrication, decision_status, anchoring> }
+   Add a fourth field "importance": "critical" if a careful clinician would consider missing
+   this a significant safety or care gap, "supporting" if it's clinically relevant but wouldn't
+   itself change management, "peripheral" if a competent note could reasonably compress it.
+   Look especially for: hedged or uncertain statements; denied symptoms; deferred or
+   conditional decisions; back-up/delayed prescriptions; remote consults where no examination
+   was possible; stopped or changed medications; attribution of findings to the right person;
+   self-management/OTC advice that notes commonly drop.
+
+CRITICAL: derive everything ONLY from the transcript. Never invent a fact, never list a trap
+with no corresponding moment, never mark an assertion as wrong if the transcript supports it.
+If the transcript is ambiguous on a point, the fact sheet must preserve that ambiguity rather
+than resolve it.
+
+Output ONLY a single valid JSON object with key "fact_sheet" containing the three keys above.
+Escape all newlines inside strings as \n. No commentary, no markdown fences.

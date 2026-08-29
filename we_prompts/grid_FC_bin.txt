@@ -1,0 +1,18 @@
+SOURCE ARTICLE:
+{article}
+
+SUMMARY (AI-generated from the article above):
+{summary}
+
+---
+
+You are evaluating the summary above against the source article it was generated from.
+
+Evaluation criterion:
+Reward summaries that a careful reader would accept as faithful AND complete: no fabricated, contradicted, or distorted claims relative to the source article, and no omission of salient information that a careful reader would expect the summary to cover. Penalise any difference from the source article that would change the reader's understanding of what happened.
+
+Assess the summary strictly against this criterion. Give a brief assessment (2-6 sentences), then end your response with exactly one line:
+Verdict: PASS
+or
+Verdict: FAIL
+PASS = the summary satisfies the criterion. FAIL = the summary violates the criterion in at least one way.

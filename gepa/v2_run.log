@@ -1,0 +1,126 @@
+W-F v2 | 176 dev judgements, eval_overlap 0 | pool 0 | iter 0/15 | rejects 0/5 | $0.00 over 0 ledger rows | stopped: None
+
+===== 2026-08-14T08:40:17+00:00 phase=seeds n=1 | prior $0.00 (0 rows) | cap $80 (reserve $20) =====
+    seed seed_fc_score: 176/176 judged k=4 | cache 0h/176m | $3.80
+  seed #0 seed_fc_score          det@FA<=10%   6.0% (thr 7.50, FA   9.1%) | disc-omit 0.547 | complete   7.8% partial   4.6% | det@FA<=15%   6.0%
+  spend now $3.80 over 1 ledger rows (cap $80)
+
+===== 2026-08-14T08:43:38+00:00 phase=seeds n=2 | prior $3.80 (1 rows) | cap $80 (reserve $20) =====
+    seed seed_v1_winner: 176/176 judged k=4 | cache 0h/176m | $8.42
+  seed #1 seed_v1_winner         det@FA<=10%   7.8% (thr 7.00, FA   9.1%) | disc-omit 0.547 | complete   7.8% partial   7.7% | det@FA<=15%  17.2%
+    seed seed_engineered: 176/176 judged k=4 | cache 0h/352m | $12.46
+  seed #2 seed_engineered        det@FA<=10%   5.2% (thr 7.50, FA   0.0%) | disc-omit 0.591 | complete   9.8% partial   1.5% | det@FA<=15%   5.2%
+  spend now $12.46 over 2 ledger rows (cap $80)
+
+===== 2026-08-14T08:50:28+00:00 phase=seeds n=1 | prior $12.46 (2 rows) | cap $80 (reserve $25) =====
+    seed seed_v14_incl_lowfa: 176/176 judged k=4 | cache 0h/176m | $16.59
+  seed #3 seed_v14_incl_lowfa    det@FA<=10%   6.0% (thr 3.50, FA   0.0%) | disc-omit 0.582 | complete   5.9% partial   6.2% | det@FA<=15%   6.0%
+  spend now $16.59 over 3 ledger rows (cap $80)
+
+===== 2026-08-14T08:52:43+00:00 phase=iterate n=1 | prior $16.59 (3 rows) | cap $80 (reserve $25) =====
+  it01 parent#0 (seed_fc_score, leads 98/176) minibatch sep 0.688 -> 0.740 promote | $17.27
+    it01 full: 176/176 judged k=4 | cache 32h/176m | $21.05
+       full pool: det@FA<=10%   1.7% (thr 7.50, FA   4.5%) | disc-omit 0.453 | complete   2.0% partial   1.5% | det@FA<=15%   1.7%
+       vs parent#0: det10 6.0% -> 1.7%, disc 0.547 -> 0.453 => reject
+  spend now $21.05 over 4 ledger rows (cap $80)
+
+===== 2026-08-14T08:57:58+00:00 phase=iterate n=1 | prior $21.05 (4 rows) | cap $80 (reserve $25) =====
+  it02 parent#1 (seed_v1_winner, leads 92/176) minibatch sep 0.656 -> 0.615 PRE-FILTERED OUT | $21.82
+  spend now $21.82 over 5 ledger rows (cap $80)
+
+===== 2026-08-14T09:00:43+00:00 phase=iterate n=1 | prior $21.82 (5 rows) | cap $80 (reserve $25) =====
+  it03 parent#0 (seed_fc_score, leads 98/176) minibatch sep 0.656 -> 0.583 PRE-FILTERED OUT | $22.36
+  spend now $22.36 over 6 ledger rows (cap $80)
+
+===== 2026-08-14T09:02:37+00:00 phase=iterate n=1 | prior $22.36 (6 rows) | cap $80 (reserve $25) =====
+  it04 parent#0 (seed_fc_score, leads 98/176) minibatch sep 0.625 -> 0.542 PRE-FILTERED OUT | $22.89
+  spend now $22.89 over 7 ledger rows (cap $80)
+
+===== 2026-08-14T09:05:03+00:00 phase=iterate n=1 | prior $22.89 (7 rows) | cap $80 (reserve $25) =====
+  it05 parent#3 (seed_v14_incl_lowfa, leads 84/176) minibatch sep 0.625 -> 0.635 promote | $23.63
+    it05 full: 176/176 judged k=4 | cache 32h/176m | $28.14
+       full pool: det@FA<=10%   0.9% (thr 7.00, FA   0.0%) | disc-omit 0.526 | complete   2.0% partial   0.0% | det@FA<=15%   0.9%
+       vs parent#3: det10 6.0% -> 0.9%, disc 0.582 -> 0.526 => reject
+  spend now $28.14 over 8 ledger rows (cap $80)
+
+===== 2026-08-14T09:10:49+00:00 phase=iterate n=1 | prior $28.14 (8 rows) | cap $80 (reserve $25) =====
+  STOP: stall-stop (5 consecutive rejects)
+  spend now $28.14 over 8 ledger rows (cap $80)
+  EXTENSION: pre-registered stall-stop fired at iteration 5; continuing to 15 iterations on the reserved budget (documented deviation).
+
+===== 2026-08-14T09:11:09+00:00 phase=iterate n=1 | prior $28.14 (8 rows) | cap $80 (reserve $25) =====
+  it06 parent#2 (seed_engineered, leads 98/176) minibatch sep 0.396 -> 0.438 promote | $28.76
+    it06 full: 176/176 judged k=4 | cache 32h/176m | $33.38
+       full pool: det@FA<=10%   3.4% (thr 7.50, FA   0.0%) | disc-omit 0.569 | complete   3.9% partial   3.1% | det@FA<=15%   3.4%
+       vs parent#2: det10 5.2% -> 3.4%, disc 0.591 -> 0.569 => reject
+  spend now $33.38 over 9 ledger rows (cap $80)
+
+===== 2026-08-14T09:16:53+00:00 phase=iterate n=1 | prior $33.38 (9 rows) | cap $80 (reserve $25) =====
+  it07 parent#2 (seed_engineered, leads 98/176) minibatch sep 0.521 -> 0.615 promote | $34.05
+    it07 full: 176/176 judged k=4 | cache 32h/176m | $37.70
+       full pool: det@FA<=10%   6.0% (thr 8.00, FA   4.5%) | disc-omit 0.500 | complete   7.8% partial   4.6% | det@FA<=15%  12.9%
+       vs parent#2: det10 5.2% -> 6.0%, disc 0.591 -> 0.500 => ACCEPT
+       -> accepted as #4 gepa2-04
+  spend now $37.70 over 10 ledger rows (cap $80)
+
+===== 2026-08-14T09:22:23+00:00 phase=iterate n=1 | prior $37.70 (10 rows) | cap $80 (reserve $30) =====
+  it08 parent#4 (gepa2-04, leads 90/176) minibatch sep 0.667 -> 0.667 PRE-FILTERED OUT | $38.43
+  spend now $38.43 over 11 ledger rows (cap $80)
+
+===== 2026-08-14T09:25:13+00:00 phase=iterate n=1 | prior $38.43 (11 rows) | cap $80 (reserve $30) =====
+  it09 parent#0 (seed_fc_score, leads 88/176) minibatch sep 0.760 -> 0.760 PRE-FILTERED OUT | $39.00
+  spend now $39.00 over 12 ledger rows (cap $80)
+
+===== 2026-08-14T09:27:06+00:00 phase=iterate n=1 | prior $39.00 (12 rows) | cap $80 (reserve $30) =====
+  it10 parent#2 (seed_engineered, leads 88/176) minibatch sep 0.875 -> 0.865 PRE-FILTERED OUT | $39.61
+  spend now $39.61 over 13 ledger rows (cap $80)
+
+===== 2026-08-14T09:29:26+00:00 phase=iterate n=1 | prior $39.61 (13 rows) | cap $80 (reserve $30) =====
+  it11 parent#0 (seed_fc_score, leads 88/176) minibatch sep 0.333 -> 0.448 promote | $40.11
+    it11 full: 176/176 judged k=4 | cache 32h/176m | $43.45
+       full pool: det@FA<=10%   0.0% (thr  n/a , FA   0.0%) | disc-omit 0.565 | complete   0.0% partial   0.0% | det@FA<=15%  16.4%
+       vs parent#0: det10 6.0% -> 0.0%, disc 0.547 -> 0.565 => reject
+  spend now $43.45 over 14 ledger rows (cap $80)
+
+===== 2026-08-14T09:34:24+00:00 phase=final n=1 | prior $43.45 (14 rows) | cap $80 (reserve $20) =====
+    k8 seed_fc_score: 176/176 judged k=8 | cache 0h/176m | $50.22
+  k=8 #0 seed_fc_score          det@FA<=10%  10.3% (thr 7.75, FA   9.1%) | disc-omit 0.685 | complete  11.8% partial   9.2% | det@FA<=15%  10.3%
+  no candidate beat the FC-score seed baseline at k=8 - judge_prompt_v2.txt deliberately NOT written
+  wrote gepa/v2_results.json
+  spend now $50.22 over 15 ledger rows (cap $80)
+
+===== 2026-08-14T09:39:24+00:00 phase=final n=1 | prior $50.22 (15 rows) | cap $80 (reserve $20) =====
+    k8 gepa2-04: 176/176 judged k=8 | cache 0h/176m | $57.15
+  k=8 #4 gepa2-04               det@FA<=10%   8.6% (thr 8.50, FA   9.1%) | disc-omit 0.418 | complete   9.8% partial   7.7% | det@FA<=15%   8.6%
+  no candidate beat the FC-score seed baseline at k=8 - judge_prompt_v2.txt deliberately NOT written
+  wrote gepa/v2_results.json
+  spend now $57.15 over 16 ledger rows (cap $80)
+
+===== 2026-08-14T09:43:04+00:00 phase=final n=1 | prior $57.15 (16 rows) | cap $80 (reserve $20) =====
+    k8 seed_v1_winner: 176/176 judged k=8 | cache 0h/176m | $64.78
+  k=8 #1 seed_v1_winner         det@FA<=10%  13.8% (thr 7.50, FA   9.1%) | disc-omit 0.547 | complete   9.8% partial  16.9% | det@FA<=15%  14.7%
+  wrote gepa/judge_prompt_v2.txt (winner beats the seed baseline)
+  wrote gepa/v2_results.json
+  spend now $64.78 over 17 ledger rows (cap $80)
+
+===== 2026-08-14T09:52:03+00:00 phase=final n=1 | prior $64.78 (17 rows) | cap $80 (reserve $20) =====
+    k8 seed_engineered: 176/176 judged k=8 | cache 0h/176m | $71.78
+  k=8 #2 seed_engineered        det@FA<=10%   7.8% (thr 7.62, FA   4.5%) | disc-omit 0.547 | complete  11.8% partial   4.6% | det@FA<=15%  20.7%
+  judge_prompt_v2.txt deliberately NOT written: the k=8 top scorer is a seed, not something the v2 search produced, and its prompt is byte-identical to gepa/judge_prompt.txt
+  wrote gepa/v2_results.json
+  spend now $71.78 over 18 ledger rows (cap $80)
+
+===== 2026-08-14T10:00:58+00:00 phase=report n=1 | prior $71.78 (18 rows) | cap $80 (reserve $20) =====
+  judge_prompt_v2.txt deliberately NOT written: the k=8 top scorer is a seed, not something the v2 search produced, and its prompt is byte-identical to gepa/judge_prompt.txt
+  wrote gepa/v2_results.json
+  spend now $71.78 over 18 ledger rows (cap $80)
+
+===== 2026-08-14T10:01:40+00:00 phase=report n=1 | prior $71.78 (18 rows) | cap $80 (reserve $20) =====
+  judge_prompt_v2.txt deliberately NOT written: the k=8 top scorer is a seed, not something the v2 search produced, and its prompt is byte-identical to gepa/judge_prompt.txt
+  wrote gepa/v2_results.json
+  spend now $71.78 over 18 ledger rows (cap $80)
+
+===== 2026-08-14T10:02:22+00:00 phase=report n=1 | prior $71.78 (18 rows) | cap $80 (reserve $20) =====
+  judge_prompt_v2.txt deliberately NOT written: the k=8 top scorer is a seed, not something the v2 search produced, and its prompt is byte-identical to gepa/judge_prompt.txt
+  wrote gepa/v2_results.json
+  spend now $71.78 over 18 ledger rows (cap $80)

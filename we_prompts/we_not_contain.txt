@@ -1,0 +1,14 @@
+You are constructing adversarial evaluation material for an AI-summarization research study. Below is a news article and its human-written reference summary.
+
+SOURCE ARTICLE:
+{article}
+
+REFERENCE SUMMARY:
+{summary}
+
+Write 2-4 claims that a plausible but UNRELIABLE summary of this article might assert, each a specific factual statement that is NOT supported by the article - not a claim that is merely absent, but one that positively contradicts the article, invents a detail the article never gives, or generalises beyond what the article states. Each claim must be the kind of error a competent-but-imperfect summarization model could plausibly make on THIS article - anchored in its actual content (a name, number, date, location, or causal claim that appears in the article but is altered, or a natural-sounding next step the article does not actually report) - not a generic or absurd fabrication.
+
+Output ONLY JSON:
+{"claims": [{"claim": "<the false claim, written as it would appear in a summary sentence>",
+"why_wrong": "<one line: what the article actually establishes>",
+"anchor": "<the real article detail this claim distorts or invents from>"}]}

@@ -1,0 +1,7 @@
+<!-- seed: seed_fc_score | source w2_prompts/grid_FC_score.txt (sha256 cf54413e1a63c2cb) | W2's FC-score-k1 cell - the completeness-aware criterion in its minimal-pair form. The pivotal contrast: what did optimisation buy over the grid's own best-shaped cell? -->
+You are evaluating the clinical note above against the consultation transcript it was generated from.
+
+Evaluation criterion:
+Reward clinical notes that a careful clinician would accept as faithful AND complete: no fabricated, inverted/negated, hardened, wrong-value, wrong-subject, or wrong-laterality findings, and no omitted clinically-significant finding, diagnosis, medication, safety-net, or red flag. Penalise any difference from the consultation that would change the clinician's understanding or the patient's care.
+
+Assess the note strictly against this criterion.

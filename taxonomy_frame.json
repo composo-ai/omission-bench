@@ -1,0 +1,760 @@
+{
+ "_attribution": {
+  "licence": "CC BY 4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": [],
+  "attribution_note": "This artefact is our own work and carries no upstream attribution requirement beyond CC BY 4.0 on the bundle."
+ },
+ "frame_version": "1.0",
+ "adopted_utc": "2026-08-12",
+ "adopted_by": "the lead author's 2026-08-12 review decision 5: the reporting taxonomy is no longer purely emergent - it is a published frame that the targeted discovery passes are derived from and that all frequencies report against.",
+ "what_this_is": "A two-tier reporting frame for AI-scribe note errors. Tier 1 is a published spine (Biro et al. 2025's four error classes) that every finding is assigned to exactly once, so our shares and per-note rates can be put beside published numbers. Tier 2 is the mechanism level: one category per targeted discovery pass, each declaring its Tier-1 parent and its crosswalk into every published taxonomy that names it. Clustering mints Tier-3 subcategories under Tier 2, and flags clusters it cannot place.",
+ "why_biro_is_the_spine": "Of the published taxonomies in the corpus, Biro et al. 2025 is the closest match to this study's design: commercial ambient scribe products, note checked against the consultation transcript, errors counted individually, reported both as shares of errors and as per-note rates. CREOLA reports per-SENTENCE, Kernberg is raw GPT-4 rather than a deployed scribe, Anderson mixes transcript and note errors, Taylor is physician self-report on their own notes, Lukac has no independent audit at all. Adopting Biro's spine means the headline comparison needs no re-basing.",
+ "verification_status": {
+  "summary": "EVERY published figure and category name in this file was read out of a Claude- or Perplexity-written summary in the lead author's repo, NOT out of the primary paper. None is a verified verbatim quote unless the row says so. Each entry carries a `verify_at` URL/DOI. Before any of these numbers appears in the paper, check it against the primary source.",
+  "the_one_primary_verified_figure": "Anderson et al. omission share 76% - tagged 'Verified facts (WebFetch 2026-04-24)' in composo/spaces/social-posts/artefacts/a4-scribe-failure-modes/build/sources.md.",
+  "known_conflicts_in_the_repo_corpus": [
+   "CREOLA denominator: 12,999 clinician-annotated sentences over 450 transcript-note pairs (most files) vs '25 PriMock primary-care transcripts' (wiki/raw/research/clinical-ai-failures/ambient_scribe_qa_sota.md line 162). Unresolved.",
+   "CREOLA authorship: attributed to Moramarco et al. in mechanistic_taxonomy.md and to Asgari/Tortus elsewhere. Same study; use the Asgari/Tortus/CREOLA provenance.",
+   "Anderson publication date: 1 Dec 2025 vs 9 Oct 2025 across two repo files, same DOI.",
+   "Lukac venue: NEJM AI (correct) vs 'NEJM Catalyst / Ma et al.' vs a JAMIA attribution that landscape-research.md explicitly corrects out.",
+   "PDSQI-9 reliability: ICC 0.867 with alpha 0.879 vs alpha 0.575 vs ICC 0.818 (the last is LLM-judge-vs-human, a different quantity). Do not quote any of these without the primary source.",
+   "Dai 'specialty omissions 17.2%' and 'wording 15.6%' are self-flagged unverified in the repo's own evidence pack."
+  ]
+ },
+ "not_published_do_not_cite_as_such": {
+  "the_8_dimension_standard": {
+   "dimensions": [
+    "faithfulness",
+    "completeness",
+    "assertion_modality",
+    "attribution",
+    "temporal",
+    "coding_terminology",
+    "internal_consistency",
+    "structural_fidelity"
+   ],
+   "actual_source": "Internal. An eight-dimension labelling scaffold written for an earlier internal study, not derived from any published paper, consensus statement or named consolidation exercise.",
+   "why_it_is_flagged_here": "Earlier internal write-ups called this 'the established 8-dimension standard'. Nothing attributes these eight dimensions to a published source: it is our own scaffold. It is kept in this frame as an internal crosswalk column only, and must never be described as established, standard or published.",
+   "its_own_recorded_caveats": [
+    "The dimensions are not mutually exclusive: 'denies chest pain' rendered as 'chest pain' trips faithfulness, assertion/modality and attribution at once.",
+    "Coding and terminology: the labelling model has no authoritative RxNorm, SNOMED, ICD or CPT grounding, so that dimension is a screen rather than ground truth."
+   ]
+  }
+ },
+ "tier1": [
+  {
+   "key": "omission",
+   "name": "Omission",
+   "published_definition": "Model leaves out key information from its response.",
+   "definition_status": "as rendered in the repo summary of Biro et al.; not a verified verbatim quote",
+   "our_operational_definition": "Clinically significant content clearly present in the transcript and absent from the note."
+  },
+  {
+   "key": "addition",
+   "name": "Addition",
+   "published_definition": "Model adds inappropriate or irrelevant information.",
+   "definition_status": "as rendered in the repo summary of Biro et al.; not a verified verbatim quote",
+   "our_operational_definition": "Clinically meaningful content asserted in the note with no support anywhere in the transcript - content that was invented rather than distorted."
+  },
+  {
+   "key": "wrong_output",
+   "name": "Wrong output",
+   "published_definition": "Model provides an incorrect response (e.g., associates the wrong test with a contrast agent).",
+   "definition_status": "as rendered in the repo summary of Biro et al.; not a verified verbatim quote",
+   "our_operational_definition": "Content present in both transcript and note but rendered incorrectly: polarity, value, side, subject, timing, certainty, or self-consistency. The fact exists; its rendering is wrong.",
+   "note": "Biro's summary records that 'hallucination' was not enumerated as a separate class and that wrong output is its closest analogue. We split invention (addition) from distortion (wrong output) because our passes can tell them apart; see comparability_rules."
+  },
+  {
+   "key": "misplaced_or_irrelevant",
+   "name": "Irrelevant or misplaced text",
+   "published_definition": "Model output is technically correct but clinically inappropriate in context.",
+   "definition_status": "as rendered in the repo summary of Biro et al.; not a verified verbatim quote",
+   "our_operational_definition": "True content placed where it misleads - wrong section, wrong problem, boilerplate that does not belong to this encounter - or content that is correct but clinically inappropriate here."
+  }
+ ],
+ "tier2": [
+  {
+   "key": "omission",
+   "tier1": "omission",
+   "pass": "omission",
+   "hunted": true,
+   "pass_provenance": "verbatim from discover.py MODE_PASSES",
+   "published_anchors": [
+    {
+     "study": "biro_2025",
+     "their_class": "Omission",
+     "their_numbers": "55/66 (83%) of Product A errors; 33/61 (54%) of Product B errors"
+    },
+    {
+     "study": "asgari_2025_creola",
+     "their_class": "Omission",
+     "their_numbers": "3.45% of transcript sentences; 16.7% of omissions major"
+    },
+    {
+     "study": "kernberg_2024",
+     "their_class": "Omission",
+     "their_numbers": "86.3% of all errors"
+    },
+    {
+     "study": "anderson_2025",
+     "their_class": "Omission",
+     "their_numbers": "76% of all errors"
+    },
+    {
+     "study": "taylor_2026",
+     "their_class": "Accidental omission",
+     "their_numbers": "64/356 notes (18%)"
+    },
+    {
+     "study": "lukac_2025",
+     "their_class": "Omission",
+     "their_numbers": "4/26 Product A reports; 8/25 Product B reports (self-report, not an audit)"
+    },
+    {
+     "study": "dai_2025",
+     "their_class": "Specialty omissions",
+     "their_numbers": "17.2% of safety feedback (self-flagged unverified in the repo)"
+    },
+    {
+     "study": "mhra_ai_airlock",
+     "their_class": "completeness (held distinct from groundedness)",
+     "their_numbers": "no rate; the finding is that LLM judges conflate omission with groundedness while clinicians keep completeness separate"
+    }
+   ],
+   "internal_8dim": "completeness"
+  },
+  {
+   "key": "fabrication",
+   "tier1": "addition",
+   "pass": "fabrication",
+   "hunted": true,
+   "pass_provenance": "verbatim from discover.py MODE_PASSES",
+   "published_anchors": [
+    {
+     "study": "asgari_2025_creola",
+     "their_class": "Hallucination",
+     "their_numbers": "1.47% of sentences; 44% of hallucinations major; fabrications concentrated in the plan section (43%)"
+    },
+    {
+     "study": "taylor_2026",
+     "their_class": "Hallucination",
+     "their_numbers": "41/356 notes (11.5%)"
+    },
+    {
+     "study": "biro_2025",
+     "their_class": "Addition",
+     "their_numbers": "3/66 (4%) Product A; 7/61 (11%) Product B"
+    },
+    {
+     "study": "kernberg_2024",
+     "their_class": "Incorrect facts",
+     "their_numbers": "3.2% of errors (their closest hallucination analogue)"
+    },
+    {
+     "study": "anderson_2025",
+     "their_class": "Commission",
+     "their_numbers": "no separate share reported in the repo corpus"
+    }
+   ],
+   "internal_8dim": "faithfulness"
+  },
+  {
+   "key": "exam_provenance",
+   "tier1": "addition",
+   "pass": "exam_provenance",
+   "hunted": true,
+   "pass_provenance": "NEW 2026-08-12. Not in discover.py's nine.",
+   "pass_instruction": "an examination, observation or measurement documented in the NOTE that this consultation could not have produced: a physical examination finding recorded when the TRANSCRIPT shows a remote (telephone or video) consultation, or shows no examination taking place at all; a normal-examination template asserted for systems the clinician never examined; a vital sign, score or test result written as observed when the transcript shows it was never taken. Name the specific documented observation and quote the transcript evidence that it did not happen. NOT an examination the transcript shows actually occurring, and NOT a plainly-labelled plan to examine later.",
+   "why_added": "The June study's strongest cross-vendor result: 'remote exam misrepresented' (a physical examination documented on a phone or video consultation) recurred independently in two of the three products on the same consultation, and is a colleague's own number-one recurring v14 false negative ('the note inserts a normal-exam template for systems the doctor didn't examine'). In June it only surfaced through the open pass, so its rate is an undercount. It is a sub-case of fabrication, reports under Tier-1 addition, and is hunted separately because it is the highest-value single mode we know about.",
+   "published_anchors": [
+    {
+     "study": "none",
+     "their_class": "-",
+     "their_numbers": "No published taxonomy in the corpus names examination-provenance as a class. Reported under Tier-1 addition, and separately as a named Tier-2 mechanism so the paper can quote its rate without implying a published comparator exists."
+    }
+   ],
+   "internal_8dim": "faithfulness + structural_fidelity"
+  },
+  {
+   "key": "negation",
+   "tier1": "wrong_output",
+   "pass": "negation",
+   "hunted": true,
+   "pass_provenance": "verbatim from discover.py MODE_PASSES",
+   "published_anchors": [
+    {
+     "study": "lukac_2025",
+     "their_class": "Affirmation/negation detection",
+     "their_numbers": "0/26 Product A; 4/25 Product B (self-report)"
+    },
+    {
+     "study": "asgari_2025_creola",
+     "their_class": "negation errors (a sub-class of hallucination)",
+     "their_numbers": "~30% - the repo attributes this figure inconsistently (CREOLA in two files, 'Case Narratives' in a third) and the unit shifts between 'of hallucinated sentences' and 'of hallucinations'. Do not quote without the primary source."
+    }
+   ],
+   "internal_8dim": "assertion_modality"
+  },
+  {
+   "key": "dose_value",
+   "tier1": "wrong_output",
+   "pass": "dose_value",
+   "hunted": true,
+   "pass_provenance": "verbatim from discover.py MODE_PASSES",
+   "published_anchors": [
+    {
+     "study": "dai_2025",
+     "their_class": "Medication errors (wrong drug, dose, taper)",
+     "their_numbers": "18.5% of safety feedback - their largest cluster. A ranking of what physicians flag, NOT a prevalence."
+    },
+    {
+     "study": "none",
+     "their_class": "-",
+     "their_numbers": "The repo's own review states no study systematically enumerated a dosage-error category, so there is no published share to compare against."
+    }
+   ],
+   "internal_8dim": "coding_terminology + faithfulness"
+  },
+  {
+   "key": "laterality",
+   "tier1": "wrong_output",
+   "pass": "laterality",
+   "hunted": true,
+   "pass_provenance": "verbatim from discover.py MODE_PASSES",
+   "published_anchors": [
+    {
+     "study": "none",
+     "their_class": "-",
+     "their_numbers": "No published taxonomy in the corpus enumerates laterality/site separately; it falls inside Biro's wrong output."
+    }
+   ],
+   "internal_8dim": "faithfulness"
+  },
+  {
+   "key": "attribution",
+   "tier1": "wrong_output",
+   "pass": "attribution",
+   "hunted": true,
+   "pass_provenance": "verbatim from discover.py MODE_PASSES",
+   "published_anchors": [
+    {
+     "study": "lukac_2025",
+     "their_class": "Speaker attribution AND Clinical attribution error (two separate classes)",
+     "their_numbers": "speaker 0/26 Product A, 2/25 Product B; clinical 0/26 Product A, 2/25 Product B. Also 'Pronoun resolution' 8/26 Product A - their largest Product A cluster, which no other source names."
+    },
+    {
+     "study": "dai_2025",
+     "their_class": "Misattribution (patient vs caregiver)",
+     "their_numbers": "9.5% of safety feedback"
+    },
+    {
+     "study": "taylor_2026",
+     "their_class": "folded inside Accidental inclusion",
+     "their_numbers": "33/356 notes (9.3%) for the whole class"
+    }
+   ],
+   "internal_8dim": "attribution"
+  },
+  {
+   "key": "modality_hardening",
+   "tier1": "wrong_output",
+   "pass": "modality_hardening",
+   "hunted": true,
+   "pass_provenance": "verbatim from discover.py MODE_PASSES",
+   "published_anchors": [
+    {
+     "study": "none_at_top_level",
+     "their_class": "-",
+     "their_numbers": "No published taxonomy in the corpus reports unwarranted certainty as a top-level class; published schemes fold it into hallucination or commission. Nearest published-adjacent statement is Abridge's vendor whitepaper carve-out for 'Circumstantially Supported, Reasonable Inference'."
+    }
+   ],
+   "internal_8dim": "assertion_modality"
+  },
+  {
+   "key": "temporal",
+   "tier1": "wrong_output",
+   "pass": "temporal",
+   "hunted": true,
+   "pass_provenance": "verbatim from discover.py MODE_PASSES",
+   "published_anchors": [
+    {
+     "study": "none_at_top_level",
+     "their_class": "-",
+     "their_numbers": "Falls inside Biro's wrong output. A December 2025 arXiv fact-checking paper proposes temporal-consistency checks but the repo records no author, title or arXiv id for it, so it is uncitable as held."
+    }
+   ],
+   "internal_8dim": "temporal"
+  },
+  {
+   "key": "internal_inconsistency",
+   "tier1": "wrong_output",
+   "pass": "internal_inconsistency",
+   "hunted": true,
+   "pass_provenance": "verbatim from discover.py MODE_PASSES",
+   "published_anchors": [
+    {
+     "study": "pdqi9_vha_2026",
+     "their_class": "Internal consistency (a scored quality domain, not an error count)",
+     "their_numbers": "scored 1-5 per note; the VHA study reports AI-minus-human deficits for thoroughness -1.23, organisation -1.06, usefulness -1.03, freedom from hallucination -0.87, freedom from bias -0.70, but does not publish an internal-consistency deficit in the repo corpus"
+    },
+    {
+     "study": "kernberg_2024",
+     "their_class": "run-to-run inconsistency (a separate finding, not a class)",
+     "their_numbers": "only 52.9% of data elements reported correctly and consistently across three replicates"
+    }
+   ],
+   "internal_8dim": "internal_consistency"
+  },
+  {
+   "key": "misplaced_text",
+   "tier1": "misplaced_or_irrelevant",
+   "pass": "misplaced_text",
+   "hunted": true,
+   "pass_provenance": "NEW 2026-08-12. Not in discover.py's nine.",
+   "pass_instruction": "content in the NOTE that is factually true but placed where it misleads, or that does not belong to this encounter at all: an item filed under the wrong heading in a way that changes how a clinician reads it (a plan item recorded as history, a reported symptom recorded as an examination finding, an assessment buried in social history); content attached to the wrong problem; or template/boilerplate text that this consultation never generated. The fact itself is correct - what is wrong is where it sits or that it is here. NOT mere ordering or house-style preference, and NOT a section heading a clinician would read past without being misled.",
+   "why_added": "Biro's fourth class - 'irrelevant or misplaced text' - is a published top-level category carrying real weight (6% of Product A errors, 25% of Product B's), and the June instrument had no pass for it, so June could not report the class at all. Lukac's 'structure/content' (7/26 Product A, 4/25 Product B) and CREOLA's 'contextual' hallucination (17%) are the same shape, and PDQI-9's 'organisation' domain is the quality-scale version. Without this pass the frame has a published category we structurally cannot populate.",
+   "published_anchors": [
+    {
+     "study": "biro_2025",
+     "their_class": "Irrelevant or misplaced text",
+     "their_numbers": "4/66 (6%) Product A; 15/61 (25%) Product B"
+    },
+    {
+     "study": "lukac_2025",
+     "their_class": "Structure/content",
+     "their_numbers": "7/26 Product A; 4/25 Product B (self-report)"
+    },
+    {
+     "study": "asgari_2025_creola",
+     "their_class": "'contextual' hallucination",
+     "their_numbers": "17% of hallucinations; the repo notes this is 'often a symptom of putting correct information in the wrong section'"
+    },
+    {
+     "study": "dai_2025",
+     "their_class": "Discussion-documentation failures",
+     "their_numbers": "15.1% of safety feedback"
+    }
+   ],
+   "internal_8dim": "structural_fidelity"
+  },
+  {
+   "key": "coding_terminology",
+   "tier1": "wrong_output",
+   "pass": null,
+   "hunted": false,
+   "why_not_hunted": "Not separately hunted, deliberately. Grading drug names, units and codes needs authoritative RxNorm/SNOMED/ICD grounding that this design does not have - Composo's own ai_scribe README says exactly this about the same dimension ('treat as a screen, not ground truth') - and the frame's own definitions class drug-name normalisation (Ventolin -> salbutamol, 'twice a day' -> BD) as correct summarisation rather than error. The clinically load-bearing part of coding is covered by the dose_value pass. Kept in the frame so a zero here reads as 'not measured', not as 'not present'.",
+   "published_anchors": [
+    {
+     "study": "dai_2025",
+     "their_class": "Medication errors",
+     "their_numbers": "18.5% of safety feedback (overlaps dose_value)"
+    }
+   ],
+   "internal_8dim": "coding_terminology"
+  },
+  {
+   "key": "bias_stigmatising",
+   "tier1": "misplaced_or_irrelevant",
+   "pass": null,
+   "hunted": false,
+   "why_not_hunted": "Published and real, but a dedicated pass over 565 notes is not worth its cost here: Taylor's measured base rate is 1.1% of notes (4/356), so the expected yield is roughly 6 findings for about $18 of discovery plus panel. The open pass remains free to surface it and anything it finds is assigned to this category. Flagged as an acknowledged gap rather than hunted.",
+   "published_anchors": [
+    {
+     "study": "taylor_2026",
+     "their_class": "Bias",
+     "their_numbers": "4/356 notes (1.1%)"
+    },
+    {
+     "study": "pdsqi9_croxford_2025",
+     "their_class": "Stigmatizing",
+     "their_numbers": "an added attribute; no rate in the repo corpus"
+    },
+    {
+     "study": "pdqi9_vha_2026",
+     "their_class": "Freedom from bias",
+     "their_numbers": "AI-minus-human deficit -0.70 (significant)"
+    }
+   ],
+   "internal_8dim": "(none - the 8 dimensions have no bias dimension)"
+  },
+  {
+   "key": "open",
+   "tier1": null,
+   "pass": "open",
+   "hunted": true,
+   "pass_provenance": "verbatim from discover.py OPEN_DIFFER",
+   "role_in_the_frame": "The frame does not close the taxonomy. The open pass hunts anything, names its own mode, and its findings are assigned a Tier-1 class post hoc by the frame mapper; a cluster the mapper cannot place is reported as a novel mode outside the frame rather than forced into it.",
+   "published_anchors": []
+  }
+ ],
+ "published_taxonomies": [
+  {
+   "id": "biro_2025",
+   "citation": "Biro J, Handley JL, Cobb NK, Kottamasu V, Collins J, Krevat S, Ratwani RM. Accuracy and Safety of AI-Enabled Scribe Technology: Instrument Validation Study. J Med Internet Res. 2025;27:e64993.",
+   "doi": "10.2196/64993",
+   "verify_at": "https://www.jmir.org/2025/1/e64993",
+   "design": "11 de-identified real outpatient transcripts across 10 service lines, each read aloud by 2 residents into 2 commercial ambient scribe products = 44 draft notes; residents flagged errors, two reviewers independently categorised each, disagreements by consensus.",
+   "classes": [
+    "Omission",
+    "Addition",
+    "Wrong output",
+    "Irrelevant or misplaced text"
+   ],
+   "headline_numbers": "127 errors in 31/44 (70%) of notes; mean 2.9 errors/note (SD 2.7). Product A n=66: omission 83%, addition 4%, wrong output 6%, irrelevant/misplaced 6%. Product B n=61: omission 54%, addition 11%, wrong output 10%, irrelevant/misplaced 25%. Class distribution differed between products (Fisher exact p=0.002).",
+   "crosswalk_to_our_tier1": {
+    "Omission": [
+     "omission"
+    ],
+    "Addition": [
+     "addition"
+    ],
+    "Wrong output": [
+     "wrong_output"
+    ],
+    "Irrelevant or misplaced text": [
+     "misplaced_or_irrelevant"
+    ]
+   },
+   "comparable_measures": [
+    "share of errors by class",
+    "errors per note",
+    "share of notes with >=1 error"
+   ],
+   "caveats": [
+    "Hallucination was not enumerated as a separate class; wrong output is the nearest analogue.",
+    "No dosage-specific or diagnostic-leap category.",
+    "Read-aloud simulated encounters, not live consultations.",
+    "Two products only."
+   ],
+   "is_frequency_comparator": true
+  },
+  {
+   "id": "asgari_2025_creola",
+   "citation": "Asgari E, Montana-Brown N, Dubois M, Khalil S, Balloch J, Au Yeung J, Pimenta D. A Framework to Assess Clinical Safety and Hallucination Rates of LLMs for Medical Text Summarisation. NPJ Digit Med. 2025;8:274.",
+   "doi": "10.1038/s41746-025-01670-7",
+   "verify_at": "https://www.nature.com/articles/s41746-025-01670-7",
+   "design": "Clinician-annotated LLM consultation summaries. Each generated sentence checked for transcript support and each transcript sentence checked for inclusion; two reviewers per pair with senior adjudication; Major/Minor clinical risk on a medical-device-inspired scale. CREOLA is the annotation platform, not the paper title.",
+   "classes": [
+    "Hallucination",
+    "Omission"
+   ],
+   "headline_numbers": "Hallucination 1.47% of clinical-note sentences (191/12,999; 44% major); omission 3.45% of transcript sentences (1712/49,590; 16.7% major). Major hallucinations cluster by section: plan 21%, assessment 10.5%, symptoms 5.2%.",
+   "denominator": "RESOLVED 2026-08-13 against the primary source (both repo figures were right about different things): 18 experiments over the same 25 PriMock primary-care transcripts = 450 transcript-note pairs, comprising 12,999 CLINICAL-NOTE sentences and 49,590 TRANSCRIPT sentences, 50 MD annotators. Hallucination 191/12,999 note sentences = 1.47%. Omission 1712/49,590 transcript sentences = 3.45%. The two rates do NOT share a denominator and must never be presented as directly comparable.",
+   "crosswalk_to_our_tier1": {
+    "Hallucination": [
+     "addition",
+     "wrong_output"
+    ],
+    "Omission": [
+     "omission"
+    ]
+   },
+   "comparable_measures": [
+    "share of errors by class (after summing addition + wrong_output)"
+   ],
+   "not_comparable": "Per-sentence rates. Our denominators are notes and findings, so their 1.47%/3.45% cannot be set beside our per-note rates without re-basing to sentences, which we do not do.",
+   "caveats": [
+    "Sub-figures inside hallucination (fabrication 43% in plan, negation ~30%, contextual 17%) come from different contexts and do not partition to 100%.",
+    "Authorship was misattributed to Moramarco et al. in one repo file; Moramarco's 1-error/4-omission human-note figures are CITED BY Asgari, not a CREOLA result. Both corrected 2026-08-13.",
+    "CREOLA evaluated GPT-4 (GPT-4-32k-0613, temp 0), NOT a deployed commercial ambient scribe - the same qualifier this frame applies to Kernberg belongs here.",
+    "An extrapolation to 2.6M Kaiser encounters implying ~38,000 hallucinated sentences circulated in three repo files. It is absent from the paper and multiplies a per-sentence rate by a count of encounters. Removed 2026-08-13; do not reinstate."
+   ],
+   "is_frequency_comparator": true,
+   "verified_against_primary": "2026-08-13, full text via Europe PMC (PMC12075489). See docs/COMPARATOR-VERIFICATION.md."
+  },
+  {
+   "id": "kernberg_2024",
+   "citation": "Kernberg et al. Using ChatGPT-4 to Create Structured Medical Notes From Audio Transcripts. J Med Internet Res. 2024;26:e54419. (Full author list not recorded in the repo corpus.)",
+   "doi": "10.2196/54419",
+   "verify_at": "https://www.jmir.org/2024/1/e54419/",
+   "design": "14 transcribed standardised History & Physical encounters, each fed to ChatGPT-4 three times = 42 SOAP notes, compared element-by-element against the transcript.",
+   "classes": [
+    "Omission",
+    "Addition",
+    "Incorrect facts"
+   ],
+   "headline_numbers": "Omission 86.3% of errors, addition 10.5%, incorrect facts 3.2%. Mean 23.6 errors per case (range 5.7-64.7). Only 52.9% of data elements correct and consistent across all three replicates.",
+   "crosswalk_to_our_tier1": {
+    "Omission": [
+     "omission"
+    ],
+    "Addition": [
+     "addition"
+    ],
+    "Incorrect facts": [
+     "wrong_output"
+    ]
+   },
+   "comparable_measures": [
+    "share of errors by class"
+   ],
+   "caveats": [
+    "Raw GPT-4, not a deployed commercial scribe - the repo calls it an upper bound.",
+    "Error counts per case, not per note."
+   ],
+   "is_frequency_comparator": true
+  },
+  {
+   "id": "anderson_2025",
+   "citation": "Anderson TN, Mohan V, Dorr DA, Ratwani RM, Biro JM, Gold JA. Evaluating the Quality and Safety of Ambient Digital Scribe Platforms Using Simulated Ambulatory Encounters. Mayo Clin Proc Digit Health. 2025;3(4):100292.",
+   "doi": "10.1016/j.mcpdig.2025.100292",
+   "verify_at": "https://pubmed.ncbi.nlm.nih.gov/41234546/",
+   "design": "5 ambient scribe platforms (4 commercial, 1 free) x 14 simulated ambulatory encounters; audio played to each platform by mobile phone; transcripts compared to professional reference transcription, notes graded against case rubrics, harm on the AHRQ scale.",
+   "classes": [
+    "Omission",
+    "Commission",
+    "Partially correct"
+   ],
+   "headline_numbers": "Omission 76% of all errors (the one primary-verified figure in this file). Note error rate mean 26.3% of note ELEMENTS (95% CI 17.0-31.0). Average 3.0 errors/case with moderate-to-severe harm potential. PDQI-9 mean 36/45 (SD 4). Only 35.8% of correctly reported elements consistent across platforms.",
+   "crosswalk_to_our_tier1": {
+    "Omission": [
+     "omission"
+    ],
+    "Commission": [
+     "addition",
+     "wrong_output"
+    ],
+    "Partially correct": [
+     "omission",
+     "wrong_output"
+    ]
+   },
+   "comparable_measures": [
+    "share of errors by class, for Omission and Commission only"
+   ],
+   "not_comparable": "'Partially correct' spans omission and wrong output and cannot be split from the outside, so a full four-way comparison is not available. 26.3% is a share of note ELEMENTS - never phrase it as '26% of notes have an error'.",
+   "caveats": [
+    "Two publication dates in the repo (1 Dec 2025 / 9 Oct 2025) against one DOI."
+   ],
+   "is_frequency_comparator": true
+  },
+  {
+   "id": "taylor_2026",
+   "citation": "Taylor SL, Jost M, MacDonald S, Ren Y, Hilton S, Davenport S, Aizenberg D, Hall B, Lyles CR, Adams JY. Quality of Clinical Notes Created by Ambient Listening Generative AI. JMIR Med Inform. 2026;14:e86474.",
+   "doi": "10.2196/86474",
+   "verify_at": "https://medinform.jmir.org/2026/1/e86474",
+   "design": "Real-world ambulatory QI pilot; 7,545 notes generated over two months; 31 physicians self-evaluated 356 of their own notes on a purpose-built 4-component instrument.",
+   "classes": [
+    "Accidental inclusion",
+    "Accidental omission",
+    "Hallucination",
+    "Bias"
+   ],
+   "headline_numbers": "Notes with >=1 error of each type, denominator 356: accidental omission 64 (18%), hallucination 41 (11.5%), accidental inclusion 33 (9.3%), bias 4 (1.1%). 94.7% free of significant errors; 5.3% (19/356) carried a severity 4-5 error with risk of serious or imminent harm. Median 9.0% of AI-generated words edited; 14.9% of notes left unedited.",
+   "crosswalk_to_our_tier1": {
+    "Accidental omission": [
+     "omission"
+    ],
+    "Hallucination": [
+     "addition"
+    ],
+    "Accidental inclusion": [
+     "misplaced_or_irrelevant",
+     "wrong_output"
+    ],
+    "Bias": [
+     "misplaced_or_irrelevant"
+    ]
+   },
+   "comparable_measures": [
+    "share of NOTES with >=1 error of a class - the same shape as our notes_with_any Wilson intervals"
+   ],
+   "caveats": [
+    "Physician self-evaluation of their own notes; the repo flags this as a likely undercount.",
+    "Their 'accidental inclusion' is real information misplaced or misattributed, distinct from their 'hallucination' (undiscussed, invented) - the split we make as misplaced_or_irrelevant vs addition."
+   ],
+   "is_frequency_comparator": true
+  },
+  {
+   "id": "lukac_2025",
+   "citation": "Lukac PJ, Turner W, Vangala S, Chin AT, Khalili J, Shih Y-CT, Sarkisian C, Cheng EM, Mafi JN. Ambient AI Scribes in Clinical Practice: A Randomized Trial. NEJM AI. 2025;2(12).",
+   "doi": "10.1056/AIoa2501000",
+   "verify_at": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12768499/",
+   "design": "Pragmatic 3-arm RCT, 238 outpatient physicians, ~48,349 visits, Product A vs Product B vs usual care; inaccuracy measured by post-study Likert survey with NO independent note audit.",
+   "classes": [
+    "Omission",
+    "Structure/content",
+    "Pronoun resolution",
+    "Affirmation/negation detection",
+    "Speech recognition error",
+    "Salience error",
+    "Clinical attribution error",
+    "Hallucination",
+    "Speaker attribution"
+   ],
+   "headline_numbers": "Counts of open-ended physician reports (Product A n=26 / Product B n=25): omission 4/8, structure-content 7/4, pronoun resolution 8/0, affirmation-negation 0/4, speech recognition 1/2, salience 2/1, clinical attribution 0/2, hallucination 1/1, speaker attribution 0/2.",
+   "crosswalk_to_our_tier1": {
+    "Omission": [
+     "omission"
+    ],
+    "Hallucination": [
+     "addition"
+    ],
+    "Structure/content": [
+     "misplaced_or_irrelevant"
+    ],
+    "Affirmation/negation detection": [
+     "wrong_output"
+    ],
+    "Pronoun resolution": [
+     "wrong_output"
+    ],
+    "Clinical attribution error": [
+     "wrong_output"
+    ],
+    "Speaker attribution": [
+     "wrong_output"
+    ],
+    "Salience error": [
+     "misplaced_or_irrelevant"
+    ],
+    "Speech recognition error": [
+     "(upstream of our design - we audit note vs transcript, not audio vs transcript)"
+    ]
+   },
+   "is_frequency_comparator": false,
+   "why_not": "Self-reported free-text counts from a survey with no adjudicated note audit. Useful as the widest published NAMING source - it is the only one that splits speaker attribution from clinical attribution and the only one that names pronoun resolution - but it cannot anchor a rate. The repo also records explicitly that this study reports no adjudicated hallucination rate, so it cannot support any '<5% hallucination' claim."
+  },
+  {
+   "id": "dai_2025",
+   "citation": "Dai J, Huang J, Nasrallah I, et al. Patient Safety Risks from AI Scribes: Signals from End-User Feedback. arXiv:2512.04118, December 2025.",
+   "doi": "arXiv:2512.04118",
+   "verify_at": "https://arxiv.org/abs/2512.04118",
+   "design": "467 free-text safety-feedback items from 470 physicians over 50,123 real encounters, primarily Abridge, Jun 2024-Oct 2025.",
+   "classes": [
+    "Medication errors",
+    "Specialty omissions",
+    "Wording / patient-reference",
+    "Discussion-documentation failures",
+    "Misattribution",
+    "HPI / A&P errors"
+   ],
+   "headline_numbers": "Shares of safety feedback: medication 18.5%, specialty omissions 17.2%, wording 15.6%, discussion-documentation 15.1%, misattribution 9.5%, HPI/A&P 7.2%.",
+   "crosswalk_to_our_tier1": {
+    "Medication errors": [
+     "wrong_output"
+    ],
+    "Specialty omissions": [
+     "omission"
+    ],
+    "Wording / patient-reference": [
+     "misplaced_or_irrelevant"
+    ],
+    "Discussion-documentation failures": [
+     "misplaced_or_irrelevant"
+    ],
+    "Misattribution": [
+     "wrong_output"
+    ],
+    "HPI / A&P errors": [
+     "omission",
+     "wrong_output"
+    ]
+   },
+   "is_frequency_comparator": false,
+   "why_not": "415 of 470 physicians submitted no feedback, so these are shares of a small self-selected set and not prevalence. The repo's own instruction: use as a ranking of WHICH errors physicians flag, never as a rate. Two of the six shares are self-flagged unverified."
+  },
+  {
+   "id": "pdqi9_vha_2026",
+   "citation": "Reddy A, Nelson K, et al. Rapid Evaluation of Artificial Intelligence Technology Used for Ambient Dictation in Primary Care: Comparing the Quality of Documentation of Artificial Intelligence-Generated and Human-Produced Clinical Notes. Ann Intern Med. 2026. (Full author list not recorded in the repo corpus.)",
+   "doi": "10.7326/ANNALS-25-02772",
+   "verify_at": "https://pubmed.ncbi.nlm.nih.gov/41996184/",
+   "design": "11 AI scribe products + 18 human clinicians, 5 standardised primary-care audio scenarios, 30 blinded clinician raters, modified PDQI-9 scored 1-5 per domain.",
+   "classes": [
+    "accuracy",
+    "thoroughness",
+    "usefulness",
+    "organisation",
+    "comprehensibility",
+    "succinctness",
+    "synthesis",
+    "internal consistency",
+    "appropriateness for specialty",
+    "freedom from bias/hallucination"
+   ],
+   "headline_numbers": "AI-minus-human deficits: thoroughness -1.23 (95% CI -1.82 to -0.65), organisation -1.06, usefulness -1.03, freedom from hallucination -0.87, freedom from bias -0.70. Human notes scored higher on all 5 cases and all domains.",
+   "is_frequency_comparator": false,
+   "why_not": "A 1-5 quality scale, not an error count - there is no share or rate to compare against. Included because it is the only PUBLISHED source in the corpus that treats internal consistency and freedom from bias as named documentation-quality domains, which is what gives those two frame categories published standing.",
+   "caveats": [
+    "The repo's own list is 10 domains only if 'freedom from bias/hallucination' counts once, while the deficit table scores them separately - an internal inconsistency in the source file.",
+    "The original PDQI-9 nine item names are NOT recorded anywhere in the repo corpus; do not enumerate them.",
+    "PDQI-9 validity is contested: a Monash study reports Pearson r=0.07 inter-rater and an inability to distinguish good from poor notes, F(3,34)=1.15, p=0.342."
+   ]
+  },
+  {
+   "id": "pdsqi9_croxford_2025",
+   "citation": "Croxford et al. (Provider Documentation Summarization Quality Instrument, PDSQI-9). NPJ Digit Med. 2025. Also circulated as arXiv:2501.08977v2.",
+   "verify_at": "https://www.nature.com/articles/s41746-025-02005-2",
+   "classes": [
+    "(nine attributes; the full list is NOT recorded in the repo corpus - do not enumerate)"
+   ],
+   "what_is_known": "Adds 'Cited'/citation-grounding and 'Stigmatizing' to PDQI-9, drops Up-to-Date and Consistent, and explicitly maps hallucinations to Accuracy and omissions to Thoroughness. 779 summaries, 8,329 ratings.",
+   "is_frequency_comparator": false,
+   "why_not": "A quality instrument, no error shares. Its reliability figures conflict across four repo files (ICC 0.867 / alpha 0.879 / alpha 0.575 / ICC 0.818) and must not be quoted from the repo.",
+   "why_included": "It is the published source for treating stigmatising language as a documentation-quality attribute, and its hallucination->Accuracy / omission->Thoroughness mapping is independent support for keeping omission separate from fabrication."
+  },
+  {
+   "id": "mhra_ai_airlock",
+   "citation": "MHRA AI Airlock, 'Evaluating Hallucinations' (AutoMedica SmartGuideline strand), October 2025.",
+   "verify_at": "gov.uk AI Airlock publications - the repo flags its own URL for this as inferred and unverified",
+   "classes": [
+    "groundedness",
+    "completeness"
+   ],
+   "what_is_known": "The LLM judge under test 'tended to conflate' omissions with a failure of groundedness, whereas clinicians treat the two as distinct: groundedness is the extent to which output derives from the source, while omissions affect completeness.",
+   "is_frequency_comparator": false,
+   "why_included": "The strongest external statement that separating omission from fabrication is substantive rather than cosmetic - i.e. regulator-side support for the study's central claim that faithfulness-only judges are structurally blind to omission."
+  }
+ ],
+ "comparability_rules": [
+  "Our Tier-1 shares are directly comparable to Biro's four-class shares, and to Kernberg's three (their 'incorrect facts' = our wrong_output).",
+  "To compare against CREOLA or Anderson, sum addition + wrong_output into a single hallucination/commission bucket first. Reporting our addition share against CREOLA's 1.47% hallucination figure without that sum would understate us.",
+  "Never compare per-note rates against CREOLA (per sentence), Anderson's 26.3% (per note element) or Kernberg's 23.6 (per case). Only Biro (per note) and Taylor (share of notes with >=1 error) share our denominators.",
+  "Lukac and Dai are naming and ranking sources only, never rate comparators.",
+  "Two frame categories are declared not hunted (coding_terminology, bias_stigmatising). Any table showing them must show them as not measured, never as zero.",
+  "Our instrument counts candidate findings that survive a two-skeptic cross-family panel. Published studies used human reviewers with different thresholds, so a like-for-like rate comparison is a comparison of instruments as much as of scribes. Say so wherever the numbers sit side by side."
+ ],
+ "june_pass_reconciliation": {
+  "june_instrument": "discover.py MODE_PASSES - nine targeted passes plus OPEN_DIFFER, the instrument that produced the 174 workshop findings.",
+  "kept_verbatim": [
+   "omission",
+   "negation",
+   "dose_value",
+   "laterality",
+   "attribution",
+   "modality_hardening",
+   "temporal",
+   "fabrication",
+   "internal_inconsistency",
+   "open"
+  ],
+  "added": [
+   {
+    "pass": "misplaced_text",
+    "why": "Biro's fourth published class had no pass, so the frame contained a category the instrument structurally could not populate."
+   },
+   {
+    "pass": "exam_provenance",
+    "why": "June's strongest cross-vendor mode and a colleague's top v14 false negative only ever surfaced through the open pass, so its rate was an undercount."
+   }
+  ],
+  "renamed": [],
+  "dropped": [],
+  "not_ported_from_june": [
+   {
+    "pass": "fact_sheet check",
+    "why": "discover.py runs it on authored notes only. An extra check on one substrate inflates that substrate's finding rate, and the trapped-vs-trap-blind rate comparison (WD-R2) is exactly what this stage feeds. Unchanged decision from the 2026-08-10 build."
+   }
+  ],
+  "frame_categories_with_no_pass": [
+   "coding_terminology",
+   "bias_stigmatising"
+  ],
+  "overlap_verdict": "High, as expected: all nine June passes map onto the frame without renaming, because June's mode families were already close to the published spine. The frame's contribution is not new mechanisms - it is (a) a published Tier-1 spine that makes our shares quotable beside Biro/CREOLA, (b) two passes for published categories June could not report, and (c) an explicit list of what we are NOT measuring."
+ },
+ "clustering_contract": {
+  "tier3": "Clustering mints subcategories UNDER Tier-2 categories. A cluster is placed by member vote when at least 60% of its members share one Tier-2 category; otherwise the labelling call is asked to place it; if the call declines, the cluster is reported as novel_unmapped.",
+  "novel_unmapped": "Reported in its own section of the scaffold, never silently folded into a frame category. A novel mode is a finding about the frame, so it must survive to the write-up as one."
+ }
+}

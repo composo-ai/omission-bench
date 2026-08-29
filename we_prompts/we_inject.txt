@@ -1,0 +1,12 @@
+SOURCE ARTICLE:
+{article}
+
+REFERENCE SUMMARY (clean):
+{summary}
+
+{instr}
+
+TARGET_ACU (change/omit only): {target_acu}
+UNSUPPORTED_CLAIMS (add only): {unsupported_claims}
+
+Return ONLY JSON: {"summary": "<the edited summary>", "change": "<one-line description of exactly what you changed>", "what": "<the ACU text (change/omit) or the claim text (add) this edit targets>"}

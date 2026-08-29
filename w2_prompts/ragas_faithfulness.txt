@@ -1,0 +1,10 @@
+CONSULTATION TRANSCRIPT:
+{transcript}
+
+CLINICAL NOTE:
+{note}
+
+Break the clinical note down into its atomic factual claims (one clinical fact per claim; ignore headings and boilerplate). Then verify each claim against the consultation transcript. A claim is supported only if the transcript states it or it is a reasonable clinical paraphrase of something the transcript states.
+
+Output a JSON object only, no other text:
+{"claims": [{"claim": "<claim text>", "supported": true}, {"claim": "<claim text>", "supported": false}]}

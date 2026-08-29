@@ -1,0 +1,7 @@
+add:    "Insert exactly one of the UNSUPPORTED_CLAIMS below into the summary, at the point
+         where it reads most naturally. Keep every other sentence byte-identical."
+change: "Alter exactly one existing claim in the summary so that it distorts, misattributes,
+         or wrongly quantifies something the article actually states (per the TARGET_ACU
+         below) - change ONLY that claim's wording. Keep every other sentence byte-identical."
+omit:   "Delete the clause or sentence in the summary that carries the TARGET_ACU below, and
+         add nothing in its place. Keep every other sentence byte-identical."

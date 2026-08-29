@@ -1,0 +1,124 @@
+{
+ "_attribution": {
+  "licence": "CC BY 4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": [],
+  "attribution_note": "This artefact is our own work and carries no upstream attribution requirement beyond CC BY 4.0 on the bundle."
+ },
+ "lock_version": 1,
+ "pinned_utc": "2026-07-29",
+ "pinned_by": "claude-w1-build (alias pins per specs 2026-07-28; OpenRouter transport per Amendment 2026-07-29 A3; pinned at the Aug 1 pre-registration commit)",
+ "routing_note": "All paper-bound roles route via OpenRouter (https://openrouter.ai/api/v1). 'resolved' is the OpenRouter model slug (verified against GET /api/v1/models on 2026-07-29). 'route' is the provider-routing block llm() sends with every call ({\"order\": [...], \"allow_fallbacks\": false}); order=null means no constraint is sent yet - a TODO-at-smoke marker, to be frozen at the Aug 1 pre-registration commit (W2 Amendment D). price_usd_per_mtok are OpenRouter credit prices per Mtok at pin time. system_fingerprint is generally absent via OpenRouter: per_call.jsonl.gz records the OpenRouter generation id + returned model string per call instead (Amendment A3 fingerprint fallback).",
+ "models": {
+  "judge-primary": {
+   "alias": "gpt-5.4",
+   "resolved": "openai/gpt-5.4",
+   "provider": "openrouter",
+   "route": {
+    "order": [
+     "openai"
+    ],
+    "allow_fallbacks": false
+   },
+   "price_usd_per_mtok": {
+    "in": 2.5,
+    "out": 15.0
+   },
+   "notes": "W2 judge in all 8 grid cells + v14 arms + baselines; W3/W-B/W5 judging; the k=8 recipe re-implementation uses this. Grid settings: temp 1.0, reasoning_effort none, max_tokens 1024. Empirical (2026-07-29 smoke probes): OpenRouter does NOT pass n through on this route (n=8 request returns 1 choice, charged once) - k=8 runs as 8 independent calls (k_impl=independent_calls, statistically equivalent per W1 Amendment A3); reasoning_effort IS honored (none -> reasoning_tokens 0); seed accepted; temperature accepted without error (OpenRouter lists no temperature support for this model - determinism measured empirically, W1 Section 6)."
+  },
+  "auditor": {
+   "alias": "gpt-5.5",
+   "resolved": "openai/gpt-5.5",
+   "provider": "openrouter",
+   "route": {
+    "order": [
+     "openai"
+    ],
+    "allow_fallbacks": false
+   },
+   "price_usd_per_mtok": {
+    "in": 5.0,
+    "out": 30.0
+   },
+   "notes": "W-A audit + semantic checks: reasoning_effort high, seeds per W-A spec. Kept in the lock via OpenRouter per W-A Amendment 2026-07-29 A4 (the pre-registered cross-family requirement keeps GPT-5.5 off the plan path; this supersedes W1 Amendment A3's 'dropped from the lock' line - W-A's audit rates are paper-bound methods numbers)."
+  },
+  "author-offplan": {
+   "alias": "gpt-5.5",
+   "resolved": "openai/gpt-5.5",
+   "provider": "openrouter",
+   "route": {
+    "order": [
+     "openai"
+    ],
+    "allow_fallbacks": false
+   },
+   "price_usd_per_mtok": {
+    "in": 5.0,
+    "out": 30.0
+   },
+   "notes": "Authoring/verification/critic support only unless a spec names it as an arm. reasoning_effort none unless the spec says otherwise. (Construction/verification work on Claude models stays on the plan path per R3 and never enters this lock.)"
+  },
+  "constructor": {
+   "alias": "claude-opus-5",
+   "resolved": "anthropic/claude-opus-5",
+   "provider": "openrouter",
+   "route": {
+    "order": [
+     "anthropic"
+    ],
+    "allow_fallbacks": false
+   },
+   "price_usd_per_mtok": {
+    "in": 5.0,
+    "out": 25.0
+   },
+   "notes": "W-A construction model (repair / regen / severity rubric grades), SAME model as the plan-path construction row (Amendment 2026-07-30 part M, claude-opus-5) on a DIFFERENT TRANSPORT: OpenRouter API instead of `claude -p`. Added 2026-08-10 on the lead author's instruction to keep construction off his Claude Max plan limits; the $350 W-A stop rose to $450 to absorb it. reasoning_effort medium (the plan path's --effort medium), temperature 1.0, max_tokens 16000. Instrument integrity: the auditor role and every pinned auditor setting are untouched, and every repaired/regenerated artefact is re-audited by the cross-family auditor regardless of how it was built. Slug + price verified against GET /api/v1/models on 2026-08-10 (context 1M, reasoning_effort supported)."
+  },
+  "judge-qwen": {
+   "alias": "Qwen3-235B-A22B-Instruct-2507",
+   "resolved": "qwen/qwen3-235b-a22b-2507",
+   "provider": "openrouter",
+   "route": {
+    "order": null,
+    "allow_fallbacks": false
+   },
+   "price_usd_per_mtok": {
+    "in": 0.09,
+    "out": 0.55
+   },
+   "notes": "W2 open-weights generality row; temp 1.0, max_tokens 1024. Slug verified 2026-07-29: OpenRouter names this exact model 'Qwen3 235B A22B Instruct 2507' (the -thinking-2507 variant is a different slug) - no substitution. TODO-at-smoke: pin the provider order before the Aug 1 pre-registration commit - 12 providers serve this model (DeepInfra 0.09/0.55 is the model-level default price recorded here; Novita/Parasail/Alibaba/Nebius etc. differ) and quality/latency should be checked at the W2 smoke before freezing. Until pinned, llm() sends no provider constraint and the manifest records the served provider per call. OpenRouter lists seed + temperature support; no reasoning params (non-thinking variant, as intended)."
+  },
+  "judge-gemini": {
+   "alias": "gemini-3.1-pro",
+   "resolved": "google/gemini-3.1-pro-preview",
+   "provider": "openrouter",
+   "route": {
+    "order": [
+     "google-vertex"
+    ],
+    "allow_fallbacks": false
+   },
+   "price_usd_per_mtok": {
+    "in": 2.0,
+    "out": 12.0
+   },
+   "notes": "W2 SECOND-FAMILY replication row, added 2026-08-17: the two k=1 grid designs (F-bin-k1, FC-score-k1) re-run on a non-OpenAI family so the paper's central asymmetry does not rest on one judge family. Flagship pro-tier Gemini on OpenRouter at pin time (GET /api/v1/models 2026-08-17: gemini-2.5-pro and gemini-3.1-pro-preview are the only pro-tier text slugs; ~google/gemini-pro-latest is an alias onto the same price and is deliberately not pinned - a moving alias cannot back a paper number). temp 1.0, max_tokens 1024, same prompts, same substrate. reasoning_effort: DEVIATION FROM THE GRID, disclosed - the grid runs gpt-5.4 at effort 'none'; this endpoint refuses it outright (HTTP 400 'Reasoning is mandatory for this endpoint and cannot be disabled', probed 2026-08-17), so 'minimal' is the nearest available analogue and is what is pinned. Reasoning tokens are billed at the completion rate (pricing.internal_reasoning 0.000012) and are included in completion_tokens. Route pinned to google-vertex (Google AI Studio also serves it - excluded so the served stack is uniform); OpenRouter lists seed AND temperature support on both. Slug, price, provider list and the reasoning-effort refusal all verified live 2026-08-17."
+  },
+  "judge-opus": {
+   "alias": "claude-opus-4-8",
+   "resolved": "anthropic/claude-opus-4.8",
+   "provider": "openrouter",
+   "route": {
+    "order": [
+     "anthropic"
+    ],
+    "allow_fallbacks": false
+   },
+   "price_usd_per_mtok": {
+    "in": 5.0,
+    "out": 25.0
+   },
+   "notes": "W2 second-frontier row: temp 1.0, max_tokens 1024; k=1 rows + the FC-score-k8 transfer cell. Via OpenRouter this satisfies W1 R3 (API-routed, never claude -p). Route pinned to Anthropic first-party (Bedrock/Vertex/Azure also serve it at the same price - deliberately excluded so the served stack is uniform). OpenRouter lists temperature but NOT seed for this route - seed is best-effort-absent here; the 3-run empirical sd is the reproducibility measure (W1 Section 6)."
+  }
+ }
+}

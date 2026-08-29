@@ -1,0 +1,12 @@
+CLINICAL NOTE:
+{note}
+
+REFERENCE FACTS (extracted from the consultation this note was written from). Each fact has an ID:
+{facts_block}
+
+For each reference fact, decide whether the clinical note captures it (verbatim, paraphrased, or clearly implied).
+
+Answer with one entry per fact ID, keyed by that exact ID. Do not renumber, reorder, merge or skip any ID. Every ID listed above must appear exactly once as a key, with the value true (the note captures the fact) or false (it does not).
+
+Output a JSON object only, no other text:
+{"verdicts": {"f1": true, "f2": false}}

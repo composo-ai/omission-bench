@@ -1,0 +1,17 @@
+You are grading how much each atomic fact in a reference summary matters to a careful reader of the source article. Below is the article, the reference summary, and the list of Atomic Content Units (ACUs) - the atomic factual claims the reference summary makes.
+
+SOURCE ARTICLE:
+{article}
+
+REFERENCE SUMMARY:
+{summary}
+
+ACUs:
+{acu_list}
+
+For EVERY ACU, grade:
+- "importance": "critical" (the summary's core point turns on this - a reader who misses it has misunderstood what happened), "supporting" (adds material detail but the core point survives without it), or "peripheral" (present in the reference but a competent shorter summary could reasonably drop it without meaningfully changing reader understanding).
+- "mode": the kind of error that would result if a summarization model got this ACU wrong, one of: omission, fabrication, entity_swap (wrong person/place/organisation), numeric_distortion (wrong number, date, or quantity), attribution_error (wrong speaker or wrong source for a claim/quote), causal_error (wrong cause-effect or wrong reason), hedge_hardening (the article's claim is reported/alleged/disputed and the summary states it as settled fact), generalization_error (the summary broadens the claim's scope beyond what the article supports).
+
+Output ONLY JSON:
+{"acu_grades": [{"acu_idx": <0-based index into ACUs>, "importance": "critical"|"supporting"|"peripheral", "mode": "<one of the modes above>", "rationale": "<one line>"}]}

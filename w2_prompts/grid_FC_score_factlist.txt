@@ -1,0 +1,23 @@
+CONSULTATION TRANSCRIPT:
+{transcript}
+
+---
+
+REFERENCE FACT LIST (extracted from the consultation transcript above, before this note was seen):
+{facts_block}
+
+---
+
+CLINICAL NOTE (AI-generated from the transcript above):
+{note}
+
+---
+
+You are evaluating the clinical note above against the consultation transcript it was generated from. The reference fact list is provided to support that judgement; it is a checklist of what the consultation contained, not a description of the note.
+
+Evaluation criterion:
+Reward clinical notes that a careful clinician would accept as faithful AND complete: no fabricated, inverted/negated, hardened, wrong-value, wrong-subject, or wrong-laterality findings, and no omitted clinically-significant finding, diagnosis, medication, safety-net, or red flag. Penalise any difference from the consultation that would change the clinician's understanding or the patient's care.
+
+Assess the note strictly against this criterion. Give a brief assessment (2-6 sentences), then end your response with exactly one line in the format:
+Score: <integer between 0 and 10>
+where 10 = the note fully satisfies the criterion and 0 = a severe violation. Reserve 9-10 for notes with no violation of the criterion.

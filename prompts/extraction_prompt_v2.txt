@@ -1,0 +1,113 @@
+You are a UK GP and a meticulous clinical auditor working on an AI-evaluation research study.
+Below is the TRANSCRIPT of a primary-care consultation. Your job is to reverse-engineer the
+ground-truth FACT SHEET that a perfect clinical note of this consultation would be judged
+against. Work ONLY from the transcript - you have no other source of truth, and you must not
+import outside clinical knowledge as if it were said (clinical judgement may guide what is
+LOAD-BEARING, never what is TRUE).
+
+The transcript is an automatic speech-recognition rendering of a REAL recorded consultation.
+It can contain mistranscribed words, <UNSURE>...</UNSURE> tags around low-confidence words,
+<UNIN/> and <INAUDIBLE_SPEECH/> gaps, garbled or truncated turns, and compound questions
+answered with a single unattributable reply. ASR-UNCERTAINTY RULE: a garbled, ambiguous, or
+contradicted turn must NEVER become a confident fact. Either omit the point, or state the
+uncertainty inside the fact itself (e.g. "patient appears to deny night sweats, though the
+reply is ambiguous"). A must_contain item may rest ONLY on clean evidence: a quote that is
+intact, clearly attributable to one speaker answering one identifiable question, and not
+contradicted elsewhere in the transcript. A reply tagged <UNSURE>, a turn interrupted by an
+inaudible gap at the load-bearing word, a bare "yes"/"no" after a multi-part question, or a
+clinician's leading summary the patient never clearly confirms is NOT clean evidence.
+
+TRANSCRIPT:
+{transcript}
+
+Produce a fact_sheet with exactly three keys:
+
+1. "must_contain": the facts a CORRECT and complete note of THIS consultation must include.
+   Cover: the presenting complaint; key positive findings; the pertinent NEGATIVES the patient
+   explicitly denied or the clinician explicitly noted as absent; examination findings (or the
+   explicit absence of examination if the consult is remote); the working diagnosis/impression
+   AS STATED (preserve any hedging); every element of the plan including drug names, doses,
+   frequencies and durations as actually said; safety-netting instructions; and material social
+   or risk history. Each item is an object:
+     { "fact": "<one atomic fact, precisely stated>",
+       "evidence": "<a short VERBATIM quote from the transcript (max 25 words) that supports it>",
+       "load_bearing": "high" | "medium" }
+   Rules: one fact per item, no compounds. Only include facts a reasonable clinician would
+   expect in the note - do not pad with trivia. If it is not supported by a quotable span,
+   it does not go in. NOTE-BEARING CONTENT ONLY: conversational closure ("no further
+   questions", thanks and goodbyes), identity-confirmation and secure-location rituals,
+   reassurance boilerplate ("nothing to worry about"), and patient-education explanations are
+   NOT required note content - include such material only where it is clinically load-bearing
+   for THIS consult (a specific safety-netting instruction, a stated reason the plan was
+   chosen, demographics the assessment actually turns on). The clinical substance behind the
+   phrasing (the working impression, the plan, the safety-net) belongs in its own item; the
+   conversational wrapper does not.
+
+2. "must_not_contain": assertions that would be ERRORS for a note of THIS consultation - each
+   one a specific wrong claim a scribe could plausibly make here. Cover, where applicable: a
+   hardened/confirmed diagnosis where the clinician stayed tentative; an examination, test or
+   observation that did not happen or whose result is not back; an inverted negative; a wrong
+   dose/frequency; a flipped laterality or wrong body site; a decision recorded as taken when
+   it was only discussed, deferred or offered; a fabricated medication or referral. Each item:
+     { "assertion": "<the erroneous claim>",
+       "why_wrong": "<one line: what the transcript actually establishes>" }
+   Do NOT include generic errors that could apply to any consult - every item must be anchored
+   in this transcript. EQUIVALENCE RULE: an assertion may be listed ONLY if it is clinically
+   WRONG under every standard reading of the transcript - never forbid a rendering a competent
+   clinician could correctly write. Correct unit/dose/frequency conversions and standard
+   clinical phrasing of what was actually said are explicitly protected: if the clinician
+   advises paracetamol "two tablets up to four times a day", a note reading "paracetamol 1g up
+   to four times daily" is a faithful conversion (2 x 500mg tablets), NOT an error - what may
+   be forbidden is a rendering that changes the clinical content, such as dropping the "up to"
+   or recording "twice daily". Where a turn is ambiguous, any defensible reading of it is not
+   an error: scope each assertion so it catches only the genuinely wrong version (name the
+   dropped qualifier or the contradicting turn in why_wrong), never a faithful one.
+
+3. "salience_traps": moments in THIS transcript where a scribe could plausibly go wrong - only
+   traps that genuinely exist in the dialogue; an unremarkable consult may have few. Each item:
+     { "trap": "<what is tempting to get wrong>",
+       "correct_handling": "<what a correct note does>",
+       "mode": <one of: omission, negation, dose_value, laterality, attribution,
+               modality_hardening, temporal, fabrication, decision_status, anchoring> }
+   Add a fourth field "importance", graded per the study's severity rubric. Grade the clinical
+   consequence of the note getting THIS item wrong (omitting, fabricating or altering it) - the
+   consequence of the error in the note, not the drama of the topic:
+     "critical" - the error would plausibly change clinical action, delay or misdirect care, or
+       create a safety risk: an omitted working diagnosis or a hedged impression hardened into
+       certainty; omitted red-flag safety-netting; an omitted or wrong drug, allergy, dose,
+       frequency or duration; a conditional plan made definite; a fabricated examination,
+       finding or result; an omitted pertinent negative that licenses the management decision;
+       wrong patient identity attributes used clinically.
+     "supporting" - degrades the note's completeness, clarity or defensibility but is unlikely
+       to change what happens next: duration/onset detail that colours but does not gate the
+       plan; social context with no immediate action attached; compressed phrasing that loses
+       nuance without inverting meaning; a secondary symptom that neither supports nor
+       threatens the diagnosis.
+     "peripheral" - no plausible clinical consequence: conversational colour, rapport,
+       patient-education phrasing, administrative closure, redundant restatement of something
+       already captured.
+   Decide in order: (1) ACTION test - would a competent GP, or the next clinician reading the
+   note, plausibly DO something different if this error stood? yes -> critical. (2) SAFETY
+   test - even if action today is unchanged, does the error remove a safety net or create a
+   latent risk? yes -> critical. (3) RECORD-QUALITY test - does it materially weaken the note
+   as a clinical record? yes -> supporting. (4) Otherwise peripheral. If genuinely torn between
+   two grades after the procedure, take the LOWER grade. Grade each trap independently; never
+   curve to a target distribution.
+   Look especially for: hedged or uncertain statements; denied symptoms; deferred or
+   conditional decisions; back-up/delayed prescriptions; remote consults where no examination
+   was possible; stopped or changed medications; attribution of findings to the right person;
+   self-management/OTC advice given in THIS consultation. TRANSCRIPT-ONLY TRAPS: every trap
+   must name a specific moment of THIS dialogue (a hedge, a self-correction, a garbled or
+   ambiguous reply, a deferred decision) that makes it a trap. Never write a trap from
+   meta-knowledge of how scribes or notes typically fail ("notes commonly drop...", "easily
+   compressed to..."), never describe scribe or documentation habits in the trap or its
+   correct_handling, and never build a trap around a documentation convention the transcript
+   never mentions (fit notes, PRN, referral pathways).
+
+CRITICAL: derive everything ONLY from the transcript. Never invent a fact, never list a trap
+with no corresponding moment, never mark an assertion as wrong if the transcript supports it.
+If the transcript is ambiguous on a point, the fact sheet must preserve that ambiguity rather
+than resolve it.
+
+Output ONLY a single valid JSON object with key "fact_sheet" containing the three keys above.
+Escape all newlines inside strings as \n. No commentary, no markdown fences.

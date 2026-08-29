@@ -1,0 +1,1238 @@
+{
+ "_attribution": {
+  "licence": "CC BY 4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": [],
+  "attribution_note": "This artefact is our own work and carries no upstream attribution requirement beyond CC BY 4.0 on the bundle."
+ },
+ "generated_utc": "2026-08-10T19:35:18+00:00",
+ "spec": "specs/w-a-ground-truth-verification.md",
+ "spec_output_name": "w_a_report.json (spec section 8) - delivered as master/wa_gate_report.json per task instruction",
+ "gate": {
+  "pass": true,
+  "pass_means": "W-A itself completed: every note is clean-or-excluded, every pair is passed-or-excluded, and the surviving set is frozen. It does NOT assert the W-D corpus-size/balance gate - read balance_gate_verdict below and balance_gate for that.",
+  "balance_gate_verdict": {
+   "pass": false,
+   "rule": "W-D spec section 6: final corpus within 360-450 pairs AND each of add/change/omit within +/-5 percentage points of one third",
+   "corpus_pairs": 333,
+   "corpus_in_360_450": false,
+   "by_type": {
+    "add": 111,
+    "change": 129,
+    "omit": 93
+   },
+   "type_shares": {
+    "add": 0.3333,
+    "change": 0.3874,
+    "omit": 0.2793
+   },
+   "pp_from_one_third": {
+    "add": 0.0,
+    "change": 5.4,
+    "omit": -5.4
+   },
+   "each_type_within_5pp_of_third": false,
+   "why": "78 of 411 constructed pairs were excluded by W-A (27 omit - omit pair failed 3 regenerations and its programmatic fallback; 20 add - add/change pair failed 3 regenerations; 14 omit - authored pair failed the semantic load-bearing majority; 5 change - add/change pair failed 3 regenerations; 3 add - authored pair failed the semantic load-bearing majority; 3 add - note excluded (unrepairable clean note); 3 change - note excluded (unrepairable clean note); 3 omit - note excluded (unrepairable clean note)), leaving 333.",
+   "note": "the W-D remedy for a broken balance ('drop the surplus type's weakest pairs') cannot apply when the corpus is BELOW the band - dropping shrinks it further. A corpus under 360 needs more consultations or re-injected pairs for the excluded ones; that is the lead author's call, not this driver's."
+  },
+  "frozen_file": "master/pairs_master_frozen.json",
+  "sha256": "974a3cf98dce409b543c4eb74618ba5d738f62b906537d467136fa0dbd66e957",
+  "statement": "W-A GATE: pairs_master_frozen.json sha256=974a3cf98dce409b543c4eb74618ba5d738f62b906537d467136fa0dbd66e957 (281 pairs, strata ['aci', 'authored', 'primock', 'trapblind']) - W2/W3/W-B/W4/W5 load ONLY this file, asserted by hash",
+  "root_copy": "pairs_master_frozen.json (byte-identical; both paths in freeze_hashes.json)"
+ },
+ "lever_disclosure": "A5: 1-seed screen + 3-seed majority confirmation on flags (pre-registered, W-A Amendment A5; screens = seed 11/21; confirmations = 12,13/22,23; majority-of-3 semantics on every flag; single-seed acceptance for clean screens)",
+ "adjudication_policy": {
+  "mode": "automated (task instruction 2026-08-10; the lead author's clinical adjudication queued to the ~Aug 22 sitting, master/sitting_wa_items.json)",
+  "new_strata": "majority flag = confirmed defect -> repair (max 3 rounds) -> exclude",
+  "authored": "report-only; exclude note only on unanimous 3/3 checklist-section flag; exclude pair only on semantic load-bearing majority failure",
+  "M1_caveat": "M1 is the auditor-majority defect rate - an upper bound on the human-confirmed rate the spec defines; M3 (human precision) n/a"
+ },
+ "algorithmic_constants_revision": {
+  "clause": "spec section 6: constants frozen at pre-registration; 'if they prove badly calibrated in the first 10 pairs, we may revise ONCE, before the full run, and record the revision + reason' - exercised 2026-08-10 BEFORE any semantic EDIT_CHECK call, under the project's default-with-veto regime; queued for the lead author's sitting",
+  "evidence": "v1 rejected 20/90 of the pre-registered preserved authored stratum (the Amendment-A1 calibration stratum; 13 omit pairs among them - the study's headline error class) and 51% corpus-wide; dominant false-fail classes were one-block contiguous section deletes of 3-5 units and adds/omits realized as natural 1:1 line replacements - all single-location edits satisfying the rule's stated intent ('exactly one localized edit, everything else verbatim')",
+  "kept_frozen": "single non-equal opcode block (the localization invariant) + MAX_CHANGED_WORDS=30 blast-radius cap + REGEN_SUFFIX max_units=2",
+  "changed": {
+   "pure_insert_delete_unit_cap": "2 -> 6",
+   "replace_span_unit_cap": "2 -> 3 per side",
+   "dropped_proxies": "insert-only/delete-only word-op purity; MAX_REGIONS=2 (direction + atomicity now verified by EDIT_CHECK 3-seed majority)"
+  },
+  "fail_counts_as_built": {
+   "v1": {
+    "total": 210,
+    "authored": 20,
+    "trapblind": 20,
+    "primock": 99,
+    "aci": 71
+   },
+   "v2": {
+    "total": 97,
+    "trapblind": 11,
+    "primock": 44,
+    "aci": 42
+   }
+  },
+  "no_further_revision": true
+ },
+ "truly_absent_correction": {
+  "what_changed": "truly_absent correction 2026-08-10 (approved by the lead author, docs/FREEZE-DECISION.md): EDIT_CHECK item 5 conjoined genuine absence with 'corresponds to a MUST_CONTAIN item', and a missing index failed the pair. mc_idx is now recorded metadata only. The 36 omit pairs excluded on truly_absent plus the 4 excluded on single_edit were re-verified under the corrected instrument at the same auditor, settings and 3-seed discipline",
+  "prompt_diff": "master/truly_absent_prompt_diff.md",
+  "edit_check_sha256_16": {
+   "before": "0cffb4e7fb568030",
+   "after": "0e39faea939d8599"
+  },
+  "n_reverified": 40,
+  "n_restored": 2,
+  "n_still_excluded": 38,
+  "restored_pairs": [
+   "aci|D2N153|omit",
+   "primock|day1_consultation04|omit"
+  ],
+  "still_failing_on": {
+   "truly_absent": 13,
+   "description_match, truly_absent": 13,
+   "single_edit, description_match, truly_absent": 5,
+   "single_edit, truly_absent": 6,
+   "single_edit": 1
+  },
+  "finding": "the pre-correction diagnosis in docs/FREEZE-DECISION.md - that the MUST_CONTAIN-index conjunct was the clause doing the failing - is NOT what the re-verification shows. Only the pairs where no index could be produced at all were freed by the fix; the rest fail the FIRST clause, the auditor finding a partial or paraphrased residual of the removed fact still in the errored note. The correction is right on its own terms and is kept, but it does not restore the corpus to the balance band",
+  "pairs": [
+   {
+    "pair_id": "aci|D2N077|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 7,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "truly_absent is false because the errored note still says the pain is partially eased by ibuprofen."
+   },
+   {
+    "pair_id": "aci|D2N080|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 14,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Description says the echocardiogram murmur rationale was also removed, but it remains; the murmur also survives as a residual mention in the plan."
+   },
+   {
+    "pair_id": "aci|D2N081|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 28,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Actual diff only deletes the Problem 3 counseling line, not the described ROS/reasoning reduced-intake fact; part of the advice still survives as 'She can eat immediately after taking it,' and reduced intake remains documented."
+   },
+   {
+    "pair_id": "aci|D2N086|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 9,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Description says the cough/SOB/calf red-flag combination was removed, but the diff only deletes the HPI shortness-of-breath sentence; shortness of breath with ambulation still remains in the ROS."
+   },
+   {
+    "pair_id": "aci|D2N125|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 5,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "The removed failed OTC analgesia fact still survives in the errored note as the paraphrase 'unrelieved by over-the-counter analgesia' in the Assessment/Plan."
+   },
+   {
+    "pair_id": "aci|D2N128|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 4,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "truly_absent is false because the errored note still contains a residual ROS mention of intermittent hand numbness with prolonged typing."
+   },
+   {
+    "pair_id": "aci|D2N130|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 11,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "truly_absent is false because the denied suicidal and homicidal ideations fact still appears in the Depression medical reasoning section."
+   },
+   {
+    "pair_id": "aci|D2N134|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 14,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Only the vitals sentence 'No fever at this time' was deleted; the described HPI/ROS negatives for high fevers and abdominal pain/diarrhea remain, so the described target fact is not truly absent."
+   },
+   {
+    "pair_id": "aci|D2N137|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 7,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Description says both HPI and Assessment self-harm denials were removed/no record remains, but the errored note still states in Assessment: 'She denies thoughts of self-harm.'"
+   },
+   {
+    "pair_id": "aci|D2N144|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 28,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Description says CMP levels and repeat blood work were removed, but they remain in the errored note; residual high-risk/CMP/bloodwork content also remains."
+   },
+   {
+    "pair_id": "aci|D2N146|omit",
+    "sem_fails_before": [
+     "single_edit",
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "single_edit",
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 13,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Diff deletes a line containing multiple facts (slight RUQ guarding and no rebound tenderness) and leaves 'Peritoneal signs not appreciated' in the errored note, contrary to the description/absence claim."
+   },
+   {
+    "pair_id": "aci|D2N149|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 15,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Removed Norvasc-omission/low-home-BP fact still survives in the Hypertension assessment, including lower-nineties readings."
+   },
+   {
+    "pair_id": "aci|D2N150|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 7,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Description claims the plan clause was removed and the ibuprofen/meloxicam overlap undocumented, but the errored note still says he remains on regular ibuprofen, so the omitted fact partially survives."
+   },
+   {
+    "pair_id": "aci|D2N153|omit",
+    "sem_fails_before": [
+     "truly_absent",
+     "mc_idx"
+    ],
+    "sem_fails_after": [],
+    "status_after": "passed",
+    "mc_idx_after": null,
+    "n_seeds_before": 3,
+    "n_seeds_after": 1,
+    "reason_after": "All checks pass"
+   },
+   {
+    "pair_id": "aci|D2N155|omit",
+    "sem_fails_before": [
+     "single_edit",
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "single_edit",
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 7,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Diff deletes a whole sentence containing both pain denial and decreased sensation; it does not delete the described diabetes 'with neuropathy' qualifier, which remains in the errored note, so the described omitted neuropathy component is not truly absent."
+   },
+   {
+    "pair_id": "aci|D2N156|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 7,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "The deleted salt/diet nonrestriction fact survives in the errored note's HPI, so it is not truly absent."
+   },
+   {
+    "pair_id": "aci|D2N169|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 16,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Description says the assessment phrase was also removed, but the errored note still states 'trace bilateral lower extremity edema,' so the omitted fact is not truly absent."
+   },
+   {
+    "pair_id": "aci|D2N177|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 11,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Description claims removal from HPI and ROS, but only the HPI sentence was deleted and all denials persist in the ROS."
+   },
+   {
+    "pair_id": "aci|D2N199|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 8,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Description claims removal from both HPI and knee assessment, but only the HPI sentence was deleted; the errored note still has residual knee-assessment mention: \"Following the fall down the stairs this morning.\""
+   },
+   {
+    "pair_id": "authored|alcohol_review|omit",
+    "sem_fails_before": [
+     "single_edit"
+    ],
+    "sem_fails_after": [
+     "single_edit",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 13,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "single_edit false: deleting the whole Impression section removed multiple assertions; truly_absent false because breakup/mood and alcohol-use/dependence-history details remain elsewhere."
+   },
+   {
+    "pair_id": "authored|asthma_review|omit",
+    "sem_fails_before": [
+     "single_edit",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "single_edit",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 4,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "The deletion removes multiple factual assertions in the impression section, and parts of the removed content still survive elsewhere in the errored note, including no acute attack and the poor adherence/technique facts."
+   },
+   {
+    "pair_id": "authored|contraception_request|omit",
+    "sem_fails_before": [
+     "single_edit"
+    ],
+    "sem_fails_after": [
+     "single_edit",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 11,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "The deleted impression/assessment content is partially retained elsewhere in the errored note via the contraception context, COCP choice/prescription, safety/suitability factors, normal BP, and nil pregnancy risk."
+   },
+   {
+    "pair_id": "authored|cp_musculoskeletal|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 21,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "The removed diagnosis corresponds to MUST_CONTAIN item 21, but a partial residual mention remains in the errored Impression: it still says findings point to a chest-wall origin."
+   },
+   {
+    "pair_id": "authored|eczema_sites_otc|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 8,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Removed Impression section matches omit, but the omitted impression content partially survives elsewhere: eczema flare, triggers, and no secondary infection are still mentioned."
+   },
+   {
+    "pair_id": "authored|family_history_attribution|omit",
+    "sem_fails_before": [
+     "single_edit",
+     "truly_absent",
+     "mc_idx"
+    ],
+    "sem_fails_after": [
+     "single_edit",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": null,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "The diff omits an entire Impression section containing multiple factual assertions, and many of those facts still survive elsewhere in the errored note such as palpitations, normal exam, monitoring need, stimulant intake, family history, and no personal cardiac history."
+   },
+   {
+    "pair_id": "authored|ha_tension_moh|omit",
+    "sem_fails_before": [
+     "single_edit"
+    ],
+    "sem_fails_after": [
+     "single_edit",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 20,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Deletion removes multiple impression facts (chronic tension-type headache, MOH component, no red flags/no scan), and partial residual mentions remain via tension-headache and withdrawal/reset-cycle plan language."
+   },
+   {
+    "pair_id": "authored|med_review_dose|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 11,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Removed exam line matches omit description, but the errored note still contains a residual paraphrased/summary mention: 'No clinical signs of pulmonary oedema today.'"
+   },
+   {
+    "pair_id": "authored|mh_followup_ssri|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 9,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Removed history statement matches the described omission, but the fact partially survives in the errored note as 'no plan/intent/method thoughts' in the Impression."
+   },
+   {
+    "pair_id": "authored|penicillin_delabel|omit",
+    "sem_fails_before": [
+     "single_edit",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "single_edit",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 11,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "single_edit is false because the deletion removes multiple Impression assertions, not one atomic fact; truly_absent is false because the low-risk/no allergic features/possible mislabel assessment still survives in the Plan."
+   },
+   {
+    "pair_id": "authored|polypharmacy_elderly|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 10,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "truly_absent is false: although the Impression section was removed, the amlodipine-attribution component still survives in the plan via switching off amlodipine and swelling expected to settle after amlodipine is stopped."
+   },
+   {
+    "pair_id": "authored|rash_redflag_safetynet|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 14,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "The omitted impression section matches the description, but part of the removed fact—washing powder as a possible contributor with uncertain timing—still appears in the History, so it is not truly absent."
+   },
+   {
+    "pair_id": "authored|sore_throat_anchoring|omit",
+    "sem_fails_before": [
+     "single_edit"
+    ],
+    "sem_fails_after": [
+     "single_edit"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 14,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "single_edit false because the diff removes an entire impression section containing multiple assertions, not one atomic fact."
+   },
+   {
+    "pair_id": "authored|video_rash_child|omit",
+    "sem_fails_before": [
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 13,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Deleted sentence combines two facts (glass tumbler test under observation and blanching result), and the blanching result still remains in the Impression."
+   },
+   {
+    "pair_id": "primock|day1_consultation04|omit",
+    "sem_fails_before": [
+     "truly_absent",
+     "mc_idx"
+    ],
+    "sem_fails_after": [],
+    "status_after": "passed",
+    "mc_idx_after": null,
+    "n_seeds_before": 3,
+    "n_seeds_after": 1,
+    "reason_after": "All checks pass."
+   },
+   {
+    "pair_id": "primock|day1_consultation05|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 15,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "The deleted DH line matches the intended omission, but the Implanon/implant still has residual mentions elsewhere in the errored note, so the fact is not truly absent."
+   },
+   {
+    "pair_id": "primock|day2_consultation03|omit",
+    "sem_fails_before": [
+     "single_edit",
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "single_edit",
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 6,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Deleted line contains multiple factual omissions (tinnitus and dizziness/MC6-7); description also claims impression terms were removed, but they still remain, so the omitted content survives partially."
+   },
+   {
+    "pair_id": "primock|day3_consultation02|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "single_edit",
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 16,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "The diff deletes a compound meningitis-features/early-stage caveat, not the neck-movement negative; related content also remains elsewhere, including meningitis not excluded, photophobia/blanching rash, and the neck-movement denial."
+   },
+   {
+    "pair_id": "primock|day3_consultation08|omit",
+    "sem_fails_before": [
+     "single_edit",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "single_edit",
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 3,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "The deleted line is compound, removing the viral-URTI impression as well as no wheeze/breathlessness; the respiratory negatives still remain elsewhere as 'No wheeze' and 'No breathlessness'."
+   },
+   {
+    "pair_id": "primock|day4_consultation02|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 12,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Description is inaccurate because the errored note does not newly document loss of libido as occurring with palpitations/no onset, and the omitted fact partially survives in the PC list with global onset roughly since job change."
+   },
+   {
+    "pair_id": "primock|day5_consultation02|omit",
+    "sem_fails_before": [
+     "description_match",
+     "truly_absent"
+    ],
+    "sem_fails_after": [
+     "description_match",
+     "truly_absent"
+    ],
+    "status_after": "excluded",
+    "mc_idx_after": 11,
+    "n_seeds_before": 3,
+    "n_seeds_after": 3,
+    "reason_after": "Description claims both allergy mentions were removed and no allergy status remains, but the diff only removes the NB flag and the errored note still contains 'Allergy: CLINDAMYCIN.'"
+   }
+  ]
+ },
+ "check0": {
+  "pass": true,
+  "problems": [],
+  "n_consults": 137,
+  "n_pairs": 411,
+  "utc": "2026-08-10T08:29:49+00:00"
+ },
+ "M1_first_pass_note_defect_rate": {
+  "authored": {
+   "k": 11,
+   "n": 30,
+   "p": 0.3667,
+   "lo": 0.2187,
+   "hi": 0.5449
+  },
+  "trapblind": {
+   "k": 3,
+   "n": 9,
+   "p": 0.3333,
+   "lo": 0.1206,
+   "hi": 0.6458
+  },
+  "primock": {
+   "k": 49,
+   "n": 53,
+   "p": 0.9245,
+   "lo": 0.8214,
+   "hi": 0.9703
+  },
+  "aci": {
+   "k": 36,
+   "n": 45,
+   "p": 0.8,
+   "lo": 0.6618,
+   "hi": 0.891
+  },
+  "all": {
+   "k": 99,
+   "n": 137,
+   "p": 0.7226,
+   "lo": 0.6424,
+   "hi": 0.7907
+  }
+ },
+ "M1_defect_categories": {
+  "mnc_asserted": 4,
+  "unsupported_assertion": 62,
+  "trap_mishandled": 54,
+  "mc_missing": 48,
+  "mc_inaccurate": 116
+ },
+ "M2_first_pass_pair_failure_rate": {
+  "overall": {
+   "k": 182,
+   "n": 402,
+   "p": 0.4527,
+   "lo": 0.4048,
+   "hi": 0.5016
+  },
+  "by_type": {
+   "add": {
+    "k": 74,
+    "n": 134,
+    "p": 0.5522,
+    "lo": 0.4678,
+    "hi": 0.6338
+   },
+   "change": {
+    "k": 29,
+    "n": 134,
+    "p": 0.2164,
+    "lo": 0.1551,
+    "hi": 0.2935
+   },
+   "omit": {
+    "k": 79,
+    "n": 134,
+    "p": 0.5896,
+    "lo": 0.5049,
+    "hi": 0.6692
+   }
+  },
+  "by_stratum": {
+   "authored": {
+    "k": 17,
+    "n": 90,
+    "p": 0.1889,
+    "lo": 0.1214,
+    "hi": 0.2818
+   },
+   "trapblind": {
+    "k": 15,
+    "n": 27,
+    "p": 0.5556,
+    "lo": 0.3731,
+    "hi": 0.7241
+   },
+   "primock": {
+    "k": 81,
+    "n": 153,
+    "p": 0.5294,
+    "lo": 0.4506,
+    "hi": 0.6068
+   },
+   "aci": {
+    "k": 69,
+    "n": 132,
+    "p": 0.5227,
+    "lo": 0.4381,
+    "hi": 0.6061
+   }
+  },
+  "by_layer": {
+   "semantic": 81,
+   "algorithmic": 101
+  },
+  "unscored_originals": 9
+ },
+ "M3_auditor_precision": {
+  "value": null,
+  "reason": "no human adjudication in the loop (see policy); the majority-confirmation kill rate is reported instead (coordinator ask 2026-08-10)",
+  "majority_confirmation_kill_rate": 0.1528,
+  "kill_rate_meaning": "fraction of 1-seed screen flags that DIE at 3-seed majority confirmation - empirical answer to the auditor-pedantry worry",
+  "auditor_confirmation_rate": 0.8472,
+  "screen_flag_items": 373,
+  "confirmed_items": 316,
+  "by_section": {
+   "mc": {
+    "screen": 190,
+    "confirmed": 177
+   },
+   "mnc": {
+    "screen": 5,
+    "confirmed": 5
+   },
+   "traps": {
+    "screen": 80,
+    "confirmed": 65
+   },
+   "unsupported": {
+    "screen": 98,
+    "confirmed": 69
+   }
+  }
+ },
+ "M4_audit_reproducibility": {
+  "mean_pairwise_agreement_flag_items": 0.794,
+  "figure_covers": "checklist sections (mc/mnc/traps) that escalated to 3 seeds - the figure originally reported; the open-ended 'unsupported' section was silently omitted from it",
+  "mean_pairwise_agreement_incl_unsupported": 0.7251,
+  "by_section": {
+   "mc": {
+    "mean": 0.7926,
+    "seed_pairs": 264
+   },
+   "mnc": {
+    "mean": 1.0,
+    "seed_pairs": 15
+   },
+   "traps": {
+    "mean": 0.7787,
+    "seed_pairs": 177
+   },
+   "unsupported": {
+    "mean": 0.5756,
+    "seed_pairs": 210
+   }
+  },
+  "coverage": {
+   "section_audits_total": 1024,
+   "escalated_to_3_seeds": 222,
+   "screen_clean_1_seed_only": 802,
+   "screen_clean_all_flagsets_empty": true,
+   "seed_pairs_scored": 666,
+   "meaning": "under the A5 lever a section is audited at 3 seeds ONLY if the seed-11 screen flagged something; a clean screen is accepted on one seed, so no second opinion exists for it and its agreement is UNMEASURED, not 1.0"
+  },
+  "restriction": "BOTH figures are conditioned on the screen having flagged something, i.e. computed over the disputed sections only. They are a lower bound on whole-corpus reproducibility and are NOT comparable to the spec's 0.90 line, which contemplates all sections. Computing the unconditional figure needs 2 extra seeds on the 802 screen-clean sections; not spent (2026-08-10 correction pass)",
+  "assumption_conditional_ceiling_not_measured": 0.9404,
+  "ceiling_meaning": "arithmetic only: what the unconditional mean WOULD be if every screen-clean section had produced an empty flag set on all 3 seeds. An assumption, not a measurement - do not quote it as an observed value"
+ },
+ "M5_repair_convergence": {
+  "repaired_notes": 88,
+  "rounds_hist": {
+   "1": 64,
+   "2": 17,
+   "3": 7
+  },
+  "excluded_notes": 3,
+  "fallback_pairs": 4,
+  "regen_pairs": 109
+ },
+ "M6_omit_salience_linkage": {
+  "k": 91,
+  "n": 93,
+  "p": 0.9785,
+  "lo": 0.9249,
+  "hi": 0.9941,
+  "caveat": "BEFORE the 2026-08-10 truly_absent correction this metric was 1.0 BY CONSTRUCTION - an omit pair could not pass verification unless a MUST_CONTAIN index had been found for it, so k==n was forced. From this run on, mc_idx is recorded but does not gate acceptance, so the figure is a genuine measurement of how often a verified omission maps to a checklist item"
+ },
+ "exclusions": {
+  "notes": {
+   "primock|day1_consultation08": "unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)",
+   "primock|day1_consultation14": "unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)",
+   "aci|D2N105": "unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)"
+  },
+  "pairs": {
+   "authored|sore_throat_anchoring|omit": "authored pair failed semantic majority on load-bearing field(s) ['single_edit'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|med_review_dose|add": "authored pair failed semantic majority on load-bearing field(s) ['type_match'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|med_review_dose|omit": "authored pair failed semantic majority on load-bearing field(s) ['truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|family_history_attribution|omit": "authored pair failed semantic majority on load-bearing field(s) ['single_edit', 'truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|rash_redflag_safetynet|omit": "authored pair failed semantic majority on load-bearing field(s) ['truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|cp_musculoskeletal|omit": "authored pair failed semantic majority on load-bearing field(s) ['truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|ha_tension_moh|omit": "authored pair failed semantic majority on load-bearing field(s) ['single_edit', 'truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|phone_uti|add": "authored pair failed semantic majority on load-bearing field(s) ['type_match'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|video_rash_child|omit": "authored pair failed semantic majority on load-bearing field(s) ['truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|eczema_sites_otc|omit": "authored pair failed semantic majority on load-bearing field(s) ['truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|asthma_review|omit": "authored pair failed semantic majority on load-bearing field(s) ['single_edit', 'truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|polypharmacy_elderly|omit": "authored pair failed semantic majority on load-bearing field(s) ['truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|penicillin_delabel|omit": "authored pair failed semantic majority on load-bearing field(s) ['single_edit', 'truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|alcohol_review|add": "authored pair failed semantic majority on load-bearing field(s) ['type_match'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|alcohol_review|omit": "authored pair failed semantic majority on load-bearing field(s) ['single_edit', 'truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|mh_followup_ssri|omit": "authored pair failed semantic majority on load-bearing field(s) ['truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "authored|contraception_request|omit": "authored pair failed semantic majority on load-bearing field(s) ['single_edit', 'truly_absent'] - genuinely broken; preserved stratum is never rewritten",
+   "trapblind|tb_child_fever_ear|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "trapblind|tb_bppv_dizziness|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "trapblind|tb_menopause_hrt|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day1_consultation01|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day1_consultation03|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day1_consultation04|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day1_consultation05|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "primock|day1_consultation08|add": "note_excluded: unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)",
+   "primock|day1_consultation08|change": "note_excluded: unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)",
+   "primock|day1_consultation08|omit": "note_excluded: unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)",
+   "primock|day1_consultation11|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day1_consultation12|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day1_consultation14|add": "note_excluded: unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)",
+   "primock|day1_consultation14|change": "note_excluded: unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)",
+   "primock|day1_consultation14|omit": "note_excluded: unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)",
+   "primock|day2_consultation03|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: single_edit, description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "primock|day2_consultation05|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day2_consultation06|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him). Swept 2026-08-10 on the fallback-cap fix: this pair had already run 2 identical fallback attempt(s) with the same verdict, so no further call was made.",
+   "primock|day2_consultation10|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him). Swept 2026-08-10 on the fallback-cap fix: this pair had already run 2 identical fallback attempt(s) with the same verdict, so no further call was made.",
+   "primock|day3_consultation01|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day3_consultation02|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day3_consultation02|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: single_edit, description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "primock|day3_consultation06|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day3_consultation08|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: single_edit, description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "primock|day3_consultation10|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day4_consultation02|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "primock|day4_consultation04|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day4_consultation10|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day5_consultation02|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "primock|day5_consultation04|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day5_consultation08|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "primock|day5_consultation12|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "aci|D2N077|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N080|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N081|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N086|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N096|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "aci|D2N105|add": "note_excluded: unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)",
+   "aci|D2N105|change": "note_excluded: unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)",
+   "aci|D2N105|omit": "note_excluded: unrepaired after 3 repair rounds (spec reserves manual repair for the lead author - excluded per task fallback, queued for sitting)",
+   "aci|D2N115|change": "change pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "aci|D2N122|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him). Swept 2026-08-10 on the fallback-cap fix: this pair had already run 2 identical fallback attempt(s) with the same verdict, so no further call was made.",
+   "aci|D2N125|change": "change pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "aci|D2N125|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N128|add": "add pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "aci|D2N128|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N130|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N134|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N137|change": "change pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "aci|D2N137|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N144|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N146|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: single_edit, description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N149|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N150|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N155|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: single_edit, description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N156|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N169|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N174|change": "change pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "aci|D2N177|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)",
+   "aci|D2N179|change": "change pair failed after 3 regenerations (spec fallback = the lead author hand-writes the edit - excluded per task rule, queued)",
+   "aci|D2N199|omit": "omit pair failed after 3 regenerations AND its 1 programmatic-deletion fallback (last semantic failure: description_match, truly_absent); the fallback is deterministic, so retrying rebuilds identical text - excluded per task rule, queued for the lead author (spec reserves the hand-written edit for him)"
+  }
+ },
+ "kept_flagged_authored_notes": [
+  "authored|knee_laterality",
+  "authored|sore_throat_anchoring",
+  "authored|headache_allergy_omission",
+  "authored|gastro_temporal_dose",
+  "authored|cp_reflux_gord",
+  "authored|ha_tension_moh",
+  "authored|video_rash_child",
+  "authored|asthma_review",
+  "authored|polypharmacy_elderly",
+  "authored|alcohol_review",
+  "authored|contraception_request"
+ ],
+ "balance_gate": {
+  "corpus_pairs": 333,
+  "corpus_in_360_450": false,
+  "by_type": {
+   "add": 111,
+   "change": 129,
+   "omit": 93
+  },
+  "each_type_within_5pp_of_third": false,
+  "by_stratum_type": {
+   "authored": {
+    "add": 27,
+    "change": 30,
+    "omit": 16
+   },
+   "trapblind": {
+    "add": 6,
+    "change": 9,
+    "omit": 9
+   },
+   "primock": {
+    "change": 51,
+    "omit": 43,
+    "add": 36
+   },
+   "aci": {
+    "add": 42,
+    "change": 39,
+    "omit": 25
+   }
+  }
+ },
+ "gepa_dev_pool_n": {
+  "consults": {
+   "authored": 8,
+   "primock": 14
+  },
+  "pairs": 52
+ },
+ "run_ids": [
+  "20260810-093011-ba05d38-r1",
+  "20260810-094159-4572867-r2",
+  "20260810-101022-832ef12-r3",
+  "20260810-101728-540c64f-r4",
+  "20260810-102552-3f584e6-r5",
+  "20260810-103412-292cbe0-r6",
+  "20260810-104539-9ebc018-r7",
+  "20260810-105205-47888a6-r8",
+  "20260810-105842-f79f7cd-r9",
+  "20260810-110511-462b97d-r10",
+  "20260810-111335-eafa090-r11",
+  "20260810-112054-6f0373b-r12",
+  "20260810-112734-a40b694-r13",
+  "20260810-113500-bf74248-r14",
+  "20260810-114224-3591ce5-r15",
+  "20260810-114956-6b473ab-r16",
+  "20260810-115645-735eb4a-r17",
+  "20260810-120417-fa9941f-r18",
+  "20260810-121138-0142149-r19",
+  "20260810-121839-27be060-r20",
+  "20260810-122537-e4f63d0-r21",
+  "20260810-123613-e67d907-r22",
+  "20260810-124122-40584c3-r23",
+  "20260810-124419-2e503bd-r24",
+  "20260810-125536-2f65232-r25",
+  "20260810-130030-d8fd4da-r26",
+  "20260810-130541-bfc893f-r27",
+  "20260810-131035-3d51916-r28",
+  "20260810-131544-cd3d0a0-r29",
+  "20260810-132056-349a019-r30",
+  "20260810-132638-749dc06-r31",
+  "20260810-133128-cec41d5-r32",
+  "20260810-133703-43f0325-r33",
+  "20260810-134136-f0a90ab-r34",
+  "20260810-134634-6e9b515-r35",
+  "20260810-135250-714a7b5-r36",
+  "20260810-135909-476b3bc-r37",
+  "20260810-140436-d6f2bcd-r38",
+  "20260810-140953-c85d831-r39",
+  "20260810-171425-c85d831-r40",
+  "20260810-171943-c85d831-r41",
+  "20260810-172307-02bca2a-r42",
+  "20260810-172418-a010637-r43",
+  "20260810-172948-a010637-r44",
+  "20260810-173135-a010637-r45",
+  "20260810-173136-a010637-r46",
+  "20260810-173224-dea20d0-r47",
+  "20260810-173412-dea20d0-r48",
+  "20260810-173413-dea20d0-r49",
+  "20260810-173444-a724bfb-r50",
+  "20260810-173605-a724bfb-r51",
+  "20260810-174047-a724bfb-r52",
+  "20260810-174521-a724bfb-r53",
+  "20260810-174556-a724bfb-r54",
+  "20260810-175128-3fc3118-r55",
+  "20260810-175215-9643831-r56",
+  "20260810-175645-9643831-r57",
+  "20260810-180105-acd0c6e-r58",
+  "20260810-180201-acd0c6e-r59",
+  "20260810-180211-a4f9901-r60",
+  "20260810-181311-fd6f5a6-r61",
+  "20260810-181904-a3f0967-r62",
+  "20260810-182420-db95dd2-r63",
+  "20260810-182922-e69b3bd-r64",
+  "20260810-183415-3b4bc45-r65",
+  "20260810-183841-61e7780-r66",
+  "20260810-184108-bac4880-r67",
+  "20260810-184116-d2cbdd8-r68",
+  "20260810-184633-f2eabde-r69",
+  "20260810-185213-43e86d0-r70",
+  "20260810-185649-43e94b3-r71",
+  "20260810-190050-f3fb4b5-r72",
+  "20260810-190652-522ae7d-r73",
+  "20260810-191221-954a405-r74",
+  "20260810-191651-e17717c-r75",
+  "20260810-192037-f985099-r76",
+  "20260810-192043-fd098ad-r77",
+  "20260810-192426-2e1bdf0-r78",
+  "20260810-192755-7b099c2-r79",
+  "20260810-193213-17fe784-r80",
+  "20260810-193219-3f33ab8-r81",
+  "20260810-193515-0b8c673-r82",
+  "20260810-193523-535868a-r83",
+  "20260810-193923-785bb30-r84",
+  "20260810-194418-d33adf2-r85",
+  "20260810-194644-b8a2e7a-r86",
+  "20260810-194651-3d3decd-r87",
+  "20260810-194721-0c9513c-r88",
+  "20260810-194726-809bf79-r89",
+  "20260810-195107-4905e7f-r90",
+  "20260810-195628-260c202-r91",
+  "20260810-195712-e098637-r92",
+  "20260810-195929-7b2200e-r93",
+  "20260810-195932-aacf493-r94",
+  "20260810-195939-b56ce80-r95",
+  "20260810-195955-c495f1e-r96",
+  "20260810-200147-fe4dd77-r97",
+  "20260810-200157-d1393b3-r98",
+  "20260810-202339-44b59e0-r99",
+  "20260810-202636-1e2ea37-r100",
+  "20260810-203152-1e2ea37-r101",
+  "20260810-203257-1e2ea37-r102"
+ ],
+ "models": {
+  "auditor": {
+   "alias": "gpt-5.5",
+   "resolved": "openai/gpt-5.5",
+   "provider": "openrouter",
+   "route": {
+    "order": [
+     "openai"
+    ],
+    "allow_fallbacks": false
+   },
+   "price_usd_per_mtok": {
+    "in": 5.0,
+    "out": 30.0
+   }
+  },
+  "construction": {
+   "model": "claude-opus-5",
+   "effort": "medium",
+   "route": "plan (rounds 0-3 note repairs) -> openrouter anthropic/claude-opus-5",
+   "transport_change_utc": "2026-08-10",
+   "transport_change_note": "the lead author's instruction: construction moved off the Claude Max plan onto OpenRouter credits (models.lock role 'constructor'), budget stop 350 -> 450. SAME model and effort, different transport; the auditor role and every pinned auditor setting are unchanged, and every constructed artefact is re-audited by the cross-family auditor regardless of transport. Plan-path calls made before the switch: 119; OpenRouter constructor calls after it: 658"
+  }
+ },
+ "prompt_sha256_16": {
+  "AUDIT_MC": "e3be82775a03ca00",
+  "AUDIT_MNC": "063ac7ffd3466e42",
+  "AUDIT_TRAPS": "3163096a51d56618",
+  "AUDIT_UNSUPPORTED": "351d4a111199d827",
+  "REPAIR": "0d39473599a000c5",
+  "EDIT_CHECK": "0e39faea939d8599",
+  "REGEN_SUFFIX": "950b3976a5cd65bf",
+  "INJECT (verbatim import)": "02161d21f8f9b244",
+  "TYPE_add": "6dd5d3667032fd36",
+  "TYPE_change": "403ca559b898772e",
+  "TYPE_omit": "345a99fe5a6884fd"
+ },
+ "readings": {
+  "authored": {
+   "M1": {
+    "k": 11,
+    "n": 30,
+    "p": 0.3667,
+    "lo": 0.2187,
+    "hi": 0.5449
+   },
+   "reading": "C (>30%)",
+   "note": "Reading C consequence (instrument rewrite) NOT executed - explicitly out of scope per task ('no further instrument iteration'); repaired to pass instead, flagged for the paper"
+  },
+  "trapblind": {
+   "M1": {
+    "k": 3,
+    "n": 9,
+    "p": 0.3333,
+    "lo": 0.1206,
+    "hi": 0.6458
+   },
+   "reading": "C (>30%)",
+   "note": "Reading C consequence (instrument rewrite) NOT executed - explicitly out of scope per task ('no further instrument iteration'); repaired to pass instead, flagged for the paper"
+  },
+  "primock": {
+   "M1": {
+    "k": 49,
+    "n": 53,
+    "p": 0.9245,
+    "lo": 0.8214,
+    "hi": 0.9703
+   },
+   "reading": "C (>30%)",
+   "note": "Reading C consequence (instrument rewrite) NOT executed - explicitly out of scope per task ('no further instrument iteration'); repaired to pass instead, flagged for the paper"
+  },
+  "aci": {
+   "M1": {
+    "k": 36,
+    "n": 45,
+    "p": 0.8,
+    "lo": 0.6618,
+    "hi": 0.891
+   },
+   "reading": "C (>30%)",
+   "note": "Reading C consequence (instrument rewrite) NOT executed - explicitly out of scope per task ('no further instrument iteration'); repaired to pass instead, flagged for the paper"
+  }
+ },
+ "sitting_queue_n": 177
+}

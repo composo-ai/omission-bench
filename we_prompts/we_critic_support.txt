@@ -1,0 +1,10 @@
+You are auditing a set of claims constructed for a summarization-evaluation study. Each claim is meant to be UNSUPPORTED by the article - verify that. For every claim, decide whether the article actually does support it after all (a false claim that turns out to be true is unusable). Flag any claim the article supports, contradicts only weakly, or leaves genuinely ambiguous.
+
+SOURCE ARTICLE:
+{article}
+
+CLAIMS:
+{claims}
+
+Output ONLY JSON:
+{"items": [{"idx": <0-based index>, "genuinely_unsupported": true|false, "reason": "<one line, only when false>"}]}

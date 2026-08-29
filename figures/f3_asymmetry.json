@@ -1,0 +1,239 @@
+{
+ "what": "paired discrimination on omissions against commissions, per judge design",
+ "measure": "tie-adjusted P(errored note scores strictly below its own clean twin) + half the tie mass; chance 0.500",
+ "substrates": {
+  "eval": "495 evaluation pairs over 112 consultations (293 omissions, 202 commissions); grid at 3 replicates, reference arms at 2",
+  "held-out": "151 held-out confirmation pairs over 47 consultations (131 omissions, 20 commissions), mean of 3 replicates (FINDINGS 35.1)"
+ },
+ "chance": 0.5,
+ "rows": [
+  {
+   "label": "F / binary / k=1",
+   "key": "F-bin-k1",
+   "group": "monolithic grid",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.5,
+   "commissions": 0.8746,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "F / binary / k=8",
+   "key": "F-bin-k8",
+   "group": "monolithic grid",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.5085,
+   "commissions": 0.9043,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "FC / binary / k=1",
+   "key": "FC-bin-k1",
+   "group": "monolithic grid",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.5392,
+   "commissions": 0.7921,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "FC / binary / k=8",
+   "key": "FC-bin-k8",
+   "group": "monolithic grid",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.591,
+   "commissions": 0.8688,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "F / score / k=1",
+   "key": "F-score-k1",
+   "group": "monolithic grid",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.5489,
+   "commissions": 0.9109,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "F / score / k=8",
+   "key": "F-score-k8",
+   "group": "monolithic grid",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.5819,
+   "commissions": 0.9439,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "FC / score / k=1",
+   "key": "FC-score-k1",
+   "group": "monolithic grid",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.5848,
+   "commissions": 0.8952,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "FC / score / k=8",
+   "key": "FC-score-k8",
+   "group": "monolithic grid",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.6337,
+   "commissions": 0.9389,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "Deployed judge, exclusions deleted",
+   "key": "v14-noexcl",
+   "group": "reference arm",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.5051,
+   "commissions": 0.8899,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "Deployed faithfulness judge, as shipped",
+   "key": "v14-asis",
+   "group": "reference arm",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.5179,
+   "commissions": 0.8861,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "Deployed judge, omissions demanded",
+   "key": "v14-incl",
+   "group": "reference arm",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.5563,
+   "commissions": 0.8874,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "G-Eval",
+   "key": "geval",
+   "group": "reference arm",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.5683,
+   "commissions": 0.8899,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "Optimiser's exploratory winner",
+   "key": "gepa-optimized",
+   "group": "reference arm",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.5495,
+   "commissions": 0.8614,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "Engineered omission judge",
+   "key": "engineered-completeness",
+   "group": "reference arm",
+   "enumerates": false,
+   "substrate": "eval",
+   "omissions": 0.6391,
+   "commissions": 0.7537,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "Instance checklist",
+   "key": "checklist",
+   "group": "reference arm",
+   "enumerates": true,
+   "substrate": "eval",
+   "omissions": 0.6468,
+   "commissions": 0.7438,
+   "n_omission_pairs": 293,
+   "n_commission_pairs": 202
+  },
+  {
+   "label": "RAGAS-style coverage score (ours)",
+   "key": "ragas-completeness",
+   "group": "reference arm",
+   "enumerates": true,
+   "substrate": "eval",
+   "omissions": 0.8166,
+   "commissions": 0.6647,
+   "n_omission_pairs": 289,
+   "n_commission_pairs": 200
+  },
+  {
+   "label": "Enumerate + check (B2)",
+   "key": "B2",
+   "group": "enumeration pipeline",
+   "enumerates": true,
+   "substrate": "held-out",
+   "omissions": 0.7863,
+   "commissions": 0.65,
+   "omissions_per_replicate": [
+    0.8015,
+    0.771,
+    0.7863
+   ],
+   "commissions_per_replicate": [
+    0.65,
+    0.6,
+    0.7
+   ],
+   "n_omission_pairs": 131,
+   "n_commission_pairs": 20
+  },
+  {
+   "label": "Enumerate + audit + check (B3)",
+   "key": "B3",
+   "group": "enumeration pipeline",
+   "enumerates": true,
+   "substrate": "held-out",
+   "omissions": 0.7621,
+   "commissions": 0.6167,
+   "omissions_per_replicate": [
+    0.7519,
+    0.7672,
+    0.7672
+   ],
+   "commissions_per_replicate": [
+    0.5,
+    0.65,
+    0.7
+   ],
+   "n_omission_pairs": 131,
+   "n_commission_pairs": 20
+  }
+ ],
+ "sources": [
+  "results/w2-ablation/_state/grid-main2.jsonl",
+  "results/w2-strong/_state/arms-main.jsonl",
+  "results/w2-v14/_state/arms-main.jsonl",
+  "results/w2-baselines/_state/arms-main.jsonl",
+  "results/w2-pipeline/_state/confirm-B2.jsonl",
+  "results/w2-pipeline/_state/confirm-B3.jsonl",
+  "results/w2-pipeline/_state/confirmr{2,3}-B{2,3}.jsonl",
+  "results/w2-pipeline-replicates/analysis.json"
+ ]
+}

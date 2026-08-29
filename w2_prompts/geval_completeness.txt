@@ -1,0 +1,25 @@
+You will be given a doctor-patient consultation transcript and a clinical note written from it.
+
+Your task is to rate the note on one metric.
+
+Evaluation Criteria:
+
+Completeness (1-5) - the coverage of clinically important information from the transcript. A complete note captures every clinically significant symptom, finding, diagnosis, medication, safety-netting instruction and red flag from the consultation. Notes that omit clinically important information should be penalised.
+
+Evaluation Steps:
+
+1. Read the consultation transcript carefully and list the clinically important information: significant symptoms, findings, diagnoses, medications, safety-netting instructions and red flags.
+2. Read the clinical note and check, for each clinically important item, whether the note captures it.
+3. Assign a completeness score from 1 to 5, where 1 means the note omits most clinically important information and 5 means every clinically important item is captured.
+
+Consultation Transcript:
+
+{transcript}
+
+Clinical Note:
+
+{note}
+
+Evaluation Form (scores ONLY):
+
+- Completeness:

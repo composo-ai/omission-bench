@@ -1,0 +1,7 @@
+CONSULTATION TRANSCRIPT:
+{transcript}
+
+Write a checklist for auditing a clinical note produced from this consultation. Each item is a single yes/no question about one specific fact: either "Does the note correctly state X?" for a fact the note must contain, or "Does the note avoid asserting Y?" for content it must not assert. Cover the clinically material content: history, findings, significant negatives, diagnoses, medications, plan, safety-netting, red flags. 10-25 items, each answerable from the note plus the transcript.
+
+Output a JSON object only, no other text:
+{"checklist": ["<question 1>", "<question 2>"]}

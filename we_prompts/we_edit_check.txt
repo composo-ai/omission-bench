@@ -1,0 +1,32 @@
+A reference summary had EXACTLY ONE error deliberately injected, producing the errored summary. You are given the diff between them, the intended error TYPE, and the injector's own description of the edit. Verify:
+
+1. single_edit: the diff is ONE atomic factual edit (one fact added, changed, or removed)
+   - not multiple edits, not rephrasing or reformatting elsewhere.
+2. type_match: the edit is of the recorded TYPE. add = asserts something absent from the
+   clean summary; change = alters an existing claim; omit = removes a claim and adds nothing.
+3. description_match: the edit matches the injector's one-line description.
+4. is_error (add/change only, else null): the injected or altered content is genuinely
+   unsupported by or contradicted by the SOURCE ARTICLE - it must not happen to be true.
+5. truly_absent (omit only, else null): the removed claim survives NOWHERE in the errored
+   summary (no partial or paraphrased residual mention), and it corresponds to at least one
+   ACU - give that ACU's 0-based index as acu_idx (else -1).
+
+Return ONLY JSON:
+{"single_edit":true|false,"type_match":true|false,"description_match":true|false,
+"is_error":true|false|null,"truly_absent":true|false|null,"acu_idx":<int or null>,
+"reason":"<one line covering any false>"}
+
+TYPE: {typ}
+INJECTOR DESCRIPTION: {change} | target: {what}
+
+DIFF (unified, clean -> errored):
+{diff}
+
+ERRORED SUMMARY (full, for the residual-mention check):
+{errored}
+
+ACUs:
+{acu_list}
+
+SOURCE ARTICLE:
+{article}

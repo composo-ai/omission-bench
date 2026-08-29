@@ -1,0 +1,374 @@
+{
+  "what": "the eight judge designs: paired discrimination on both error types, absolute detection and false alarms at each design's fixed flag rule, and what is left threshold-free",
+  "lands_at": "Section 6, 'Presence is caught at near-ceiling, absence at close to chance'",
+  "substrate": "495-pair evaluation set (293 omission pairs, 202 commission pairs) and 112 clean twins, 3 replicates: 879 omission records, 606 commission records, 336 clean records",
+  "columns": {
+    "design": "the three choices in words, with the released data's short code",
+    "paired_commissions": "tie-adjusted paired discrimination on added or altered content, chance 0.500",
+    "paired_omissions": "the same measure on omissions",
+    "det": "share of omission-errored notes flagged at the design's own fixed rule",
+    "fa": "share of clean notes flagged by that same rule",
+    "z": "two-proportion statistic, detection against that design's own false alarms",
+    "auc_omissions": "pooled record-level area under the curve, omission-errored notes against clean notes; 0.500 is a coin flip",
+    "swept_fa10": "detection at the most sensitive threshold whose false alarms stay within 10%, quoted beside the false-alarm rate it lands on"
+  },
+  "threshold_arithmetic": {
+    "youden_thresholds": {
+      "F-score-k1": 8.1667,
+      "F-score-k8": 8.3958,
+      "FC-score-k1": 8.5,
+      "FC-score-k8": 8.1875
+    },
+    "youden_span": [
+      8.1667,
+      8.5
+    ],
+    "fixed_rules": {
+      "score, one sample": "score <= 7",
+      "score, eight samples": "winsorised mean < 8.0",
+      "yes/no, one sample": "FAIL verdict",
+      "yes/no, eight samples": "winsorised mean of the eight verdicts <= 5.0"
+    },
+    "auc_span": [
+      0.5031,
+      0.5748
+    ],
+    "reading": "the cuts the data suggests all sit above the fixed cuts, and the area under the curve barely leaves chance, so separability rather than calibration is what these designs lack"
+  },
+  "caption": "**The eight judge designs, on the 495-pair evaluation set.** Each design crosses what the judge is told to check (faithfulness only, F; faithfulness and completeness, FC), how it answers (a yes/no verdict, bin; a 0-to-10 score, score) and how many times it is asked (once, k1; eight times as an ensemble combined by a winsorised mean, the extreme scores replaced by the nearest kept values before averaging, k8). Paired discrimination is the tie-adjusted probability that an errored note scores below its own verified-clean twin, where 0.500 is a coin flip; it needs the twin, so it is a ceiling rather than a deployment measure. Detection and false alarms are single-note flag rates at each design's own rule, fixed before the run (a FAIL verdict for the single-sample yes/no designs, a winsorised mean of the eight encoded verdicts at or below 5.0 for the eight-sample yes/no designs, a score of 7 or below for the single-sample scored designs, and a winsorised mean below 8.0 for the eight-sample scored ones), over 879 omission records and 336 clean records: three replicates of 293 omission pairs and 112 clean twins, with 202 commission pairs carrying the commission column. z is the two-proportion statistic for a design's detection against its own false alarms, pooled over the three replicates; pooling counts three passes over the same notes as independent observations and inflates z, so the per-note-majority reading in Section 5 (1.2 to 1.7 standard errors for the two yes/no completeness designs) is the honest strength of that gap. Where the flag line was drawn is not what limits these designs. The best-separating cut the data itself suggests, Youden's J on the mean-over-runs aggregate, lands at 8.17 (F-score-k1), 8.40 (F-score-k8), 8.50 (FC-score-k1) and 8.19 (FC-score-k8), every one of them above the 7 and 8.0 fixed before the run rather than below; and threshold-free, the area under the curve stays between 0.503 and 0.575 across all eight.",
+  "rows": [
+    {
+      "code": "F-bin-k1",
+      "design": "Faithfulness only, yes/no, one sample",
+      "criterion": "faithfulness only",
+      "format": "yes/no verdict",
+      "samples": 1,
+      "flag_rule": "FAIL verdict",
+      "paired_omissions": 0.5,
+      "paired_omissions_per_replicate": [
+        0.5,
+        0.4863,
+        0.5137
+      ],
+      "paired_commissions": 0.8746,
+      "paired_commissions_per_replicate": [
+        0.8861,
+        0.8589,
+        0.8787
+      ],
+      "paired_omissions_exact": 0.5,
+      "paired_commissions_exact": 0.8745874587458746,
+      "strict_win_rate_omissions": 0.0387,
+      "tie_rate_omissions": 0.9226,
+      "strict_win_rate_omissions_exact": 0.038680318543799774,
+      "tie_rate_omissions_exact": 0.9226393629124005,
+      "det": 0.095563,
+      "det_k": 84,
+      "det_n": 879,
+      "fa": 0.089286,
+      "fa_k": 30,
+      "fa_n": 336,
+      "z": 0.336,
+      "auc_omissions": 0.5031,
+      "swept_fa10": null,
+      "youden_threshold": null,
+      "note": "a single yes/no verdict takes two values, so there is no threshold to sweep"
+    },
+    {
+      "code": "F-bin-k8",
+      "design": "Faithfulness only, yes/no, eight samples",
+      "criterion": "faithfulness only",
+      "format": "yes/no verdict",
+      "samples": 8,
+      "flag_rule": "winsorised mean of the eight verdicts <= 5.0",
+      "paired_omissions": 0.5085,
+      "paired_omissions_per_replicate": [
+        0.5102,
+        0.5188,
+        0.4966
+      ],
+      "paired_commissions": 0.9043,
+      "paired_commissions_per_replicate": [
+        0.9035,
+        0.9109,
+        0.8985
+      ],
+      "paired_omissions_exact": 0.5085324232081911,
+      "paired_commissions_exact": 0.9042904290429044,
+      "strict_win_rate_omissions": 0.0739,
+      "tie_rate_omissions": 0.8692,
+      "strict_win_rate_omissions_exact": 0.07394766780432309,
+      "tie_rate_omissions_exact": 0.869169510807736,
+      "det": 0.095563,
+      "det_k": 84,
+      "det_n": 879,
+      "fa": 0.074405,
+      "fa_k": 25,
+      "fa_n": 336,
+      "z": 1.154,
+      "auc_omissions": 0.5116,
+      "swept_fa10": null,
+      "youden_threshold": null,
+      "note": "the eight verdicts aggregate to a vote fraction rather than a score, so it is not swept with the scored designs; read as one anyway, the most sensitive cut inside the 10% budget gives 11.4% detection (100/879) at 8.9% false alarms (30/336)"
+    },
+    {
+      "code": "FC-bin-k1",
+      "design": "Faithfulness and completeness, yes/no, one sample",
+      "criterion": "faithfulness and completeness",
+      "format": "yes/no verdict",
+      "samples": 1,
+      "flag_rule": "FAIL verdict",
+      "paired_omissions": 0.5392,
+      "paired_omissions_per_replicate": [
+        0.5256,
+        0.5597,
+        0.5324
+      ],
+      "paired_commissions": 0.7921,
+      "paired_commissions_per_replicate": [
+        0.7921,
+        0.797,
+        0.7871
+      ],
+      "paired_omissions_exact": 0.5392491467576792,
+      "paired_commissions_exact": 0.7920792079207922,
+      "strict_win_rate_omissions": 0.1513,
+      "tie_rate_omissions": 0.7759,
+      "strict_win_rate_omissions_exact": 0.15130830489192262,
+      "tie_rate_omissions_exact": 0.7758816837315131,
+      "det": 0.40273,
+      "det_k": 354,
+      "det_n": 879,
+      "fa": 0.318452,
+      "fa_k": 107,
+      "fa_n": 336,
+      "z": 2.708,
+      "auc_omissions": 0.5421,
+      "swept_fa10": null,
+      "youden_threshold": null,
+      "note": "a single yes/no verdict takes two values, so there is no threshold to sweep"
+    },
+    {
+      "code": "FC-bin-k8",
+      "design": "Faithfulness and completeness, yes/no, eight samples",
+      "criterion": "faithfulness and completeness",
+      "format": "yes/no verdict",
+      "samples": 8,
+      "flag_rule": "winsorised mean of the eight verdicts <= 5.0",
+      "paired_omissions": 0.591,
+      "paired_omissions_per_replicate": [
+        0.5734,
+        0.6041,
+        0.5956
+      ],
+      "paired_commissions": 0.8688,
+      "paired_commissions_per_replicate": [
+        0.8639,
+        0.8738,
+        0.8688
+      ],
+      "paired_omissions_exact": 0.5910125142207053,
+      "paired_commissions_exact": 0.8688118811881188,
+      "strict_win_rate_omissions": 0.3026,
+      "tie_rate_omissions": 0.5768,
+      "strict_win_rate_omissions_exact": 0.30261660978384525,
+      "tie_rate_omissions_exact": 0.5767918088737202,
+      "det": 0.423208,
+      "det_k": 372,
+      "det_n": 879,
+      "fa": 0.321429,
+      "fa_k": 108,
+      "fa_n": 336,
+      "z": 3.246,
+      "auc_omissions": 0.5624,
+      "swept_fa10": null,
+      "youden_threshold": null,
+      "note": "the eight verdicts aggregate to a vote fraction rather than a score, and no cut on it keeps false alarms within 10%"
+    },
+    {
+      "code": "F-score-k1",
+      "design": "Faithfulness only, score, one sample",
+      "criterion": "faithfulness only",
+      "format": "0-to-10 score",
+      "samples": 1,
+      "flag_rule": "score <= 7",
+      "paired_omissions": 0.5489,
+      "paired_omissions_per_replicate": [
+        0.5341,
+        0.5358,
+        0.5768
+      ],
+      "paired_commissions": 0.9109,
+      "paired_commissions_per_replicate": [
+        0.9035,
+        0.9109,
+        0.9183
+      ],
+      "paired_omissions_exact": 0.5489192263936291,
+      "paired_commissions_exact": 0.9108910891089109,
+      "strict_win_rate_omissions": 0.198,
+      "tie_rate_omissions": 0.7019,
+      "strict_win_rate_omissions_exact": 0.1979522184300341,
+      "tie_rate_omissions_exact": 0.70193401592719,
+      "det": 0.010239,
+      "det_k": 9,
+      "det_n": 879,
+      "fa": 0.014881,
+      "fa_k": 5,
+      "fa_n": 336,
+      "z": -0.678,
+      "auc_omissions": 0.5491,
+      "swept_fa10": {
+        "det": 0.010239,
+        "fa": 0.014881,
+        "det_k": 9,
+        "n_err": 879,
+        "fa_k": 5,
+        "n_clean": 336,
+        "threshold": 8.0
+      },
+      "youden_threshold": 8.1667,
+      "note": null
+    },
+    {
+      "code": "F-score-k8",
+      "design": "Faithfulness only, score, eight samples",
+      "criterion": "faithfulness only",
+      "format": "0-to-10 score",
+      "samples": 8,
+      "flag_rule": "winsorised mean < 8.0",
+      "paired_omissions": 0.5819,
+      "paired_omissions_per_replicate": [
+        0.5819,
+        0.5802,
+        0.5836
+      ],
+      "paired_commissions": 0.9439,
+      "paired_commissions_per_replicate": [
+        0.9455,
+        0.948,
+        0.9381
+      ],
+      "paired_omissions_exact": 0.5819112627986348,
+      "paired_commissions_exact": 0.9438943894389439,
+      "strict_win_rate_omissions": 0.3333,
+      "tie_rate_omissions": 0.4972,
+      "strict_win_rate_omissions_exact": 0.3333333333333333,
+      "tie_rate_omissions_exact": 0.49715585893060293,
+      "det": 0.023891,
+      "det_k": 21,
+      "det_n": 879,
+      "fa": 0.020833,
+      "fa_k": 7,
+      "fa_n": 336,
+      "z": 0.318,
+      "auc_omissions": 0.5494,
+      "swept_fa10": {
+        "det": 0.023891,
+        "fa": 0.020833,
+        "det_k": 21,
+        "n_err": 879,
+        "fa_k": 7,
+        "n_clean": 336,
+        "threshold": 8.0
+      },
+      "youden_threshold": 8.3958,
+      "note": null
+    },
+    {
+      "code": "FC-score-k1",
+      "design": "Faithfulness and completeness, score, one sample",
+      "criterion": "faithfulness and completeness",
+      "format": "0-to-10 score",
+      "samples": 1,
+      "flag_rule": "score <= 7",
+      "paired_omissions": 0.5848,
+      "paired_omissions_per_replicate": [
+        0.6177,
+        0.5939,
+        0.5427
+      ],
+      "paired_commissions": 0.8952,
+      "paired_commissions_per_replicate": [
+        0.901,
+        0.8861,
+        0.8985
+      ],
+      "paired_omissions_exact": 0.5847554038680318,
+      "paired_commissions_exact": 0.8952145214521452,
+      "strict_win_rate_omissions": 0.2696,
+      "tie_rate_omissions": 0.6303,
+      "strict_win_rate_omissions_exact": 0.2696245733788396,
+      "tie_rate_omissions_exact": 0.6302616609783845,
+      "det": 0.046644,
+      "det_k": 41,
+      "det_n": 879,
+      "fa": 0.056548,
+      "fa_k": 19,
+      "fa_n": 336,
+      "z": -0.713,
+      "auc_omissions": 0.5727,
+      "swept_fa10": {
+        "det": 0.046644,
+        "fa": 0.056548,
+        "det_k": 41,
+        "n_err": 879,
+        "fa_k": 19,
+        "n_clean": 336,
+        "threshold": 8.0
+      },
+      "youden_threshold": 8.5,
+      "note": null
+    },
+    {
+      "code": "FC-score-k8",
+      "design": "Faithfulness and completeness, score, eight samples",
+      "criterion": "faithfulness and completeness",
+      "format": "0-to-10 score",
+      "samples": 8,
+      "flag_rule": "winsorised mean < 8.0",
+      "paired_omissions": 0.6337,
+      "paired_omissions_per_replicate": [
+        0.6553,
+        0.6451,
+        0.6007
+      ],
+      "paired_commissions": 0.9389,
+      "paired_commissions_per_replicate": [
+        0.9554,
+        0.9381,
+        0.9233
+      ],
+      "paired_omissions_exact": 0.633674630261661,
+      "paired_commissions_exact": 0.9389438943894389,
+      "strict_win_rate_omissions": 0.4266,
+      "tie_rate_omissions": 0.4141,
+      "strict_win_rate_omissions_exact": 0.4266211604095563,
+      "tie_rate_omissions_exact": 0.41410693970420925,
+      "det": 0.083049,
+      "det_k": 73,
+      "det_n": 879,
+      "fa": 0.065476,
+      "fa_k": 22,
+      "fa_n": 336,
+      "z": 1.021,
+      "auc_omissions": 0.5748,
+      "swept_fa10": {
+        "det": 0.083049,
+        "fa": 0.065476,
+        "det_k": 73,
+        "n_err": 879,
+        "fa_k": 22,
+        "n_clean": 336,
+        "threshold": 8.0
+      },
+      "youden_threshold": 8.1875,
+      "note": null
+    }
+  ],
+  "sources": [
+    "results/w2-ablation/_state/grid-main2.jsonl",
+    "paper/figures/_recomputed.json (grid block)",
+    "w2_results_main.json (youden_thresholds)"
+  ]
+}

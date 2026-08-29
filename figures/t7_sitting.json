@@ -1,0 +1,138 @@
+{
+ "what": "the clinician sitting: one physician author, 70 items in one sitting; blinding varies by stage",
+ "sitting": {
+  "date": "2026-08-14",
+  "duration_minutes": 58,
+  "items": 70,
+  "pack": "master/sitting_pack.md",
+  "seed": 20260809,
+  "conflict": "the rater is an author of the study and designed the instruments he is grading; sections A, B, C and G are endorsements rather than blind measurements"
+ },
+ "rows": [
+  {
+   "row": "Blinded adjudication of pipeline-versus-monolithic disagreements",
+   "detail": "10 notes where the two designs reach opposite conclusions, one per consultation; he was told neither which judge said what nor whether the note had been edited",
+   "result": {
+    "pipeline_matches": {
+     "k": 10,
+     "n": 10,
+     "p": 1.0,
+     "pct": 100.0,
+     "lo": 72.2,
+     "hi": 100.0
+    },
+    "grid_matches": {
+     "k": 0,
+     "n": 10,
+     "p": 0.0,
+     "pct": 0.0,
+     "lo": 0.0,
+     "hi": 27.8
+    },
+    "exact_mcnemar_p": 0.00195,
+    "conservative": {
+     "n": 8,
+     "excluded": [
+      "F4",
+      "F5"
+     ],
+     "why": "the grid's note-level flag on an errored note can be earned by a defect the item never shows (F4 is a `change` pair, F5 a partial-strong omission of a different fact), so the grid is not adjudicable on the fact the item asks about",
+     "pipeline": {
+      "k": 8,
+      "n": 8,
+      "p": 1.0,
+      "pct": 100.0,
+      "lo": 67.6,
+      "hi": 100.0
+     },
+     "grid": {
+      "k": 0,
+      "n": 8,
+      "p": 0.0,
+      "pct": 0.0,
+      "lo": 0.0,
+      "hi": 32.4
+     },
+     "exact_mcnemar_p": 0.00781
+    }
+   }
+  },
+  {
+   "row": "Per-stage validation rates",
+   "detail": "one blinded or endorsing pass per pipeline stage",
+   "result": {
+    "stages": [
+     {
+      "stage": "inference-time fact extraction: the cited quote supports the fact",
+      "blind": false,
+      "k": 10,
+      "n": 10,
+      "p": 1.0,
+      "pct": 100.0,
+      "lo": 72.2,
+      "hi": 100.0
+     },
+     {
+      "stage": "reference-note repair: the flag was a real defect, properly fixed",
+      "blind": false,
+      "k": 8,
+      "n": 8,
+      "p": 1.0,
+      "pct": 100.0,
+      "lo": 67.6,
+      "hi": 100.0
+     },
+     {
+      "stage": "omission-pair rejection: the panel was right to reject",
+      "blind": false,
+      "k": 6,
+      "n": 6,
+      "p": 1.0,
+      "pct": 100.0,
+      "lo": 61.0,
+      "hi": 100.0
+     },
+     {
+      "stage": "taxonomy panel cuts: false-kill rate (2 abstentions)",
+      "blind": true,
+      "k": 0,
+      "n": 10,
+      "p": 0.0,
+      "pct": 0.0,
+      "lo": 0.0,
+      "hi": 27.8
+     }
+    ]
+   }
+  },
+  {
+   "row": "Severity grading",
+   "detail": "20 facts graded blind against the written rubric, against the two-arm machine consensus",
+   "result": {
+    "exact": {
+     "k": 14,
+     "n": 20,
+     "p": 0.7,
+     "pct": 70.0,
+     "lo": 48.1,
+     "hi": 85.5
+    },
+    "weighted_adjacent_half": 85.0,
+    "kappa_linear": 0.63,
+    "kappa_boot95": [
+     0.317,
+     0.861
+    ],
+    "kappa_unweighted": 0.547,
+    "adjacent_disagreements": 6,
+    "two_grade_disagreements": 0,
+    "instrument_note": "this validates the FACTORIAL severity axis (master/factorial_severity.json, FINDINGS 15.2) - the axis results are conditioned on. It does NOT validate the pipeline audit stage's own severity grades, which are what FINDINGS 19.3's per-fact decision rule fires on; that is a separate run of the same written rubric and no item in this sitting scores it."
+   }
+  }
+ ],
+ "sources": [
+  "master/sitting_results.json",
+  "master/sitting_pack.md",
+  "build_sitting_pack.py"
+ ]
+}

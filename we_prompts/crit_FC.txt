@@ -1,0 +1,1 @@
+Reward summaries that a careful reader would accept as faithful AND complete: no fabricated, contradicted, or distorted claims relative to the source article, and no omission of salient information that a careful reader would expect the summary to cover. Penalise any difference from the source article that would change the reader's understanding of what happened.

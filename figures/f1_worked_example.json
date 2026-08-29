@@ -1,0 +1,243 @@
+{
+ "what": "one real case end to end: a critical examination finding the transcript establishes twice, the note records twice, and two twins remove differently",
+ "case": {
+  "pair_ids": [
+   "authored|cp_musculoskeletal|omitc|mc17",
+   "authored|cp_musculoskeletal|omitps|mc17"
+  ],
+  "consultation": "authored|cp_musculoskeletal",
+  "stratum": "authored",
+  "presenting_complaint": "Left-sided chest wall pain in an office worker in their 30s, of about a week's duration, that came on after heavy lifting during a house move; sharp and positional (worse on twisting and deep breaths), with reproducible tenderness over the costochondral junctions on examination and explicit denial of cardiac features. Working diagnosis: musculoskeletal chest-wall pain / costochondritis, managed with reassurance and simple analgesia.",
+  "fact_uid": "authored|cp_musculoskeletal|mc|17",
+  "fact": "Examination: palpation over the costochondral junctions reproduces the patient's pain (key positive finding)",
+  "dataset_severity": "critical",
+  "severity_source": "rubric_2arm_consensus",
+  "in_held_out_confirmation_subset": true,
+  "provenance": "authored scenario: transcript, fact sheet and repaired reference note are all ours; no vendor note text, no third-party corpus"
+ },
+ "transcript_sites": [
+  {
+   "quote": "when I press over these little joints where the rib cartilage meets the breastbone - we call them the costochondral junctions - I'm reproducing your pain",
+   "char_offset": 4258,
+   "speaker": "doctor",
+   "position_in_transcript": 0.551
+  },
+  {
+   "quote": "crucially I can press on the spot and reproduce exactly the pain you've been getting",
+   "char_offset": 5135,
+   "speaker": "doctor",
+   "position_in_transcript": 0.665
+  }
+ ],
+ "pipeline_extraction": {
+  "fact_id": "f22",
+  "extracted_fact": "On examination, palpation over the costochondral junctions beside the breastbone was tender and reproduced the patient's exact pain.",
+  "cited_evidence": "when I press over these little joints where the rib cartilage meets the breastbone... I'm reproducing your pain",
+  "audit_fact": "Palpation over the costochondral junctions beside the breastbone was tender and reproduced the exact pain.",
+  "audit_severity": "critical",
+  "audit_rationale": "Reproducible tenderness is pivotal diagnostic evidence.",
+  "blind": "the extract and audit prompts see the transcript and nothing else"
+ },
+ "note_sites": [
+  {
+   "site_id": 0,
+   "section": "Examination:",
+   "span": "Palpation over costochondral junctions reproduced patient's pain.",
+   "strength": "explicit",
+   "role": "primary (load-bearing)"
+  },
+  {
+   "site_id": 1,
+   "section": "Impression:",
+   "span": "reproducible costochondral tenderness on examination",
+   "strength": "paraphrase",
+   "role": "second mention"
+  }
+ ],
+ "versions": [
+  {
+   "id": "clean",
+   "label": "clean note (verified twin)",
+   "note_key": "authored|cp_musculoskeletal|clean|a4109cbe9f9f",
+   "examination": "Palpation over costochondral junctions reproduced patient's pain. Heart sounds normal/regular, no added sounds. Chest clear with good air entry bilaterally, no wheeze/crackles. SpO2 99%. Pulse and BP normal.",
+   "impression": "Musculoskeletal chest-wall pain / costochondritis. History, reproducible costochondral tenderness on examination and absence of cardiac features point to chest-wall origin; cardiac cause considered clinically unlikely.",
+   "removed": [],
+   "surviving": []
+  },
+  {
+   "id": "complete",
+   "label": "complete omission twin",
+   "pair_id": "authored|cp_musculoskeletal|omitc|mc17",
+   "note_key": "authored|cp_musculoskeletal|omitc|mc17|err",
+   "residual_level": "complete",
+   "change": "Removed every mention of one fact from the note - 2 site(s) in Examination:, Impression:. Nothing else changed.",
+   "examination": "Heart sounds normal/regular, no added sounds. Chest clear with good air entry bilaterally, no wheeze/crackles. SpO2 99%. Pulse and BP normal.",
+   "impression": "Musculoskeletal chest-wall pain / costochondritis. History and absence of cardiac features point to chest-wall origin; cardiac cause considered clinically unlikely.",
+   "removed": [
+    "Palpation over costochondral junctions reproduced patient's pain.",
+    "reproducible costochondral tenderness on examination"
+   ],
+   "surviving": []
+  },
+  {
+   "id": "partial-strong",
+   "label": "restatement-trace omission twin",
+   "pair_id": "authored|cp_musculoskeletal|omitps|mc17",
+   "note_key": "authored|cp_musculoskeletal|omitps|mc17|err",
+   "residual_level": "partial-strong",
+   "change": "Removed the note's primary statement of one fact (section Examination:), and any other mention of it except one; 1 residual mention(s) of the same fact left untouched.",
+   "examination": "Heart sounds normal/regular, no added sounds. Chest clear with good air entry bilaterally, no wheeze/crackles. SpO2 99%. Pulse and BP normal.",
+   "impression": "Musculoskeletal chest-wall pain / costochondritis. History, reproducible costochondral tenderness on examination and absence of cardiac features point to chest-wall origin; cardiac cause considered clinically unlikely.",
+   "removed": [
+    "Palpation over costochondral junctions reproduced patient's pain."
+   ],
+   "surviving": [
+    {
+     "span": "reproducible costochondral tenderness on examination",
+     "section": "Impression:",
+     "strength": "paraphrase"
+    }
+   ]
+  }
+ ],
+ "verdicts": {
+  "monolithic_judge": {
+   "design": "FC-score-k8 (the grid's best cell): faithfulness+completeness, 0-10 score, 8 samples winsorised; flag iff mean < 8.0",
+   "clean": {
+    "1": {
+     "score": 10.0,
+     "verdict": "PASS",
+     "flagged": false
+    },
+    "2": {
+     "score": 10.0,
+     "verdict": "PASS",
+     "flagged": false
+    },
+    "3": {
+     "score": 10.0,
+     "verdict": "PASS",
+     "flagged": false
+    }
+   },
+   "complete": {
+    "1": {
+     "score": 9.0,
+     "verdict": "PASS",
+     "flagged": false
+    },
+    "2": {
+     "score": 9.375,
+     "verdict": "PASS",
+     "flagged": false
+    },
+    "3": {
+     "score": 9.25,
+     "verdict": "PASS",
+     "flagged": false
+    }
+   },
+   "partial-strong": {
+    "1": {
+     "score": 9.375,
+     "verdict": "PASS",
+     "flagged": false
+    },
+    "2": {
+     "score": 9.375,
+     "verdict": "PASS",
+     "flagged": false
+    },
+    "3": {
+     "score": 10.0,
+     "verdict": "PASS",
+     "flagged": false
+    }
+   }
+  },
+  "per_fact_judge": {
+   "design": "B3 pipeline: transcript-only fact list, audit-stage severity grade, one keyed verdict per fact; flag iff any critical fact is absent",
+   "clean": {
+    "coverage_score": 0.878049,
+    "n_facts": 38,
+    "n_absent": 1,
+    "f22_verdict": "full",
+    "f22_severity": "critical",
+    "predicate_fires": false
+   },
+   "complete": {
+    "coverage_score": 0.829268,
+    "n_facts": 38,
+    "n_absent": 2,
+    "f22_verdict": "absent",
+    "f22_severity": "critical",
+    "predicate_fires": true
+   },
+   "partial-strong": {
+    "coverage_score": 0.878049,
+    "n_facts": 38,
+    "n_absent": 1,
+    "f22_verdict": "full",
+    "f22_severity": "critical",
+    "predicate_fires": false
+   }
+  },
+  "blinded_physician": {
+   "sitting_item": "F10",
+   "section": "F",
+   "question": "reading the note, is this fact captured?",
+   "answer": "n",
+   "reads_as": "not captured",
+   "matched": "the per-fact judge",
+   "blinded_to": "which judge said what, and whether the note had been edited",
+   "note": "the restatement-trace twin was not in the sitting; only the complete twin was"
+  }
+ },
+ "same_consultation_commissions": {
+  "why": "the same consultation carries an add pair and a change pair, so the asymmetry is visible inside one case",
+  "add": {
+   "1": {
+    "score": 7.0,
+    "verdict": "FAIL",
+    "flagged": true
+   },
+   "2": {
+    "score": 7.0,
+    "verdict": "FAIL",
+    "flagged": true
+   },
+   "3": {
+    "score": 7.125,
+    "verdict": "FAIL",
+    "flagged": true
+   }
+  },
+  "change": {
+   "1": {
+    "score": 7.0,
+    "verdict": "FAIL",
+    "flagged": true
+   },
+   "2": {
+    "score": 7.0,
+    "verdict": "FAIL",
+    "flagged": true
+   },
+   "3": {
+    "score": 7.0,
+    "verdict": "FAIL",
+    "flagged": true
+   }
+  }
+ },
+ "sources": [
+  "master/dataset_v2.json",
+  "master/fact_sites.json",
+  "authored_scenarios.json",
+  "results/w2-pipeline/_cache/facts_authored__cp_musculoskeletal.json",
+  "results/w2-pipeline/_cache/audit_authored__cp_musculoskeletal.json",
+  "results/w2-ablation/_state/grid-main2.jsonl",
+  "results/w2-pipeline/_state/confirm-B3.jsonl",
+  "master/sitting_results.json"
+ ]
+}

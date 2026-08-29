@@ -1,0 +1,781 @@
+{
+ "figure": "F5",
+ "what": "trace-level collapse with the location split: paired discrimination by residual level for every design family, and where the surviving mention sits",
+ "lands_in": "Section 8, 'The open problem: an omission whose trace survives elsewhere'",
+ "built_by": "paper/figures/build_f5_data.py",
+ "generated_from": {
+  "recomputed": "paper/figures/_recomputed.json",
+  "location_analysis": "master/residual_location_analysis.json"
+ },
+ "sources": {
+  "panel_a_paired_by_residual": {
+   "artifact": "paper/figures/_recomputed.json",
+   "keys": [
+    "grid.FC-score-k8.paired_by_residual",
+    "arms.ragas-completeness.paired_by_residual",
+    "arms.{engineered-completeness,gepa-optimized,v14-asis,v14-noexcl,v14-incl,geval,ragas,checklist}.paired_by_residual",
+    "pipeline.B2.paired_by_residual",
+    "pipeline.B3.paired_by_residual",
+    "pipeline.B3-predicate.by_residual_detection.partial-strong",
+    "pipeline.B3-predicate.absolute.fa"
+   ],
+   "record_stores_behind_it": [
+    "results/w2-ablation/_state/grid-main2.jsonl (3 replicates)",
+    "results/w2-strong/_state/arms-main.jsonl, results/w2-v14/_state/arms-main.jsonl, results/w2-baselines/_state/arms-main.jsonl (2 replicates)",
+    "results/w2-pipeline/_state/confirm-B2.jsonl, confirm-B3.jsonl (1 replicate)"
+   ]
+  },
+  "panel_a_strong_trace_intervals": {
+   "artifact": "master/residual_location_analysis.json",
+   "keys": [
+    "results.grid_FC-score-k8.partial-strong.all.paired_tie_adjusted.cluster_boot",
+    "results.pipeline_B2.partial-strong.all.paired_tie_adjusted.cluster_boot",
+    "results.pipeline_B3.partial-strong.all.paired_tie_adjusted.cluster_boot",
+    "results.pipeline_B3.partial-strong.all.per_fact_critical_rule"
+   ]
+  },
+  "panel_b_supply": {
+   "artifact": "master/residual_location_analysis.json",
+   "keys": [
+    "supply.partial-strong.location_all",
+    "supply.partial-weak.location_all",
+    "supply.*.n_all",
+    "supply.*.n_eval",
+    "supply.*.same_section_unheaded_note"
+   ],
+   "note": "the artifact refuses to write unless it first reproduces FINDINGS 17.3's three conditioning figures, 19.8's two paired figures and 19.3's 0/33; its `validation` block records all six as ok"
+  },
+  "intervals": "Wilson score intervals computed here for panel (b)'s counts and checked against the published values in FINDINGS 23.2; consultation-clustered bootstrap intervals in panel (a) are taken from the location artifact",
+  "findings_sections": [
+   "17.3 (line 550)",
+   "18 (line 570)",
+   "18.4 (line 607)",
+   "19.1 (lines 652-657)",
+   "19.3 (line 674)",
+   "19.8 (line 710)",
+   "23.2 (lines 1093-1119)",
+   "23.3 (line 1132)"
+  ]
+ },
+ "caption": "Figure F5. Every method we tested collapses on the omission whose trace survives elsewhere in the note, and the supply of those cases says why. (a) Paired discrimination on omissions - how often a note carrying an omission scores below its own verified-clean twin, tie-adjusted, where 0.5 is a coin flip - split by how much of the removed fact survives: nothing (complete removal), a fragment of it (fragment trace), or an explicit or closely paraphrased second mention (restatement trace). Each line names its own substrate, and the two substrates are read separately rather than ranked against each other: the best of the eight judge designs, the range across the eight reference judges, the naive RAGAS-style coverage recipe (our implementation, read as its coverage score rather than at its own flag-everything rule), and the budgeted single call - route two, the optimiser's winner at reasoning effort high, three replicates averaged - are measured on the 495-pair evaluation set, whose 293 omission pairs split 150 / 86 / 57 across the three levels; the two-stage and three-stage pipelines are measured on the 151-pair held-out subset, whose 131 omission pairs split 62 / 36 / 33. The coverage recipe is the one line with denominators of its own, 148 / 84 / 57, because parse failures cost it 14 of its 1,214 records. The interval printed beside each restatement-trace value is a consultation-clustered bootstrap 95% interval, computed over 35 consultations for the evaluation-set line and 20 for the held-out ones, and every one of them contains 0.5; the coverage recipe's and the budgeted call's restatement-trace values have no such interval in the released artifacts and are quoted as point estimates. Detection collapses with discrimination: the per-fact critical rule flags 0 of 33 held-out restatement-trace notes against 1 of 47 clean twins, 0 of 57 on the full evaluation set against 3 of 112, and the budgeted call's own rule reads 4 of 57 there against its 6.2% false-alarm rate - at or below each rule's own noise. (b) Where the surviving mention sits, over all 148 partial-omission pairs in the corpus (61 restatement-trace, of which 57 are in the evaluation set, and 87 fragment-trace, of which 86 are): in 55 of 61 restatement-trace pairs, 90.2% [80.2, 95.4], the survivor sits under a different heading from the instance that was removed, while 49 of 87 fragment-trace pairs, 56.3% [45.9, 66.3], keep it under the same heading; two of the six same-heading restatement traces are notes with no headings at all. Reading: once a restatement trace survives, every method sits at or below its own noise floor, and the supply explains why - a restatement trace is almost always a different-heading survivor, recoverable only by reading the note end to end.",
+ "conventions": {
+  "paired": "tie-adjusted probability that the errored note scores strictly below its own clean twin, plus half the tie mass; chance is 0.500",
+  "substrates": {
+   "evaluation set": "495 pairs, 293 omissions, 112 clean twins",
+   "held out": "151 pairs, 131 omissions, 47 clean twins"
+  },
+  "convention_note": "FINDINGS 18.4 (line 607) quotes the coverage recipe's residual split as 0.915 / 0.829 / 0.518 on the mean-of-replicates convention; the pooled convention that 18.4 declares for the arm-level figure, and that _recomputed.json carries, gives 0.9206 / 0.8363 / 0.5175. This figure plots the pooled values. The restatement-trace value agrees to three decimals."
+ },
+ "panel_a": {
+  "title": "Paired discrimination on omissions, by how much of the fact survives",
+  "y_label": "paired discrimination  (0.5 is a coin flip)",
+  "levels": [
+   {
+    "key": "complete",
+    "label": "Complete removal",
+    "gloss": "nothing of the fact survives",
+    "short_gloss": "(nothing left)",
+    "n_eval": 150,
+    "n_heldout": 62,
+    "n_coverage_recipe": 148
+   },
+   {
+    "key": "partial-weak",
+    "label": "Fragment trace",
+    "gloss": "a fragment survives",
+    "short_gloss": "(a fragment)",
+    "n_eval": 86,
+    "n_heldout": 36,
+    "n_coverage_recipe": 84
+   },
+   {
+    "key": "partial-strong",
+    "label": "Restatement trace",
+    "gloss": "an explicit second mention survives",
+    "short_gloss": "(a second mention)",
+    "n_eval": 57,
+    "n_heldout": 33,
+    "n_coverage_recipe": 57
+   }
+  ],
+  "chance": 0.5,
+  "series": [
+   {
+    "key": "grid-best",
+    "label": "Best of the eight judge designs",
+    "short_label": "Best of the eight\njudge designs",
+    "sublabel": "FC-score-k8",
+    "family": "monolithic",
+    "substrate": "evaluation set",
+    "colour_slot": 1,
+    "values": {
+     "complete": {
+      "paired": 0.69,
+      "n_pairs": 150
+     },
+     "partial-weak": {
+      "paired": 0.6066,
+      "n_pairs": 86
+     },
+     "partial-strong": {
+      "paired": 0.5263,
+      "n_pairs": 57
+     }
+    },
+    "strong_ci": [
+     0.459,
+     0.5881
+    ],
+    "strong_display": "0.526   [0.459, 0.588]"
+   },
+   {
+    "key": "coverage-recipe",
+    "label": "RAGAS-style recipe, coverage score",
+    "short_label": "RAGAS-style recipe,\ncoverage score",
+    "sublabel": "RAGAS-style, our implementation",
+    "family": "enumerating",
+    "substrate": "evaluation set",
+    "colour_slot": 2,
+    "values": {
+     "complete": {
+      "paired": 0.9206,
+      "n_pairs": 148
+     },
+     "partial-weak": {
+      "paired": 0.8363,
+      "n_pairs": 84
+     },
+     "partial-strong": {
+      "paired": 0.5175,
+      "n_pairs": 57
+     }
+    },
+    "strong_ci": null,
+    "strong_display": "0.518"
+   },
+   {
+    "key": "two-stage",
+    "label": "Two-stage pipeline",
+    "short_label": "Two-stage pipeline",
+    "sublabel": "extract, then one keyed check per note",
+    "family": "enumerating",
+    "substrate": "held out",
+    "colour_slot": 3,
+    "values": {
+     "complete": {
+      "paired": 0.9355,
+      "n_pairs": 62
+     },
+     "partial-weak": {
+      "paired": 0.7917,
+      "n_pairs": 36
+     },
+     "partial-strong": {
+      "paired": 0.5606,
+      "n_pairs": 33
+     }
+    },
+    "strong_ci": [
+     0.4342,
+     0.6857
+    ],
+    "strong_display": "0.561   [0.434, 0.686]"
+   },
+   {
+    "key": "three-stage",
+    "label": "Three-stage pipeline, with the severity audit",
+    "short_label": "Three-stage pipeline",
+    "sublabel": "adds the audit, the trichotomy and the second look",
+    "family": "enumerating",
+    "substrate": "held out",
+    "colour_slot": 4,
+    "values": {
+     "complete": {
+      "paired": 0.8629,
+      "n_pairs": 62
+     },
+     "partial-weak": {
+      "paired": 0.8194,
+      "n_pairs": 36
+     },
+     "partial-strong": {
+      "paired": 0.4697,
+      "n_pairs": 33
+     }
+    },
+    "strong_ci": [
+     0.3448,
+     0.575
+    ],
+    "strong_display": "0.470   [0.345, 0.575]"
+   },
+   {
+    "key": "budgeted-call",
+    "label": "Budgeted single call (route two)",
+    "short_label": "Budgeted single call",
+    "sublabel": "the optimiser's winner at reasoning effort high, 3 replicates",
+    "family": "budgeted single call",
+    "substrate": "evaluation set",
+    "colour_slot": 5,
+    "values": {
+     "complete": {
+      "paired": 0.7611,
+      "n_pairs": 150
+     },
+     "partial-weak": {
+      "paired": 0.6221,
+      "n_pairs": 86
+     },
+     "partial-strong": {
+      "paired": 0.5029,
+      "n_pairs": 57
+     }
+    },
+    "strong_ci": null,
+    "strong_display": "0.503"
+   }
+  ],
+  "reference_band": {
+   "label": "The eight reference judges, full range",
+   "substrate": "evaluation set",
+   "judges": [
+    "engineered-completeness",
+    "gepa-optimized",
+    "v14-asis",
+    "v14-noexcl",
+    "v14-incl",
+    "geval",
+    "ragas",
+    "checklist"
+   ],
+   "by_level": {
+    "complete": {
+     "lo": 0.52,
+     "hi": 0.9054,
+     "lo_judge": "v14-noexcl",
+     "hi_judge": "ragas",
+     "all": {
+      "engineered-completeness": 0.6783,
+      "gepa-optimized": 0.5567,
+      "v14-asis": 0.535,
+      "v14-noexcl": 0.52,
+      "v14-incl": 0.5933,
+      "geval": 0.5917,
+      "ragas": 0.9054,
+      "checklist": 0.715
+     }
+    },
+    "partial-weak": {
+     "lo": 0.4884,
+     "hi": 0.8155,
+     "lo_judge": "v14-noexcl",
+     "hi_judge": "ragas",
+     "all": {
+      "engineered-completeness": 0.625,
+      "gepa-optimized": 0.5581,
+      "v14-asis": 0.4913,
+      "v14-noexcl": 0.4884,
+      "v14-incl": 0.5174,
+      "geval": 0.5494,
+      "ragas": 0.8155,
+      "checklist": 0.6163
+     }
+    },
+    "partial-strong": {
+     "lo": 0.4912,
+     "hi": 0.557,
+     "lo_judge": "v14-noexcl",
+     "hi_judge": "engineered-completeness",
+     "all": {
+      "engineered-completeness": 0.557,
+      "gepa-optimized": 0.5175,
+      "v14-asis": 0.5132,
+      "v14-noexcl": 0.4912,
+      "v14-incl": 0.5175,
+      "geval": 0.5351,
+      "ragas": 0.5482,
+      "checklist": 0.5132
+     }
+    }
+   }
+  },
+  "per_fact_rule_annotation": {
+   "measure": "absolute detection at a fixed decision rule, not paired discrimination",
+   "rule": "flag the note if any fact the audit stage graded critical is verdicted absent",
+   "substrate": "held out",
+   "strong_trace_det_k": 0,
+   "strong_trace_n": 33,
+   "strong_trace_wilson_hi_pct": 10.4,
+   "clean_fa_k": 1,
+   "clean_fa_n": 47,
+   "evalset": {
+    "rule_strong_k": 0,
+    "rule_strong_n": 57,
+    "rule_fa_k": 3,
+    "rule_fa_n": 112,
+    "budgeted_call_strong_k": 4,
+    "budgeted_call_strong_n": 57,
+    "budgeted_call_fa_k": 7,
+    "budgeted_call_fa_n": 112
+   }
+  }
+ },
+ "panel_b": {
+  "title": "Where the surviving mention sits",
+  "substrate": "all 148 partial-omission pairs in the corpus, which is 4 restatement-trace and 1 fragment-trace pairs wider than the evaluation set",
+  "categories": [
+   {
+    "key": "different_section",
+    "label": "Under a different heading",
+    "colour_slot": 1
+   },
+   {
+    "key": "same_section",
+    "label": "Under the same heading",
+    "colour_slot": 2
+   }
+  ],
+  "rows": [
+   {
+    "level": "partial-strong",
+    "n_all": 61,
+    "n_eval": 57,
+    "different_section": {
+     "k": 55,
+     "pct": 90.2,
+     "wilson": [
+      80.2,
+      95.4
+     ]
+    },
+    "same_section": {
+     "k": 6,
+     "pct": 9.8,
+     "wilson": [
+      4.6,
+      19.8
+     ]
+    },
+    "same_section_unheaded_note": 2,
+    "same_section_headed_only": 4
+   },
+   {
+    "level": "partial-weak",
+    "n_all": 87,
+    "n_eval": 86,
+    "different_section": {
+     "k": 38,
+     "pct": 43.7,
+     "wilson": [
+      33.7,
+      54.1
+     ]
+    },
+    "same_section": {
+     "k": 49,
+     "pct": 56.3,
+     "wilson": [
+      45.9,
+      66.3
+     ]
+    },
+    "same_section_unheaded_note": 9,
+    "same_section_headed_only": 40
+   }
+  ]
+ },
+ "findings_crosschecks": [
+  {
+   "what": "budgeted call paired, partial-strong (artifact)",
+   "findings_line": 1314,
+   "published": 0.5029,
+   "recomputed": 0.5029,
+   "ok": true
+  },
+  {
+   "what": "FC-score-k8 paired, complete",
+   "findings_line": 550,
+   "published": 0.69,
+   "recomputed": 0.69,
+   "ok": true
+  },
+  {
+   "what": "FC-score-k8 paired, partial-weak",
+   "findings_line": 550,
+   "published": 0.607,
+   "recomputed": 0.6066,
+   "ok": true
+  },
+  {
+   "what": "FC-score-k8 paired, partial-strong",
+   "findings_line": 550,
+   "published": 0.526,
+   "recomputed": 0.5263,
+   "ok": true
+  },
+  {
+   "what": "two-stage pipeline paired, complete",
+   "findings_line": 656,
+   "published": 0.936,
+   "recomputed": 0.9355,
+   "ok": true
+  },
+  {
+   "what": "two-stage pipeline paired, partial-weak",
+   "findings_line": 656,
+   "published": 0.792,
+   "recomputed": 0.7917,
+   "ok": true
+  },
+  {
+   "what": "two-stage pipeline paired, partial-strong",
+   "findings_line": 656,
+   "published": 0.561,
+   "recomputed": 0.5606,
+   "ok": true
+  },
+  {
+   "what": "three-stage pipeline paired, complete",
+   "findings_line": 657,
+   "published": 0.863,
+   "recomputed": 0.8629,
+   "ok": true
+  },
+  {
+   "what": "three-stage pipeline paired, partial-weak",
+   "findings_line": 657,
+   "published": 0.819,
+   "recomputed": 0.8194,
+   "ok": true
+  },
+  {
+   "what": "three-stage pipeline paired, partial-strong",
+   "findings_line": 657,
+   "published": 0.47,
+   "recomputed": 0.4697,
+   "ok": true
+  },
+  {
+   "what": "naive coverage recipe paired, partial-strong",
+   "findings_line": 607,
+   "published": 0.518,
+   "recomputed": 0.5175,
+   "ok": true
+  },
+  {
+   "what": "reference-judge range, partial-strong, low",
+   "findings_line": 710,
+   "published": 0.491,
+   "recomputed": 0.4912,
+   "ok": true
+  },
+  {
+   "what": "reference-judge range, partial-strong, high",
+   "findings_line": 710,
+   "published": 0.557,
+   "recomputed": 0.557,
+   "ok": true
+  },
+  {
+   "what": "FC-score-k8 partial-strong paired (location artifact)",
+   "findings_line": 1132,
+   "published": 0.5263,
+   "recomputed": 0.5263,
+   "ok": true
+  },
+  {
+   "what": "FC-score-k8 partial-strong bootstrap low",
+   "findings_line": 1132,
+   "published": 0.459,
+   "recomputed": 0.459,
+   "ok": true
+  },
+  {
+   "what": "FC-score-k8 partial-strong bootstrap high",
+   "findings_line": 1132,
+   "published": 0.588,
+   "recomputed": 0.5881,
+   "ok": true
+  },
+  {
+   "what": "printed restatement-trace value, best of the eight designs",
+   "findings_line": 550,
+   "published": "0.526",
+   "recomputed": "0.526",
+   "ok": true
+  },
+  {
+   "what": "printed restatement-trace value, naive coverage recipe",
+   "findings_line": 607,
+   "published": "0.518",
+   "recomputed": "0.518",
+   "ok": true
+  },
+  {
+   "what": "printed restatement-trace value, two-stage pipeline",
+   "findings_line": 710,
+   "published": "0.561",
+   "recomputed": "0.561",
+   "ok": true
+  },
+  {
+   "what": "printed restatement-trace value, three-stage pipeline",
+   "findings_line": 710,
+   "published": "0.470",
+   "recomputed": "0.470",
+   "ok": true
+  },
+  {
+   "what": "printed restatement-trace value, budgeted single call",
+   "findings_line": 1314,
+   "published": "0.503",
+   "recomputed": "0.503",
+   "ok": true
+  },
+  {
+   "what": "evaluation-set omission pairs, complete",
+   "findings_line": 570,
+   "published": 150,
+   "recomputed": 150,
+   "ok": true
+  },
+  {
+   "what": "evaluation-set omission pairs, partial-weak",
+   "findings_line": 570,
+   "published": 86,
+   "recomputed": 86,
+   "ok": true
+  },
+  {
+   "what": "evaluation-set omission pairs, partial-strong",
+   "findings_line": 570,
+   "published": 57,
+   "recomputed": 57,
+   "ok": true
+  },
+  {
+   "what": "evaluation-set omission pairs, total",
+   "findings_line": 570,
+   "published": 293,
+   "recomputed": 293,
+   "ok": true
+  },
+  {
+   "what": "held-out omission pairs, complete",
+   "findings_line": 652,
+   "published": 62,
+   "recomputed": 62,
+   "ok": true
+  },
+  {
+   "what": "held-out omission pairs, partial-weak",
+   "findings_line": 652,
+   "published": 36,
+   "recomputed": 36,
+   "ok": true
+  },
+  {
+   "what": "held-out omission pairs, partial-strong",
+   "findings_line": 652,
+   "published": 33,
+   "recomputed": 33,
+   "ok": true
+  },
+  {
+   "what": "held-out omission pairs, total",
+   "findings_line": 652,
+   "published": 131,
+   "recomputed": 131,
+   "ok": true
+  },
+  {
+   "what": "held-out clean twins",
+   "findings_line": 652,
+   "published": 47,
+   "recomputed": 47,
+   "ok": true
+  },
+  {
+   "what": "per-fact critical rule, restatement-trace detections",
+   "findings_line": 710,
+   "published": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "what": "per-fact critical rule, restatement-trace denominator",
+   "findings_line": 710,
+   "published": 33,
+   "recomputed": 33,
+   "ok": true
+  },
+  {
+   "what": "per-fact critical rule, clean-note false alarms",
+   "findings_line": 674,
+   "published": 1,
+   "recomputed": 1,
+   "ok": true
+  },
+  {
+   "what": "per-fact critical rule, clean-note denominator",
+   "findings_line": 674,
+   "published": 47,
+   "recomputed": 47,
+   "ok": true
+  },
+  {
+   "what": "per-fact critical rule, restatement-trace Wilson upper",
+   "findings_line": 1132,
+   "published": 0.1043,
+   "recomputed": 0.1043,
+   "ok": true
+  },
+  {
+   "what": "per-fact critical rule, restatement-trace detections, eval set",
+   "findings_line": 1348,
+   "published": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "what": "per-fact critical rule, restatement-trace denominator, eval set",
+   "findings_line": 1348,
+   "published": 57,
+   "recomputed": 57,
+   "ok": true
+  },
+  {
+   "what": "restatement trace, different section, count",
+   "findings_line": 1097,
+   "published": 55,
+   "recomputed": 55,
+   "ok": true
+  },
+  {
+   "what": "restatement trace, different section, pct",
+   "findings_line": 1097,
+   "published": 90.2,
+   "recomputed": 90.2,
+   "ok": true
+  },
+  {
+   "what": "restatement trace, different section, Wilson low",
+   "findings_line": 1097,
+   "published": 80.2,
+   "recomputed": 80.2,
+   "ok": true
+  },
+  {
+   "what": "restatement trace, different section, Wilson high",
+   "findings_line": 1097,
+   "published": 95.4,
+   "recomputed": 95.4,
+   "ok": true
+  },
+  {
+   "what": "restatement trace, same section, count",
+   "findings_line": 1098,
+   "published": 6,
+   "recomputed": 6,
+   "ok": true
+  },
+  {
+   "what": "restatement trace, same section, pct",
+   "findings_line": 1098,
+   "published": 9.8,
+   "recomputed": 9.8,
+   "ok": true
+  },
+  {
+   "what": "restatement trace, same section, Wilson low",
+   "findings_line": 1098,
+   "published": 4.6,
+   "recomputed": 4.6,
+   "ok": true
+  },
+  {
+   "what": "restatement trace, same section, Wilson high",
+   "findings_line": 1098,
+   "published": 19.8,
+   "recomputed": 19.8,
+   "ok": true
+  },
+  {
+   "what": "restatement trace, unheaded notes inside the same-section cell",
+   "findings_line": 1099,
+   "published": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "what": "fragment trace, different section, count",
+   "findings_line": 1097,
+   "published": 38,
+   "recomputed": 38,
+   "ok": true
+  },
+  {
+   "what": "fragment trace, different section, pct",
+   "findings_line": 1097,
+   "published": 43.7,
+   "recomputed": 43.7,
+   "ok": true
+  },
+  {
+   "what": "fragment trace, same section, count",
+   "findings_line": 1098,
+   "published": 49,
+   "recomputed": 49,
+   "ok": true
+  },
+  {
+   "what": "fragment trace, same section, pct",
+   "findings_line": 1098,
+   "published": 56.3,
+   "recomputed": 56.3,
+   "ok": true
+  },
+  {
+   "what": "fragment trace, same section, Wilson low",
+   "findings_line": 1098,
+   "published": 45.9,
+   "recomputed": 45.9,
+   "ok": true
+  },
+  {
+   "what": "fragment trace, same section, Wilson high",
+   "findings_line": 1098,
+   "published": 66.3,
+   "recomputed": 66.3,
+   "ok": true
+  },
+  {
+   "what": "fragment trace, unheaded notes inside the same-section cell",
+   "findings_line": 1099,
+   "published": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "what": "restatement-trace pairs in the corpus",
+   "findings_line": 1095,
+   "published": 61,
+   "recomputed": 61,
+   "ok": true
+  },
+  {
+   "what": "restatement-trace pairs inside the evaluation set",
+   "findings_line": 1095,
+   "published": 57,
+   "recomputed": 57,
+   "ok": true
+  },
+  {
+   "what": "fragment-trace pairs in the corpus",
+   "findings_line": 1095,
+   "published": 87,
+   "recomputed": 87,
+   "ok": true
+  }
+ ]
+}

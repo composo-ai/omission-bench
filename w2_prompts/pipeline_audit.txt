@@ -1,0 +1,59 @@
+You are a meticulous clinical auditor working on an AI-evaluation research study. A colleague read
+the TRANSCRIPT below and extracted a candidate list of the facts a correct clinical note of this
+consultation must contain. Your job is to AUDIT that list against the transcript and grade what
+survives. You are auditing the fact list, not any note.
+
+TRANSCRIPT:
+{transcript}
+
+CANDIDATE FACTS:
+{facts_block}
+
+Do three things.
+
+1. DROP a candidate fact if any of these hold:
+   - NOT SUPPORTED: the transcript does not establish it, or establishes only a weaker or hedged
+     version of it, or the supporting turn is garbled, ambiguous or contradicted elsewhere.
+   - DUPLICATE: another surviving item already asserts the same thing (keep the clearer one, drop
+     the other; two genuinely different elements of one topic are not duplicates).
+   - NOT NOTE-BEARING: conversational colour, rapport, closure, identity checks or generic
+     patient education that a clinical note has no duty to carry.
+
+2. KEEP every fact that survives, with its ORIGINAL id. You may tighten the wording for
+   precision, but never change what it asserts, and never merge two ids into one.
+
+3. GRADE each surviving fact for severity, per the study's rubric. The question graded is: if the
+   note carried this error - here, if the note OMITTED this fact - how much would it matter for
+   the patient or the next clinician who reads the note? Grade the consequence of the error in
+   the note, not the drama of the topic.
+
+   "critical" - the omission would plausibly change clinical action, delay or misdirect care, or
+     create a safety risk. Anchors: an omitted working diagnosis, or a hedged impression that
+     would harden into certainty; omitted red-flag safety-netting ("return if the headache
+     becomes sudden"); an omitted or wrong drug, allergy, dose, frequency, duration or
+     interaction; a conditional plan made definite; an omitted examination that did happen, or a
+     fabricated one; an omitted pertinent negative that licenses the management decision (the
+     denied cardiac features behind treating chest pain as musculoskeletal); patient identity
+     attributes used clinically.
+   "supporting" - degrades the note's completeness, clarity or defensibility, but is unlikely to
+     change what happens next. Anchors: duration or onset detail that colours but does not gate
+     the plan; social context relevant to follow-up with no immediate action attached; nuance
+     lost without meaning being inverted; a secondary symptom that neither supports nor threatens
+     the diagnosis.
+   "peripheral" - no plausible clinical consequence. Anchors: conversational colour, rapport,
+     patient-education phrasing, administrative closure, redundant restatement of something
+     already captured elsewhere.
+
+   Decide in order: (1) ACTION test - would a competent GP, or the next clinician reading the
+   note, plausibly DO something different if this fact were missing? yes -> critical. (2) SAFETY
+   test - even if action today is unchanged, does its absence remove a safety net or create a
+   latent risk? yes -> critical. (3) RECORD-QUALITY test - does its absence materially weaken the
+   note as a clinical record? yes -> supporting. (4) Otherwise peripheral. If genuinely torn
+   between two grades after the procedure, take the LOWER grade. Grade each fact independently;
+   never curve to a target distribution.
+
+Output ONLY a single valid JSON object:
+{"facts": [{"id": "f1", "fact": "...", "severity": "critical", "why": "<=12 words"}],
+ "dropped": [{"id": "f7", "reason": "unsupported" | "duplicate" | "not-note-bearing"}]}
+Every id in the candidate list must appear exactly once, in "facts" or in "dropped". Escape all
+newlines inside strings as \n. No commentary, no markdown fences.

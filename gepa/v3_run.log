@@ -1,0 +1,166 @@
+
+===== 2026-08-14T11:01:23+00:00 leg=pipeline phase=prep n=4 | experiment $0.00 (leg $0.00) | cap $80 stop $72 =====
+  extraction: 4 consultations to buy (~$0.35 at the measured §19.7 rate)
+  extraction done: 4 bought, $0.33 this run
+  spend now $0.33 experiment total ($0.33 this leg), cap $80
+
+===== 2026-08-14T11:02:01+00:00 leg=pipeline phase=prep n=20 | experiment $0.33 (leg $0.33) | cap $80 stop $72 =====
+  extraction: 20 consultations to buy (~$1.74 at the measured §19.7 rate)
+  extraction done: 20 bought, $1.86 this run
+  spend now $2.19 experiment total ($2.19 this leg), cap $80
+
+===== 2026-08-14T11:04:43+00:00 leg=pipeline phase=prep n=25 | experiment $2.19 (leg $2.19) | cap $80 stop $72 =====
+  extraction: 19 consultations to buy (~$1.65 at the measured §19.7 rate)
+  extraction done: 19 bought, $1.84 this run
+  spend now $4.03 experiment total ($4.03 this leg), cap $80
+
+===== 2026-08-14T11:13:14+00:00 leg=pipeline phase=seeds n=1 | experiment $4.03 (leg $4.03) | cap $80 stop $72 =====
+    seed seed_check_binary: 105/105 judged k=1 | cache 0h/105m | $4.81
+  seed #0 seed_check_binary      paired-omit 0.792 (cmpl 0.907 pw 0.692 ps 0.562) | det@FA<=10%  33.3% (FA  10.0%) | comm 0.581
+  spend now $4.81 experiment total ($4.81 this leg), cap $80
+
+===== 2026-08-14T11:14:09+00:00 leg=pipeline phase=iterate n=2 | experiment $4.81 (leg $4.81) | cap $80 stop $72 leg-cap $40 =====
+  it01 mutation from #0 (leads 105/105) minibatch 0.7020 -> 0.7203 ACCEPT | $5.09
+    it01 VALID: 105/105 judged k=1 | cache 0h/129m | $6.02
+       VALID: paired-omit 0.844 (cmpl 0.944 pw 0.885 ps 0.438) | det@FA<=10%  33.3% (FA   5.0%) | comm 0.649
+       vs parent#0: paired 0.792 -> 0.844, det10 33.3% -> 33.3% -> accepted as #1 v3p-01
+  it02 mutation from #1 (leads 90/105) minibatch 0.5961 -> 0.6824 ACCEPT | $6.41
+    it02 VALID: 105/105 judged k=1 | cache 2h/256m | $7.53
+       VALID: paired-omit 0.781 (cmpl 0.889 pw 0.692 ps 0.562) | det@FA<=10%  31.2% (FA  10.0%) | comm 0.676
+       vs parent#1: paired 0.844 -> 0.781, det10 33.3% -> 31.2% -> accepted as #2 v3p-02
+  spend now $7.53 experiment total ($7.53 this leg), cap $80
+
+===== 2026-08-14T11:19:00+00:00 leg=pipeline phase=iterate n=5 | experiment $7.53 (leg $7.53) | cap $80 stop $72 leg-cap $40 =====
+  it03 mutation from #2 (leads 78/105) minibatch 0.6658 -> 0.8103 ACCEPT | $7.95
+    it03 VALID: 105/105 judged k=1 | cache 1h/128m | $9.39
+       VALID: paired-omit 0.760 (cmpl 0.907 pw 0.654 ps 0.438) | det@FA<=10%  22.9% (FA  10.0%) | comm 0.689
+       vs parent#2: paired 0.781 -> 0.760, det10 31.2% -> 22.9% -> accepted as #3 v3p-03
+  it04 mutation from #2 (leads 75/105) minibatch 0.6733 -> 0.7188 ACCEPT | $9.82
+    it04 VALID: 105/105 judged k=1 | cache 3h/255m | $11.28
+       VALID: paired-omit 0.844 (cmpl 0.944 pw 0.808 ps 0.562) | det@FA<=10%  31.2% (FA  10.0%) | comm 0.676
+       vs parent#2: paired 0.781 -> 0.844, det10 31.2% -> 31.2% -> accepted as #4 v3p-04
+  it05 mutation from #4 (leads 74/105) minibatch 0.8221 -> 0.7241 reject | $11.76
+  it06 mutation from #3 (leads 69/105) minibatch 0.7431 -> 0.7675 ACCEPT | $12.26
+    it06 VALID: 105/105 judged k=1 | cache 5h/406m | $13.78
+       VALID: paired-omit 0.823 (cmpl 0.926 pw 0.808 ps 0.500) | det@FA<=10%  31.2% (FA  10.0%) | comm 0.662
+       vs parent#3: paired 0.760 -> 0.823, det10 22.9% -> 31.2% -> accepted as #5 v3p-05
+  it07 mutation from #0 (leads 63/105) minibatch 0.7111 -> 0.6045 reject | $14.07
+  spend now $14.07 experiment total ($14.07 this leg), cap $80
+
+===== 2026-08-14T11:28:29+00:00 leg=pipeline phase=iterate n=5 | experiment $14.07 (leg $14.07) | cap $80 stop $72 leg-cap $40 =====
+  it08 mutation from #1 (leads 68/105) minibatch 0.6865 -> 0.6656 reject | $14.38
+  it09 MERGE #4(v3p-04) x #2(v3p-02) | A wins 10 / B wins 9 discordant notes
+  it09 merge from #4+#2 (leads 70/105) minibatch 0.6984 -> 0.7372 ACCEPT | $14.75
+    it09 VALID: 105/105 judged k=1 | cache 7h/146m | $16.10
+       VALID: paired-omit 0.833 (cmpl 0.926 pw 0.808 ps 0.562) | det@FA<=10%  33.3% (FA  10.0%) | comm 0.662
+       vs parent#4: paired 0.844 -> 0.833, det10 31.2% -> 33.3% -> accepted as #6 v3p-06
+  it10 MERGE #6(v3p-06) x #2(v3p-02) | A wins 12 / B wins 11 discordant notes
+  it10 merge from #6+#2 (leads 70/105) minibatch 0.7358 -> 0.6284 reject | $16.50
+  it11 mutation from #4 (leads 65/105) minibatch 0.7849 -> 0.5838 reject | $17.04
+  it12 mutation from #0 (leads 60/105) minibatch 0.6062 -> 0.7489 ACCEPT | $17.34
+    it12 VALID: 105/105 judged k=1 | cache 10h/320m | $18.32
+       VALID: paired-omit 0.792 (cmpl 0.926 pw 0.731 ps 0.438) | det@FA<=10%  22.9% (FA  10.0%) | comm 0.622
+       vs parent#0: paired 0.792 -> 0.792, det10 33.3% -> 22.9% -> accepted as #7 v3p-07
+  spend now $18.32 experiment total ($18.32 this leg), cap $80
+
+===== 2026-08-14T11:38:01+00:00 leg=pipeline phase=iterate n=3 | experiment $18.32 (leg $18.32) | cap $80 stop $72 leg-cap $40 =====
+  it13 mutation from #7 (leads 57/105) minibatch 0.5908 -> 0.4882 reject | $18.65
+  it14 mutation from #4 (leads 63/105) minibatch 0.7042 -> 0.7421 ACCEPT | $19.13
+    it14 VALID: 105/105 judged k=1 | cache 4h/149m | $20.70
+       VALID: paired-omit 0.823 (cmpl 0.926 pw 0.808 ps 0.500) | det@FA<=10%  37.5% (FA   5.0%) | comm 0.716
+       vs parent#4: paired 0.844 -> 0.823, det10 31.2% -> 37.5% -> accepted as #8 v3p-08
+  it15 MERGE #6(v3p-06) x #8(v3p-08) | A wins 8 / B wins 10 discordant notes
+  it15 merge from #6+#8 (leads 67/105) minibatch 0.7368 -> 0.7258 reject | $21.22
+  spend now $21.22 experiment total ($21.22 this leg), cap $80
+v3 pipeline | pool 9 | iter 15/15 | merges 3/4 | $21.22 this leg, $21.22 experiment | stopped: None
+  #0  seed     seed_check_binary it00 paired-omit 0.792 (cmpl 0.907 pw 0.692 ps 0.562) | det@FA<=10%  33.3% (FA  10.0%) | comm 0.581
+  #1  mutation v3p-01         it01 paired-omit 0.844 (cmpl 0.944 pw 0.885 ps 0.438) | det@FA<=10%  33.3% (FA   5.0%) | comm 0.649
+  #2  mutation v3p-02         it02 paired-omit 0.781 (cmpl 0.889 pw 0.692 ps 0.562) | det@FA<=10%  31.2% (FA  10.0%) | comm 0.676
+  #3  mutation v3p-03         it03 paired-omit 0.760 (cmpl 0.907 pw 0.654 ps 0.438) | det@FA<=10%  22.9% (FA  10.0%) | comm 0.689
+  #4  mutation v3p-04         it04 paired-omit 0.844 (cmpl 0.944 pw 0.808 ps 0.562) | det@FA<=10%  31.2% (FA  10.0%) | comm 0.676
+  #5  mutation v3p-05         it06 paired-omit 0.823 (cmpl 0.926 pw 0.808 ps 0.500) | det@FA<=10%  31.2% (FA  10.0%) | comm 0.662
+  #6  merge    v3p-06         it09 paired-omit 0.833 (cmpl 0.926 pw 0.808 ps 0.562) | det@FA<=10%  33.3% (FA  10.0%) | comm 0.662
+  #7  mutation v3p-07         it12 paired-omit 0.792 (cmpl 0.926 pw 0.731 ps 0.438) | det@FA<=10%  22.9% (FA  10.0%) | comm 0.622
+  #8  mutation v3p-08         it14 paired-omit 0.823 (cmpl 0.926 pw 0.808 ps 0.500) | det@FA<=10%  37.5% (FA   5.0%) | comm 0.716
+  VALID winner: #1 v3p-01 (mutation, it1)
+
+===== 2026-08-14T11:44:12+00:00 leg=pipeline phase=test n=1 | experiment $21.22 (leg $21.22) | cap $80 stop $72 leg-cap $40 =====
+    TEST v3p-01 k=1: 198/198 judged k=1 | cache 0h/198m | $23.01
+  TEST v3p-01                 paired-omit 0.779 (cmpl 0.911 pw 0.792 ps 0.515) | det@FA<=10%  16.8% (FA   8.5%) | comm 0.725
+  spend now $23.01 experiment total ($23.01 this leg), cap $80
+  wrote gepa/v3_results.json | experiment spend $23.01
+
+===== 2026-08-14T11:46:32+00:00 leg=mono phase=seeds n=1 | experiment $23.01 (leg $0.00) | cap $80 stop $72 =====
+    seed seed_fc_score: 105/105 judged k=1 | cache 0h/105m | $23.71
+  seed #0 seed_fc_score          paired-omit 0.615 (cmpl 0.685 pw 0.538 ps 0.500) | det@FA<=10%   2.1% (FA   5.0%) | comm 0.892
+    seed seed_engineered: 105/105 judged k=1 | cache 0h/210m | $24.54
+  seed #1 seed_engineered        paired-omit 0.646 (cmpl 0.704 pw 0.615 ps 0.500) | det@FA<=10%  18.8% (FA   5.0%) | comm 0.716
+  spend now $24.54 experiment total ($1.54 this leg), cap $80
+
+===== 2026-08-14T11:48:40+00:00 leg=mono phase=iterate n=5 | experiment $24.54 (leg $1.54) | cap $80 stop $72 leg-cap $22 =====
+  it01 mutation from #1 (leads 67/105) minibatch 0.5431 -> 0.6042 ACCEPT | $24.89
+    it01 VALID: 105/105 judged k=1 | cache 0h/129m | $25.76
+       VALID: paired-omit 0.656 (cmpl 0.667 pw 0.654 ps 0.625) | det@FA<=10%   4.2% (FA   0.0%) | comm 0.932
+       vs parent#1: paired 0.646 -> 0.656, det10 18.8% -> 4.2% -> accepted as #2 v3m-02
+  it02 mutation from #0 (leads 70/105) minibatch 0.6389 -> 0.6806 ACCEPT | $26.02
+    it02 VALID: 105/105 judged k=1 | cache 0h/258m | $26.77
+       VALID: paired-omit 0.583 (cmpl 0.611 pw 0.500 ps 0.625) | det@FA<=10%   0.0% (FA   0.0%) | comm 0.865
+       vs parent#0: paired 0.615 -> 0.583, det10 2.1% -> 0.0% -> accepted as #3 v3m-03
+  it03 mutation from #2 (leads 58/105) minibatch 0.7181 -> 0.5972 reject | $27.09
+  it04 mutation from #2 (leads 58/105) minibatch 0.6639 -> 0.5347 reject | $27.44
+  it05 mutation from #1 (leads 59/105) minibatch 0.8458 -> 0.7111 reject | $27.72
+  spend now $27.72 experiment total ($4.71 this leg), cap $80
+
+===== 2026-08-14T11:56:29+00:00 leg=mono phase=iterate n=5 | experiment $27.72 (leg $4.71) | cap $80 stop $72 leg-cap $22 =====
+  it06 mutation from #2 (leads 58/105) minibatch 0.5958 -> 0.5875 reject | $28.03
+  it07 mutation from #1 (leads 59/105) minibatch 0.6694 -> 0.7125 ACCEPT | $28.34
+    it07 VALID: 105/105 judged k=1 | cache 6h/147m | $29.34
+       VALID: paired-omit 0.573 (cmpl 0.593 pw 0.615 ps 0.438) | det@FA<=10%   2.1% (FA   0.0%) | comm 0.905
+       vs parent#1: paired 0.646 -> 0.573, det10 18.8% -> 2.1% -> accepted as #4 v3m-04
+  it08 mutation from #2 (leads 49/105) minibatch 0.5167 -> 0.4917 reject | $29.76
+  it09 mutation from #2 (leads 49/105) minibatch 0.6111 -> 0.6444 ACCEPT | $30.06
+    it09 VALID: 105/105 judged k=1 | cache 10h/296m | $31.07
+       VALID: paired-omit 0.542 (cmpl 0.593 pw 0.538 ps 0.375) | det@FA<=10%   8.3% (FA   0.0%) | comm 0.919
+       vs parent#2: paired 0.656 -> 0.542, det10 4.2% -> 8.3% -> accepted as #5 v3m-05
+  it10 mutation from #2 (leads 47/105) minibatch 0.7389 -> 0.6056 reject | $31.46
+  spend now $31.46 experiment total ($8.45 this leg), cap $80
+
+===== 2026-08-14T12:04:43+00:00 leg=mono phase=iterate n=5 | experiment $31.46 (leg $8.45) | cap $80 stop $72 leg-cap $22 =====
+  it11 mutation from #3 (leads 40/105) minibatch 0.6514 -> 0.5181 reject | $31.69
+  it12 MERGE #4(v3m-04) x #0(seed_fc_score) | A wins 5 / B wins 11 discordant notes
+  it12 merge from #4+#0 (leads 56/105) minibatch 0.6972 -> 0.7222 ACCEPT | $31.97
+    it12 VALID: 105/105 judged k=1 | cache 5h/148m | $32.83
+       VALID: paired-omit 0.594 (cmpl 0.648 pw 0.500 ps 0.562) | det@FA<=10%   8.3% (FA   5.0%) | comm 0.905
+       vs parent#4: paired 0.573 -> 0.594, det10 2.1% -> 8.3% -> accepted as #6 v3m-06
+  it13 MERGE #4(v3m-04) x #1(seed_engineered) | A wins 16 / B wins 8 discordant notes
+  it13 merge from #4+#1 (leads 55/105) minibatch 0.5889 -> 0.7153 ACCEPT | $33.14
+    it13 VALID: 105/105 judged k=1 | cache 7h/275m | $34.28
+       VALID: paired-omit 0.625 (cmpl 0.685 pw 0.500 ps 0.625) | det@FA<=10%   0.0% (FA   0.0%) | comm 0.919
+       vs parent#4: paired 0.573 -> 0.625, det10 2.1% -> 0.0% -> accepted as #7 v3m-07
+  it14 MERGE #7(v3m-07) x #4(v3m-04) | A wins 12 / B wins 6 discordant notes
+  it14 merge from #7+#4 (leads 52/105) minibatch 0.6500 -> 0.8792 ACCEPT | $34.64
+    it14 VALID: 105/105 judged k=1 | cache 7h/404m | $35.86
+       VALID: paired-omit 0.688 (cmpl 0.704 pw 0.538 ps 0.875) | det@FA<=10%  25.0% (FA   5.0%) | comm 0.959
+       vs parent#7: paired 0.625 -> 0.688, det10 0.0% -> 25.0% -> accepted as #8 v3m-08
+  it15 mutation from #8 (leads 64/105) minibatch 0.5986 -> 0.5792 reject | $36.31
+  spend now $36.31 experiment total ($13.30 this leg), cap $80
+v3 mono | pool 9 | iter 15/15 | merges 3/4 | $13.30 this leg, $36.31 experiment | stopped: None
+  #0  seed     seed_fc_score  it00 paired-omit 0.615 (cmpl 0.685 pw 0.538 ps 0.500) | det@FA<=10%   2.1% (FA   5.0%) | comm 0.892
+  #1  seed     seed_engineered it00 paired-omit 0.646 (cmpl 0.704 pw 0.615 ps 0.500) | det@FA<=10%  18.8% (FA   5.0%) | comm 0.716
+  #2  mutation v3m-02         it01 paired-omit 0.656 (cmpl 0.667 pw 0.654 ps 0.625) | det@FA<=10%   4.2% (FA   0.0%) | comm 0.932
+  #3  mutation v3m-03         it02 paired-omit 0.583 (cmpl 0.611 pw 0.500 ps 0.625) | det@FA<=10%   0.0% (FA   0.0%) | comm 0.865
+  #4  mutation v3m-04         it07 paired-omit 0.573 (cmpl 0.593 pw 0.615 ps 0.438) | det@FA<=10%   2.1% (FA   0.0%) | comm 0.905
+  #5  mutation v3m-05         it09 paired-omit 0.542 (cmpl 0.593 pw 0.538 ps 0.375) | det@FA<=10%   8.3% (FA   0.0%) | comm 0.919
+  #6  merge    v3m-06         it12 paired-omit 0.594 (cmpl 0.648 pw 0.500 ps 0.562) | det@FA<=10%   8.3% (FA   5.0%) | comm 0.905
+  #7  merge    v3m-07         it13 paired-omit 0.625 (cmpl 0.685 pw 0.500 ps 0.625) | det@FA<=10%   0.0% (FA   0.0%) | comm 0.919
+  #8  merge    v3m-08         it14 paired-omit 0.688 (cmpl 0.704 pw 0.538 ps 0.875) | det@FA<=10%  25.0% (FA   5.0%) | comm 0.959
+  VALID winner: #8 v3m-08 (merge, it14)
+
+===== 2026-08-14T12:14:00+00:00 leg=mono phase=test n=1 | experiment $36.31 (leg $13.30) | cap $80 stop $72 leg-cap $34 =====
+  GATE: confirm on TEST at k=8 - v3m-08 beats seed_fc_score on VALID by +7.3pp paired and +22.9pp det@FA<=10%; the gate needs >2pp on both
+    TEST v3m-08 k=8: 198/198 judged k=8 | cache 0h/198m | $47.00
+  TEST v3m-08                 paired-omit 0.626 (cmpl 0.613 pw 0.681 ps 0.591) | det@FA<=10%   8.4% (FA   6.4%) | comm 0.950
+  spend now $47.00 experiment total ($24.00 this leg), cap $80
+  wrote gepa/v3_results.json | experiment spend $47.00
+  w2_prompts/pipeline_check_v3.txt deliberately NOT written: the winner does not beat the B2 baseline on the primary measure on held-out TEST (-0.0229 paired), so no v3 prompt file is written - only v3_results.json records what the search found
+  wrote gepa/v3_results.json | experiment spend $47.00
