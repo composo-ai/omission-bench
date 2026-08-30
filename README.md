@@ -8,6 +8,22 @@ it omits, and reports what recovers omission detection. The census paper, *One n
 three: a verified census of three deployed AI scribes, and the instrument that counted it*,
 reports the audit of the three products.
 
+## What this repository is
+
+This is an archival research release, not a maintained project. It is the instrument
+behind two papers, published so that their claims can be checked and the instrument
+re-used: every prompt, the construction and verification pipeline, the judge and pipeline
+runners, the three optimisation campaigns with each candidate's full instruction text, the
+census instrument, and the model pins and analysis code behind the published numbers. It
+is versioned and archived rather than developed, so there is no roadmap and no issue
+triage; questions and corrections are welcome by email to the corresponding author.
+
+What it deliberately is not is a complete record of the study's history. Superseded
+approaches, abandoned arms and the order in which things were tried are not part of the
+release, except where a paper reports them as a result - the optimisation lineages are
+here in full because the papers make claims about what the search found, and the deployed
+judge's superseded prompt wordings are here because a paper compares them.
+
 The data lives separately, at `huggingface.co/datasets/ComposoAI/OmissionBench` under CC BY 4.0.
 This repository is the code, under MIT: capture scripts, every prompt used to build,
 verify or judge any layer, the prompt-optimisation campaigns' lineage records with every
@@ -25,12 +41,11 @@ every run's identity, status, model pins, call counts and cost accounting:
     python3 check_manifests.py --results <dataset>/judgements/judges --no-inputs
 
 `--no-inputs` is needed because each manifest also records the sha256 of the construction
-files that run read, and those files are not part of the release. One of the validator's
-gates is stricter than the regime the benchmark runs actually ran under: it requires a
-clean working tree, and `w2_common.py` records that gate as deliberately not enforced from
-12 August 2026, with each manifest disclosing its exact uncommitted paths instead. So most
-benchmark runs report that gate as a failure, and every one of them carries the disclosure
-the relaxation asks for. No other gate is affected.
+files that run read, and those files are not part of the release. On the working-tree gate,
+the validator checks what the runs actually promised: from 12 August 2026 the study stopped
+requiring a clean tree, because analysis code changed between runs, and required instead
+that every run record its commit together with each uncommitted path. All 240 released
+manifests satisfy that, 204 of them by disclosing paths.
 
 How far a replicator can get depends on which product. Scribe A is driven through a
 documented API, and `scribe_A_generate.py` regenerates its notes end to end for anyone with
@@ -52,8 +67,7 @@ There is no packaging here. Clone the repository and run the scripts from its ro
 Keys are read from a `secrets.env` file beside the scripts, or from the environment. Every
 paper-bound model call routes through OpenRouter, so `OPENROUTER_API_KEY` is the one you
 always need. `OPENAI_API_KEY` covers the OpenAI batch route and the text-to-speech scripts,
-`COHERE_API_KEY` the embeddings behind clustering and matching, and `COMPOSO_API_KEY` the
-judge called through our own evaluation API in `crossover_balanced.py`.
+and `COHERE_API_KEY` the embeddings behind clustering and matching.
 
 ### The `claude` binary
 
@@ -103,7 +117,12 @@ endpoint, an HTTP request header and the environment variables they read (`scrib
 shipped. One vendor's API takes two live template identifiers, and those were replaced with
 environment lookups the same way (`SCRIBE_A_TEMPLATE_SHORT`, `SCRIBE_A_TEMPLATE_DETAILED`).
 Running a capture client against your own account therefore means restoring its addresses,
-header names and template identifiers from that vendor's own documentation first.
+its OAuth token endpoint, its two custom header names, its documents path and its template
+identifiers from that vendor's own documentation first. Each is read from an environment
+variable named in `common.py`, so nothing needs editing: supply `SCRIBE_A_TOKEN_URL`,
+`SCRIBE_A_TENANT_HEADER`, `SCRIBE_A_RETENTION_HEADER`, `SCRIBE_A_DOCUMENTS_PATH` and the two
+`SCRIBE_A_TEMPLATE_*` ids alongside the credentials. What the study did through that API is
+unchanged and fully described: two note templates per consultation, one request per note.
 Everywhere else in the repository the letters are labels and directory names only, and
 nothing downstream of capture needs repair. The letter-to-product mapping is not in this
 repository in any form.

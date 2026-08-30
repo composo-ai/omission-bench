@@ -1,0 +1,59 @@
+cff-version: 1.2.0
+message: "If you use this software or the benchmark it builds, please cite the two companion papers."
+title: "OmissionBench"
+version: "v1.0.2"
+license: MIT
+repository-code: "https://github.com/composo-ai/omission-bench"
+url: "https://huggingface.co/datasets/ComposoAI/OmissionBench"
+abstract: >-
+  The harness behind two companion papers on whether automated judges detect that a
+  clinical note has left something out: the benchmark's construction and verification
+  pipeline, every prompt used to build, verify or judge any layer, the three
+  prompt-optimisation campaigns with each candidate's full instruction text, the judge
+  and pipeline runners, and the census instrument. The data is released separately under
+  CC BY 4.0 at huggingface.co/datasets/ComposoAI/OmissionBench.
+type: software
+authors:
+  - family-names: Fox
+    given-names: Seb
+    affiliation: Composo
+    orcid: "https://orcid.org/0000-0001-9839-6952"
+  - family-names: Karotsieris
+    given-names: Michael
+    affiliation: Composo
+  - family-names: Markham
+    given-names: Luke
+    affiliation: Composo
+  - family-names: Lail
+    given-names: Ryan
+    affiliation: Composo
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22160955
+    description: Archived snapshot of the tagged release
+keywords:
+  - LLM evaluation
+  - LLM-as-a-judge
+  - benchmark
+  - clinical NLP
+  - ambient scribe
+  - omission detection
+preferred-citation:
+  type: article
+  title: "LLM Judges Verify Presence, Not Absence: Omission Blindness in AI Clinical Notes and What Recovers It"
+  year: 2026
+  notes: "arXiv identifier inserted at announcement"
+  authors:
+    - family-names: Fox
+      given-names: Seb
+      affiliation: Composo
+      orcid: "https://orcid.org/0000-0001-9839-6952"
+    - family-names: Karotsieris
+      given-names: Michael
+      affiliation: Composo
+    - family-names: Markham
+      given-names: Luke
+      affiliation: Composo
+    - family-names: Lail
+      given-names: Ryan
+      affiliation: Composo

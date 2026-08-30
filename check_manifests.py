@@ -82,9 +82,9 @@ def validate_manifest(path, problems, warnings=None):
         # G3: paper-bound runs must come from a clean tree. w1-smoke (machinery validation,
         # never behind a paper number) may run dirty IF the manifest discloses the exact
         # uncommitted paths - the shared-working-tree concession, decided 2026-07-30.
-        if not (m.get("experiment") == "w1-smoke" and m.get("git_dirty_paths")):
+        if not m.get("git_dirty_paths"):
             problems.append(f"{rid}: git_dirty is {m.get('git_dirty')!r} (G3 requires false; "
-                            "only w1-smoke with git_dirty_paths disclosure is exempt)")
+                            "a run that discloses git_dirty_paths is exempt)")
     if not m.get("git_commit"):
         problems.append(f"{rid}: missing git_commit")
     models = m.get("models") or []

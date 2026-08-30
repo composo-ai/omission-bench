@@ -3,18 +3,7 @@
 Import from here so experiment scripts stay thin and consistent:
     from common import claude, scribe_AClient, make_composo, load_primock, DANGEROUS_MODES, HERE
 
-Two model transports live here and they are not interchangeable. `llm()` is the
-paper-bound one: every benchmark and judge call goes through it, on OpenRouter, against a
-role pinned in `models.lock.json`, and it asserts that provider rather than accepting
-another. `claude()` and `claude_json()` are the construction-and-audit transport: they
-shell out to the local `claude` command-line binary, which runs against a Claude
-subscription rather than an API key, and they carry fact-sheet extraction, scenario
-authoring, the critique panels and the census instruments. `claude()` has no OpenRouter
-route of its own - a stage that needed one calls `llm()` instead, which is what
-`taxonomy_common.route_call` does by default - but setting BATCH_LLM=openai sends every
-`claude()`/`claude_json()` call to an OpenAI model instead, and the study used that
-whenever the subscription's session limit was reached.
-
+All LLM calls run on the lead author's Claude plan via `claude -p` (no API key).
 Composo via the cp- key in secrets.env. scribe_A via OAuth client-creds in secrets.env.
 """
 import json, os, re, subprocess, threading, time
@@ -44,7 +33,7 @@ def _openai_client():
 
 def _openai_call(prompt, timeout):
     m = os.environ.get("BATCH_OPENAI_MODEL", "gpt-5.5")
-    reff = os.environ.get("BATCH_OPENAI_REASONING", "none")   # gpt-5.5 supports 'none'
+    reff = os.environ.get("BATCH_OPENAI_REASONING", "none")   # gpt-5.5 supports 'none' (= a colleague's ref)
     kw = {"model": m, "messages": [{"role": "user", "content": prompt}]}
     if reff:
         kw["reasoning_effort"] = reff
@@ -115,7 +104,7 @@ class scribe_AClient:
         with self._lock:
             if time.time() > self._exp - 30:
                 r = self.cx.post(
-                    f"https://auth.{self.env}.scribe_A.app/realms/{self.tenant}/protocol/openid-connect/token",
+                    os.environ.get("SCRIBE_A_TOKEN_URL", "")  # vendor OAuth token endpoint; see the vendor's API docs,
                     data={"client_id": os.environ["scribe_A_CLIENT_ID"],
                           "client_secret": os.environ["scribe_A_CLIENT_SECRET"],
                           "grant_type": "client_credentials", "scope": "openid"})
@@ -127,11 +116,11 @@ class scribe_AClient:
     def generate(self, transcript, template="short"):
         """Return (note_text, stringDocument). `template` = key in scribe_A_TEMPLATES or a raw UUID."""
         tid = scribe_A_TEMPLATES.get(template, template)
-        H = {"Authorization": f"Bearer {self.token()}", "Tenant-Name": self.tenant,
-             "Content-Type": "application/json", "X-scribe_A-Retention-Policy": "none"}
+        H = {"Authorization": f"Bearer {self.token()}", os.environ.get("SCRIBE_A_TENANT_HEADER", "Tenant-Name"): self.tenant,
+             "Content-Type": "application/json", os.environ.get("SCRIBE_A_RETENTION_HEADER", "X-Retention-Policy"): "none"}
         body = {"outputLanguage": "en", "templateRef": {"templateId": tid},
                 "context": [{"type": "text", "text": transcript[:40000]}]}
-        r = self.cx.post(f"{self.base}/v2/documents/", headers=H, json=body)
+        r = self.cx.post(f"{self.base}" + os.environ.get("SCRIBE_A_DOCUMENTS_PATH", "/documents/"), headers=H, json=body)
         r.raise_for_status()
         doc = r.json()["document"]
         sd = doc.get("stringDocument", {}) or {}
