@@ -1,0 +1,217 @@
+{
+ "spec": "the pre-registered specification",
+ "generated_by": "audit_reference_notes.py --report",
+ "pre_registered_reading": "Threshold: at least 20% of reference notes in either corpus carrying at least one MATERIAL discrepancy on the pre-registered severity axis. Either outcome was publishable; meeting it made the reference-quality ablation's original-vs-verified comparison a reported result.",
+ "denominator_note": "fractions are over the KEPT master-corpus consults (53 PriMock v2.1 + 45 ACI sheets that passed extraction critique); dropped consults have no audited fact sheet and are not audited.",
+ "model": {
+  "model": "claude-opus-5",
+  "route": "plan",
+  "effort": "medium",
+  "fix_effort": "high"
+ },
+ "per_corpus": {
+  "primock": {
+   "n_notes_audited": 53,
+   "n_with_material_discrepancy": 53,
+   "fraction_with_material": 1.0,
+   "wilson_95ci": [
+    0.9324,
+    1.0
+   ],
+   "pre_registered_verdict": "threshold met (>=20% material)",
+   "discrepancies": {
+    "total": 1030,
+    "material": 566,
+    "minor": 464,
+    "mean_per_note": 19.43,
+    "mean_material_per_note": 10.68,
+    "by_kind": {
+     "contains_error": {
+      "total": 195,
+      "material": 139,
+      "minor": 56
+     },
+     "hardened_uncertainty": {
+      "total": 107,
+      "material": 57,
+      "minor": 50
+     },
+     "missing_fact": {
+      "total": 574,
+      "material": 310,
+      "minor": 264
+     },
+     "unsupported": {
+      "total": 154,
+      "material": 60,
+      "minor": 94
+     }
+    },
+    "by_rubric_severity": {
+     "critical": 345,
+     "supporting": 500,
+     "peripheral": 185
+    }
+   },
+   "repair": {
+    "mean_edit_count": 18.74,
+    "notes_with_zero_edits": 0
+   },
+   "verification": {
+    "first_pass": 19,
+    "needed_fix": 34,
+    "pass_after_fix": 23,
+    "still_failing": [
+     "day1_consultation03",
+     "day1_consultation10",
+     "day1_consultation11",
+     "day1_consultation12",
+     "day2_consultation03",
+     "day3_consultation03",
+     "day4_consultation02",
+     "day4_consultation04",
+     "day4_consultation06",
+     "day5_consultation04",
+     "day5_consultation11"
+    ]
+   },
+   "examples": [
+    {
+     "id": "day1_consultation01",
+     "kind": "contains_error",
+     "severity": "material",
+     "rubric_severity": "critical",
+     "detail": "Note describes the vomit as \"mainly bilous\". The patient described normal food-coloured vomit; bilious vomiting is a fabricated character with obstructive connotations.",
+     "fact_ref": "The vomit was normal food colour with no blood.",
+     "evidence": "just normal vomit, yeah. No no <UNSURE>blood</UNSURE>, no."
+    },
+    {
+     "id": "day1_consultation01",
+     "kind": "missing_fact",
+     "severity": "material",
+     "rubric_severity": "critical",
+     "detail": "No record that the patient is tolerating oral fluids despite reduced appetite - the pertinent positive that licenses conservative home management.",
+     "fact_ref": "Loss of appetite with reduced food intake, but able to tolerate/hold down fluids.",
+     "evidence": "I haven't been eating as much, but I've been able to hold down fluids"
+    },
+    {
+     "id": "day1_consultation01",
+     "kind": "hardened_uncertainty",
+     "severity": "material",
+     "rubric_severity": "critical",
+     "detail": "\"Imp: gastroenteritis\" states the diagnosis definitively; the clinician said the patient \"may have\" gastroenteritis, mainly viral with bacteria only a possibility. Note also omits the viral/bacterial framing and the tentative link to the takeaway.",
+     "fact_ref": "Working impression, stated tentatively: the patient may have gastroenteritis (a tummy bug/infection), suspected to relate to the Chinese takeaway.",
+     "evidence": "it seems like you may have something, uh, called gastroenteritis"
+    }
+   ]
+  },
+  "aci": {
+   "n_notes_audited": 45,
+   "n_with_material_discrepancy": 45,
+   "fraction_with_material": 1.0,
+   "wilson_95ci": [
+    0.9213,
+    1.0
+   ],
+   "pre_registered_verdict": "threshold met (>=20% material)",
+   "discrepancies": {
+    "total": 703,
+    "material": 320,
+    "minor": 383,
+    "mean_per_note": 15.62,
+    "mean_material_per_note": 7.11,
+    "by_kind": {
+     "contains_error": {
+      "total": 98,
+      "material": 57,
+      "minor": 41
+     },
+     "hardened_uncertainty": {
+      "total": 56,
+      "material": 36,
+      "minor": 20
+     },
+     "missing_fact": {
+      "total": 356,
+      "material": 185,
+      "minor": 171
+     },
+     "unsupported": {
+      "total": 193,
+      "material": 42,
+      "minor": 151
+     }
+    },
+    "by_rubric_severity": {
+     "critical": 143,
+     "supporting": 374,
+     "peripheral": 186
+    }
+   },
+   "repair": {
+    "mean_edit_count": 15.69,
+    "notes_with_zero_edits": 0
+   },
+   "verification": {
+    "first_pass": 18,
+    "needed_fix": 27,
+    "pass_after_fix": 21,
+    "still_failing": [
+     "D2N086",
+     "D2N105",
+     "D2N133",
+     "D2N177",
+     "D2N179",
+     "D2N185"
+    ]
+   },
+   "examples": [
+    {
+     "id": "D2N072",
+     "kind": "hardened_uncertainty",
+     "severity": "material",
+     "rubric_severity": "critical",
+     "detail": "The clinician expressed the diagnosis tentatively ('i think you've got a little contusion right here'), but the note records the impression as a flat, definite diagnosis with no hedging.",
+     "fact_ref": "The contusion diagnosis was stated as definite and confirmed.",
+     "evidence": "i think you've got a little contusion right here"
+    },
+    {
+     "id": "D2N072",
+     "kind": "contains_error",
+     "severity": "material",
+     "rubric_severity": "supporting",
+     "detail": "The note records 'No tenderness over the proximal phalanx'; the clinician said no tenderness over the proximal JOINT. The pertinent negative is relocated from a joint to a bone shaft, which changes which structure was cleared.",
+     "fact_ref": "Pertinent negative: no tenderness over the proximal joint.",
+     "evidence": "i do n't feel any tenderness over your proximal joint"
+    },
+    {
+     "id": "D2N072",
+     "kind": "missing_fact",
+     "severity": "material",
+     "rubric_severity": "supporting",
+     "detail": "The note omits the active movement findings: the patient could flex, extend, and oppose the finger to the thumb. These normal findings are what exclude tendon injury and license conservative management.",
+     "fact_ref": "The patient can flex the finger. / The patient can extend the finger.",
+     "evidence": "can you bend your finger for me ? [patient] yeah"
+    }
+   ]
+  }
+ },
+ "headline": {
+  "primock": {
+   "fraction_with_material": 1.0,
+   "wilson_95ci": [
+    0.9324,
+    1.0
+   ],
+   "meets_20pct": true
+  },
+  "aci": {
+   "fraction_with_material": 1.0,
+   "wilson_95ci": [
+    0.9213,
+    1.0
+   ],
+   "meets_20pct": true
+  }
+ }
+}

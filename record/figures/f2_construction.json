@@ -1,0 +1,283 @@
+{
+ "what": "how the answer key is built: a transcript becomes a fact sheet, the sheet is audited, the reference note is repaired against it, every statement site is mapped, every fact is graded, and only then is a fact removed to make a pair",
+ "reading": "each box is a stage and carries what it produced; each chip between two boxes is the check that stands between them, with what it rejected",
+ "stages": [
+  {
+   "id": "transcript",
+   "title": "Consultation transcript",
+   "lines": [
+    "145 consultations",
+    "57 PriMock57, 48 ACI-Bench, 30 authored, 10 trap-blind"
+   ],
+   "counts": {
+    "consultations_submitted": 145,
+    "by_source": {
+     "PriMock57 (recorded UK primary care)": 57,
+     "ACI-Bench (US ambulatory, subsampled)": 48,
+     "trap-blind authored": 10,
+     "authored, re-extracted blind": 30
+    }
+   },
+   "source": "master/fact_sheets_raw_*.json",
+   "findings": "1 l.11-18"
+  },
+  {
+   "id": "fact-sheet",
+   "title": "Fact sheet",
+   "lines": [
+    "145 sheets",
+    "extracted with no note in view: what the note must contain, must not contain, and the details scribes drop"
+   ],
+   "counts": {
+    "sheets_extracted": 145
+   },
+   "source": "master/fact_sheets_raw_*.json",
+   "findings": "1 l.11-20"
+  },
+  {
+   "id": "audited-sheet",
+   "title": "Audited fact sheet",
+   "lines": [
+    "134 sheets kept",
+    "11 dropped as still material after their revision"
+   ],
+   "counts": {
+    "critics": [
+     "support",
+     "materiality",
+     "leakage"
+    ],
+    "revised": 124,
+    "rechecked": 122,
+    "sheets_kept": 134,
+    "sheets_dropped": 11,
+    "by_source": {
+     "PriMock57 (recorded UK primary care)": 53,
+     "ACI-Bench (US ambulatory, subsampled)": 45,
+     "trap-blind authored": 9,
+     "authored, re-extracted blind": 27
+    }
+   },
+   "source": "master/critique_state_*.json, master/fact_sheets_*.json",
+   "findings": "1 l.11-20; 2 l.37-46"
+  },
+  {
+   "id": "clean-note",
+   "title": "Repaired reference note",
+   "lines": [
+    "98 clinician reference notes audited, then repaired",
+    "10.7 and 7.1 material discrepancies per note before repair"
+   ],
+   "counts": {
+    "notes_audited": 98,
+    "primock": {
+     "label": "PriMock57",
+     "audited": 53,
+     "with_material_discrepancy": 53,
+     "share": 1.0,
+     "wilson95": [
+      0.9324,
+      1.0
+     ],
+     "material_per_note": 10.68,
+     "discrepancies_total": 1030,
+     "missing_fact": 574,
+     "critical": 345,
+     "still_failing": 11
+    },
+    "aci": {
+     "label": "ACI-Bench",
+     "audited": 45,
+     "with_material_discrepancy": 45,
+     "share": 1.0,
+     "wilson95": [
+      0.9213,
+      1.0
+     ],
+     "material_per_note": 7.11,
+     "discrepancies_total": 703,
+     "missing_fact": 356,
+     "critical": 143,
+     "still_failing": 6
+    },
+    "still_failing_residual_checks": 17
+   },
+   "source": "master/wd_r3_report.json",
+   "findings": "5b l.99-107"
+  },
+  {
+   "id": "site-map",
+   "title": "Fact-site map",
+   "lines": [
+    "1,876 candidate facts over 134 consultations, 2,617 statement sites",
+    "574 of the 1,791 present facts (32.0%) are stated more than once"
+   ],
+   "counts": {
+    "consultations": 134,
+    "facts_mapped": 1876,
+    "facts_present": 1791,
+    "facts_absent": 85,
+    "sites": 2617,
+    "multi_site": 574,
+    "multi_site_share": 0.32049134561697373,
+    "amended": 419,
+    "confirmed": 1358,
+    "candidates_per_consultation": 14
+   },
+   "source": "master/fact_sites.json",
+   "findings": "15.1 l.301-324"
+  },
+  {
+   "id": "severity",
+   "title": "Severity per fact",
+   "lines": [
+    "613 facts of the evaluation split graded on a written rubric by two models from different families",
+    "166 critical, 393 supporting, 54 peripheral"
+   ],
+   "counts": {
+    "graded_eval": 613,
+    "mix": {
+     "supporting": 393,
+     "peripheral": 54,
+     "critical": 166
+    },
+    "disagreed": 93,
+    "disagreed_share": 0.15171288743882544,
+    "graded_total": 880,
+    "arms": 2,
+    "tie_break": "the lower grade, and the fact is flagged"
+   },
+   "source": "master/factorial_severity.json",
+   "findings": "15.2 l.326-332"
+  },
+  {
+   "id": "twins",
+   "title": "Graded twins",
+   "lines": [
+    "500 pairs, 495 in the evaluation set",
+    "293 omissions: 150 complete, 86 fragment, 57 restatement",
+    "202 commissions, 112 clean twins"
+   ],
+   "counts": {
+    "pairs": 500,
+    "evaluation_pairs": 495,
+    "omissions": 293,
+    "by_trace": {
+     "complete": 150,
+     "partial-strong": 57,
+     "partial-weak": 86
+    },
+    "additions": 95,
+    "alterations": 107,
+    "clean_twins": 112
+   },
+   "source": "master/dataset_v2.json",
+   "findings": "15.4 l.355-383"
+  }
+ ],
+ "gates": [
+  {
+   "after": "fact-sheet",
+   "title": "Three critics, one revision",
+   "lines": [
+    "support, materiality, leaked outside knowledge",
+    "11 of 145 sheets dropped"
+   ],
+   "detail": "three critics read every sheet for support, materiality, leakage; 124 of 145 sheets took a revision and 122 were re-audited, and 11 were dropped as still material",
+   "k": 134,
+   "n": 145,
+   "rate": 0.9241379310344827,
+   "source": "master/critique_state_*.json",
+   "findings": "1 l.11-18; 2 l.37-46"
+  },
+  {
+   "after": "audited-sheet",
+   "title": "Blind recovery check",
+   "lines": [
+    "646 of 650 facts human authors had written down are recovered, 99.4%"
+   ],
+   "detail": "646 of 650 facts the authors of 27 consultations had written down are recovered by blind extraction, 99.4% [98.8%, 99.9%], per-consultation minimum 93.8%",
+   "k": 646,
+   "n": 650,
+   "rate": 0.9938,
+   "source": "master/wd_provenance_report.json",
+   "findings": "4 l.57-62"
+  },
+  {
+   "after": "clean-note",
+   "title": "Repair verified",
+   "lines": [
+    "17 of 98 repaired notes still fail the strictest residual checks"
+   ],
+   "detail": "17 of 98 repaired notes still fail the strictest residual checks and are logged",
+   "k": 81,
+   "n": 98,
+   "rate": 0.826530612244898,
+   "source": "master/wd_r3_report.json",
+   "findings": "5b l.105"
+  },
+  {
+   "after": "site-map",
+   "title": "Every mapping re-read",
+   "lines": [
+    "a second model amended 419 of the 1,791 mappings (23%)"
+   ],
+   "detail": "a second model re-read every mapping and amended 419 of 1,791 (23%) - it dropped a span that did not state the fact, added one the mapper missed, or moved the primary nomination",
+   "k": 419,
+   "n": 1791,
+   "rate": 0.23394751535455052,
+   "source": "master/fact_sites.json",
+   "findings": "15.1 l.324"
+  },
+  {
+   "after": "severity",
+   "title": "Removal built, then verified",
+   "lines": [
+    "277 pairs built from 177 target facts",
+    "verified: 71 of 126 complete removals (56.3%), 114 of 151 leaving a trace by design (75.5%)",
+    "92 pairs dropped"
+   ],
+   "detail": "277 pairs were built from 177 target facts over 112 consultations, then a cross-family panel verified 71 of 126 complete removals (56.3%) against 114 of 151 (75.5%) for removals that leave a trace by design; 92 pairs were dropped rather than patched",
+   "k": 185,
+   "n": 277,
+   "rate": 0.6678700361010831,
+   "source": "master/omission_verification_v2.json",
+   "findings": "15.3 l.334-349"
+  }
+ ],
+ "pair_build": {
+  "planned": 277,
+  "target_facts": 177,
+  "consultations": 112,
+  "edits": {
+   "pure programmatic deletion": 104,
+   "grammar tidy": 65,
+   "collateral cleanup": 77,
+   "cleanup rejected, raw deletion stood": 31
+  },
+  "verified": {
+   "omit-complete": 71,
+   "omit-partial": 114
+  },
+  "attempts": {
+   "omit-complete": 126,
+   "omit-partial": 151
+  },
+  "dropped": 92,
+  "source": "master/omission_pairs_v2.json, master/omission_verification_v2.json",
+  "findings": "15.3 l.334-349"
+ },
+ "caption": "**The answer key is built from the transcript, not borrowed from the reference note.** Each box is a construction stage and carries what it produced; each chip below is the check that stands between two stages, and what that check rejected. Severity is graded per fact by two models from different families on a written rubric; they split on 93 of the 613 facts, and the lower grade is taken. The two checks that carry findings of their own are blind recovery, where extraction recovers 646 of 650 facts that human authors had written down for the same consultations, and removal verification, where only 71 of 126 attempts to remove every trace of a fact from a real note survive a cross-family panel against 114 of 151 for removals that leave a trace by design.",
+ "sources": [
+  "master/fact_sheets_raw_*.json",
+  "master/fact_sheets_*.json",
+  "master/critique_state_*.json",
+  "master/wd_provenance_report.json",
+  "master/wd_r3_report.json",
+  "master/fact_sites.json",
+  "master/factorial_severity.json",
+  "master/omission_pairs_v2.json",
+  "master/omission_verification_v2.json",
+  "master/dataset_v2.json"
+ ]
+}

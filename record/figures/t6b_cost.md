@@ -1,0 +1,33 @@
+# T6b - what each rung costs, and what its flag contains
+
+Markdown twin of the paper's `t6b_cost.tex` float. Both were generated from `t6_practitioner.json` beside this file by `render_tables.py`, which is not part of this release - see `SOURCES.md`. The performance columns live in `t6_practitioner.md`, over the same rows in the same order.
+
+| Approach | \$/note | what a flag carries | hidden cost |
+|---|---|---|---|
+| **One call at standard settings, asked an open question** | | | |
+| Best of the eight grid designs (FC / score / k=8) | $0.036 | A score | - |
+| Cheapest of the eight (F / score / k=1) | $0.004 | A score | - |
+| Best yes/no design (FC / binary / k=8) | $0.035 | A verdict | - |
+| Engineered omission judge (hand-written, 8 few-shots) | $0.005 | A score + free text | - |
+| Deployed faithfulness judge, as shipped | $0.005 | A verdict | - |
+| Optimiser's exploratory winner, standard settings | $0.008 | A score | - |
+| G-Eval (decomposes into dimensions, never enumerates) | $0.008 | A score | - |
+| **Enumerate the transcript, read the result as a score** | | | |
+| Instance checklist (arXiv 2507.17717 style) ‡ | $0.006 | A score | One cached artefact per consultation, not ledgered |
+| Naive RAGAS-style recipe (ours) ‡ | $0.030 | A score | One cached artefact per consultation, not ledgered |
+| RAGAS-style coverage score alone ‡ | $0.030 | A score | One cached artefact per consultation, not ledgered |
+| Enumerate + check (pipeline B2) | $0.094 | A coverage score | - |
+| Enumerate + audit + check (pipeline B3) | $0.45 | A coverage score | - |
+| **The deployable operating points, each at its own rule** | | | |
+| Route one - B3 verdicts read as a predicate: any critical fact absent | $0.45 | The named fact + severity | - |
+| Route two - the optimiser's winner with a reasoning budget (one call) | $0.046 | A score below 10 | A clean-note calibration, re-established per deployment |
+| Route two on the second judge family (gemini-3.1-pro, same prompt) | $0.028 | A score below 10 | A clean-note calibration, re-established per deployment |
+| Free-text rival: the engineered judge's own critical-omission list | $0.005 | The fact, free text | - |
+
+Cost is measured from the run receipts in a production framing of one note per consultation, so per-consultation stages are not amortised across a benchmark's twins. Amortised across this benchmark's twins, the two pipeline tiers read \$0.028 and \$0.140 a note.
+
+‡ also generates one cached artefact per consultation whose cost is not separately ledgered, so the \$/note figure is a lower bound in the one-note-per-consultation framing.
+
+Hidden cost is what the row asks for beyond its ledgered price. The two rows that read a threshold against a clean-note calibration need a labelled clean set per deployment to place that threshold, which no price here includes.
+
+Sources: `results/w2-ablation/_state/grid-main2.jsonl`, `results/w2-strong/_state/arms-main.jsonl`, `results/w2-v14/_state/arms-main.jsonl`, `results/w2-baselines/_state/arms-main.jsonl`, `results/w2-pipeline/_state/confirm-B2.jsonl`, `results/w2-pipeline/_state/confirm-B3.jsonl`, `results/w2-pipeline/_state/confirm-stages.jsonl`, `results/w2-pipeline/_state/confirmr{2,3}-B{2,3}.jsonl`, `results/w2-pipeline-replicates/analysis.json`, `results/w2-power/_state/power.jsonl`, `results/w2-power/_state/power-gemini.jsonl`, `results/w2-evalfull/analysis.json`

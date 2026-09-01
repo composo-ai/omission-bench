@@ -1,0 +1,447 @@
+{
+ "what": "detection of omission-bearing notes against the same design's false-alarm rate on clean notes; every lever slides the point along the same weak curve",
+ "panels": [
+  {
+   "id": "A",
+   "substrate": "evaluation set",
+   "denominator": "grid cells: 879 omission and 336 clean records (293 omission pairs and 112 clean twins x 3 replicates); reference arms: 586 and 224 (x 2 replicates); the two route points are note-level over the same 293 pairs and 112 twins (the rule 1 replicate, the budgeted call a majority of 3) - the paper",
+   "note": "each point is a design at its own pre-registered flag rule; the two route points sit off the cloud at their own deployment rules, Wilson 95% whiskers",
+   "points": [
+    {
+     "label": "F / binary / k=1",
+     "key": "F-bin-k1",
+     "family": "monolithic",
+     "rule": "FAIL verdict",
+     "fa": 0.089286,
+     "det": 0.095563,
+     "det_k": 84,
+     "n_err": 879,
+     "fa_k": 30,
+     "n_clean": 336,
+     "z": 0.336
+    },
+    {
+     "label": "F / binary / k=8",
+     "key": "F-bin-k8",
+     "family": "monolithic",
+     "rule": "FAIL verdict",
+     "fa": 0.074405,
+     "det": 0.095563,
+     "det_k": 84,
+     "n_err": 879,
+     "fa_k": 25,
+     "n_clean": 336,
+     "z": 1.154
+    },
+    {
+     "label": "FC / binary / k=1",
+     "key": "FC-bin-k1",
+     "family": "monolithic",
+     "rule": "FAIL verdict",
+     "fa": 0.318452,
+     "det": 0.40273,
+     "det_k": 354,
+     "n_err": 879,
+     "fa_k": 107,
+     "n_clean": 336,
+     "z": 2.708
+    },
+    {
+     "label": "FC / binary / k=8",
+     "key": "FC-bin-k8",
+     "family": "monolithic",
+     "rule": "FAIL verdict",
+     "fa": 0.321429,
+     "det": 0.423208,
+     "det_k": 372,
+     "n_err": 879,
+     "fa_k": 108,
+     "n_clean": 336,
+     "z": 3.246
+    },
+    {
+     "label": "F / score / k=1",
+     "key": "F-score-k1",
+     "family": "monolithic",
+     "rule": "score < 8.0",
+     "fa": 0.014881,
+     "det": 0.010239,
+     "det_k": 9,
+     "n_err": 879,
+     "fa_k": 5,
+     "n_clean": 336,
+     "z": -0.678
+    },
+    {
+     "label": "F / score / k=8",
+     "key": "F-score-k8",
+     "family": "monolithic",
+     "rule": "winsorised mean < 8.0",
+     "fa": 0.020833,
+     "det": 0.023891,
+     "det_k": 21,
+     "n_err": 879,
+     "fa_k": 7,
+     "n_clean": 336,
+     "z": 0.318
+    },
+    {
+     "label": "FC / score / k=1",
+     "key": "FC-score-k1",
+     "family": "monolithic",
+     "rule": "score < 8.0",
+     "fa": 0.056548,
+     "det": 0.046644,
+     "det_k": 41,
+     "n_err": 879,
+     "fa_k": 19,
+     "n_clean": 336,
+     "z": -0.713
+    },
+    {
+     "label": "FC / score / k=8",
+     "key": "FC-score-k8",
+     "family": "monolithic",
+     "rule": "winsorised mean < 8.0",
+     "fa": 0.065476,
+     "det": 0.083049,
+     "det_k": 73,
+     "n_err": 879,
+     "fa_k": 22,
+     "n_clean": 336,
+     "z": 1.021
+    },
+    {
+     "label": "Engineered omission judge",
+     "key": "engineered-completeness",
+     "family": "monolithic",
+     "rule": "score <= 7",
+     "fa": 0.026786,
+     "det": 0.083618,
+     "det_k": 49,
+     "n_err": 586,
+     "fa_k": 6,
+     "n_clean": 224,
+     "z": 2.876
+    },
+    {
+     "label": "GEPA v1 winner",
+     "key": "gepa-optimized",
+     "family": "monolithic",
+     "rule": "score <= 7",
+     "fa": 0.21875,
+     "det": 0.230375,
+     "det_k": 135,
+     "n_err": 586,
+     "fa_k": 49,
+     "n_clean": 224,
+     "z": 0.353
+    },
+    {
+     "label": "Deployed faithfulness judge, as shipped",
+     "key": "v14-asis",
+     "family": "monolithic",
+     "rule": "Verdict: YES",
+     "fa": 0.120536,
+     "det": 0.163823,
+     "det_k": 96,
+     "n_err": 586,
+     "fa_k": 27,
+     "n_clean": 224,
+     "z": 1.535
+    },
+    {
+     "label": "Deployed judge, exclusions deleted",
+     "key": "v14-noexcl",
+     "family": "monolithic",
+     "rule": "Verdict: YES",
+     "fa": 0.120536,
+     "det": 0.131399,
+     "det_k": 77,
+     "n_err": 586,
+     "fa_k": 27,
+     "n_clean": 224,
+     "z": 0.413
+    },
+    {
+     "label": "Deployed judge, omissions demanded",
+     "key": "v14-incl",
+     "family": "monolithic",
+     "rule": "Verdict: YES",
+     "fa": 0.120536,
+     "det": 0.255973,
+     "det_k": 150,
+     "n_err": 586,
+     "fa_k": 27,
+     "n_clean": 224,
+     "z": 4.172
+    },
+    {
+     "label": "G-Eval",
+     "key": "geval",
+     "family": "monolithic",
+     "rule": "min(c, comp) < 5",
+     "fa": 0.125,
+     "det": 0.267918,
+     "det_k": 157,
+     "n_err": 586,
+     "fa_k": 28,
+     "n_clean": 224,
+     "z": 4.334
+    },
+    {
+     "label": "RAGAS, shipped aggregate",
+     "key": "ragas",
+     "family": "enumerating",
+     "rule": "min(faithfulness, completeness) < 1.0",
+     "fa": 0.986607,
+     "det": 0.989761,
+     "det_k": 580,
+     "n_err": 586,
+     "fa_k": 221,
+     "n_clean": 224,
+     "z": 0.383
+    },
+    {
+     "label": "Instance checklist",
+     "key": "checklist",
+     "family": "enumerating",
+     "rule": "yes-fraction < 1.0",
+     "fa": 0.508929,
+     "det": 0.677474,
+     "det_k": 397,
+     "n_err": 586,
+     "fa_k": 114,
+     "n_clean": 224,
+     "z": 4.446
+    },
+    {
+     "label": "free-text critical-omission rule",
+     "key": "engineered-freetext-critical",
+     "family": "per-fact rule",
+     "rule": "its own omissions list contains a critical entry",
+     "fa": 0.008929,
+     "det": 0.095563,
+     "det_k": 56,
+     "n_err": 586,
+     "fa_k": 2,
+     "n_clean": 224,
+     "z": 4.277
+    },
+    {
+     "label": "route one: per-fact rule, any critical fact absent",
+     "key": "B3-predicate-eval",
+     "family": "per-fact rule",
+     "rule": "flag iff any audit-critical fact is verdicted absent (1 replicate)",
+     "fa": 0.0268,
+     "det": 0.2457,
+     "det_k": 72,
+     "n_err": 293,
+     "fa_k": 3,
+     "n_clean": 112,
+     "det_ci": [
+      0.1999,
+      0.2981
+     ],
+     "fa_ci": [
+      0.0092,
+      0.0758
+     ],
+     "note_level": true,
+     "highlight": true
+    },
+    {
+     "label": "route two: budgeted single call, flag below 10",
+     "key": "gepa-powered-eval",
+     "family": "budgeted single call",
+     "rule": "flag below 10, majority of 3 replicates at reasoning effort high",
+     "fa": 0.0625,
+     "det": 0.3686,
+     "det_k": 108,
+     "n_err": 293,
+     "fa_k": 7,
+     "n_clean": 112,
+     "det_ci": [
+      0.3154,
+      0.4252
+     ],
+     "fa_ci": [
+      0.0306,
+      0.1234
+     ],
+     "note_level": true,
+     "highlight": true
+    },
+    {
+     "label": "same call, flag below 9",
+     "key": "gepa-powered-below9",
+     "family": "budgeted single call",
+     "rule": "flag below 9, majority of 3",
+     "fa": 0.008928571428571428,
+     "det": 0.14334470989761092,
+     "det_k": 42,
+     "n_err": 293,
+     "fa_k": 1,
+     "n_clean": 112,
+     "note_level": true,
+     "secondary": true
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "substrate": "held-out confirmation subset",
+   "denominator": "131 omission pairs and 47 clean twins, 1 replicate",
+   "note": "the monolithic judge is shown once per replicate at its own rule; the pipeline tiers are swept because they write no flag",
+   "points": [
+    {
+     "label": "FC-score-k8, replicate 1",
+     "key": "FC-score-k8",
+     "family": "monolithic",
+     "rule": "winsorised mean < 8.0",
+     "fa": 0.06383,
+     "det": 0.129771,
+     "det_k": 17,
+     "n_err": 131,
+     "fa_k": 3,
+     "n_clean": 47,
+     "label_group": "monolithic judge, 3 replicates"
+    },
+    {
+     "label": "FC-score-k8, replicate 2",
+     "key": "FC-score-k8",
+     "family": "monolithic",
+     "rule": "winsorised mean < 8.0",
+     "fa": 0.085106,
+     "det": 0.10687,
+     "det_k": 14,
+     "n_err": 131,
+     "fa_k": 4,
+     "n_clean": 47,
+     "label_group": "monolithic judge, 3 replicates"
+    },
+    {
+     "label": "FC-score-k8, replicate 3",
+     "key": "FC-score-k8",
+     "family": "monolithic",
+     "rule": "winsorised mean < 8.0",
+     "fa": 0.12766,
+     "det": 0.091603,
+     "det_k": 12,
+     "n_err": 131,
+     "fa_k": 6,
+     "n_clean": 47,
+     "label_group": "monolithic judge, 3 replicates"
+    },
+    {
+     "label": "B2 coverage score, best threshold",
+     "key": "B2",
+     "family": "enumerating",
+     "rule": "swept, false alarms held at or under 10%",
+     "fa": 0.0851,
+     "det": 0.1603,
+     "det_k": 21,
+     "n_err": 131,
+     "fa_k": 4,
+     "n_clean": 47
+    },
+    {
+     "label": "B3 coverage score, best threshold",
+     "key": "B3",
+     "family": "enumerating",
+     "rule": "swept, false alarms held at or under 10%",
+     "fa": 0.0851,
+     "det": 0.1832,
+     "det_k": 24,
+     "n_err": 131,
+     "fa_k": 4,
+     "n_clean": 47
+    },
+    {
+     "label": "B3 coverage score at the predicate's own false-alarm rate",
+     "key": "B3-score-matched",
+     "family": "enumerating",
+     "rule": "swept, false alarms held at the predicate's 1/47",
+     "fa": 0.0213,
+     "det": 0.0763,
+     "det_k": 10,
+     "n_err": 131,
+     "fa_k": 1,
+     "n_clean": 47
+    },
+    {
+     "label": "per-fact predicate: any critical fact absent",
+     "key": "B3-predicate",
+     "family": "per-fact rule",
+     "rule": "flag iff any audit-critical fact is verdicted absent",
+     "fa": 0.021277,
+     "det": 0.206107,
+     "det_k": 27,
+     "n_err": 131,
+     "fa_k": 1,
+     "n_clean": 47,
+     "z": 2.986,
+     "det_ci": [
+      0.145693,
+      0.283266
+     ],
+     "fa_ci": [
+      0.003766,
+      0.11113
+     ],
+     "highlight": true,
+     "ratio_over_matched_score": 2.7
+    }
+   ]
+  }
+ ],
+ "chance_line": "detection equal to false alarms",
+ "levers": [
+  {
+   "lever": "criterion F -> FC",
+   "panel": "A",
+   "from": "F-score-k8",
+   "to": "FC-score-k8"
+  },
+  {
+   "lever": "output binary -> score",
+   "panel": "A",
+   "from": "FC-bin-k8",
+   "to": "FC-score-k8"
+  },
+  {
+   "lever": "ensembling k=1 -> k=8",
+   "panel": "A",
+   "from": "FC-score-k1",
+   "to": "FC-score-k8"
+  },
+  {
+   "lever": "Deployed judge wording: exclusions deleted -> omissions demanded",
+   "panel": "A",
+   "from": "v14-noexcl",
+   "to": "v14-incl"
+  },
+  {
+   "lever": "GEPA v1 winner, off its training distribution",
+   "panel": "A",
+   "from": "FC-score-k1",
+   "to": "gepa-optimized"
+  },
+  {
+   "lever": "same verdicts, read as a predicate instead of a score",
+   "panel": "B",
+   "from": "B3-score-matched",
+   "to": "B3-predicate"
+  }
+ ],
+ "sources": [
+  "results/w2-ablation/_state/grid-main2.jsonl",
+  "results/w2-strong/_state/arms-main.jsonl",
+  "results/w2-v14/_state/arms-main.jsonl",
+  "results/w2-baselines/_state/arms-main.jsonl",
+  "results/w2-pipeline/_state/confirm-B2.jsonl",
+  "results/w2-pipeline/_state/confirm-B3.jsonl",
+  "results/w2-power/_state/power.jsonl",
+  "results/w2-evalfull/analysis.json"
+ ]
+}

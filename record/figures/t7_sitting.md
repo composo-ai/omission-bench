@@ -1,0 +1,15 @@
+# T7 - the clinician sitting, compact
+
+Markdown twin of the paper's `t7_sitting.tex` float. Both were generated from `t7_sitting.json` beside this file by `render_tables.py`, which is not part of this release - see `SOURCES.md`.
+
+| What was judged | Result |
+|---|---|
+| Pipeline against monolithic judge, on the 10 notes where they disagree | the physician's verdict matched the **per-fact pipeline 100% [72, 100]** and the **monolithic judge 0% [0, 28]**; exact McNemar p=0.002. Restricted to the 8 notes where the monolithic judge's flag is attributable to the fact in front of them, 100% [68, 100] against 0% [0, 32], p=0.008 |
+| Per-stage validation, 34 items | inference-time fact extraction 10/10 = 100% [72, 100]; reference-note repair 8/8 = 100% [68, 100]; omission-pair rejection 6/6 = 100% [61, 100]; taxonomy panel cuts 0/10 = 0% [0, 28]. The taxonomy row is a false-kill rate; two of its ten items are pack-caused abstentions, so its honest denominator is 8 (0% [0, 32.4], Appendix E); the first three are endorsements of a stated verdict, not blind draws |
+| Severity grading, 20 facts graded blind | exact agreement 70% [48, 86], 85% weighted, linear-weighted kappa 0.63 (bootstrap 95% 0.32-0.86); all 6 disagreements are one grade, none two |
+
+Conflict: the rater is an author of the study and designed the instruments he is grading; sections A, B, C and G are endorsements rather than blind measurements.
+
+Instrument note: this validates the FACTORIAL severity axis (master/factorial_severity.json) - the axis results are conditioned on. It does NOT validate the pipeline audit stage's own severity grades, which are what the per-fact decision rule fires on; that is a separate run of the same written rubric and no item in this sitting scores it.
+
+Sources: `master/sitting_results.json`, `master/sitting_pack.md`, `build_sitting_pack.py`

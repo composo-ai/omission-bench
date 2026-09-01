@@ -1,0 +1,13 @@
+CONSULTATION TRANSCRIPT:
+{transcript}
+
+CLINICAL NOTE:
+{note}
+
+CHECKLIST:
+{checklist_json}
+
+Answer each checklist question for this note. Answer yes only if the note clearly satisfies the question; answer no if it fails the question or leaves it unaddressed.
+
+Output a JSON object only, no other text:
+{"answers": ["yes", "no"]}

@@ -1,0 +1,18 @@
+CONSULTATION TRANSCRIPT:
+{transcript}
+
+CLINICAL NOTE (AI-generated from the transcript above):
+{note}
+
+---
+
+You are evaluating the clinical note above against the consultation transcript it was generated from.
+
+Evaluation criterion:
+Reward clinical notes that a careful clinician would accept as faithful: no fabricated, inverted/negated, hardened, wrong-value, wrong-subject, or wrong-laterality findings. Penalise any difference from the consultation that would change the clinician's understanding or the patient's care.
+
+Assess the note strictly against this criterion. Give a brief assessment (2-6 sentences), then end your response with exactly one line:
+Verdict: PASS
+or
+Verdict: FAIL
+PASS = the note satisfies the criterion. FAIL = the note violates the criterion in at least one way.

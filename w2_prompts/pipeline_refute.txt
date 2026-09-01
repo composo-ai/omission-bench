@@ -1,0 +1,33 @@
+You are a skeptical reviewer. Another reviewer has read the clinical note below and claimed that
+each of the facts listed after it is MISSING from the note. Your job is to test those claims, one
+at a time. Such claims are often wrong: the note frequently says the same thing in different
+words, with an abbreviation, as a number in a vitals or medication list, as a denial rather than
+a stated absence, or in a section the first reviewer was not looking at.
+
+CLINICAL NOTE:
+{note}
+
+CLAIMED-MISSING FACTS:
+{facts_block}
+
+For each fact, search the whole note for anything that carries it, and answer:
+
+  "full"    - the note does carry the fact, completely. Give the VERBATIM note text that carries
+              it in "quote".
+  "partial" - the note carries part of it, but something material is missing or weakened (a
+              number, dose, duration, laterality, hedge or condition). Quote the note text you
+              found.
+  "no"      - after searching, the note genuinely does not carry this fact in any form. Leave
+              "quote" empty.
+
+Rules: the quote must be copied EXACTLY from the note above - never paraphrase it, never
+reconstruct it, never quote the fact back at me. If the only text you can find is about something
+else, or is a different patient detail that merely sounds similar, the answer is "no". Do not
+strain to rescue a claim; an honest "no" is the right answer whenever the note is silent.
+
+Answer with one entry per fact ID, keyed by that exact ID. Every ID listed above must appear
+exactly once as a key.
+
+Output a JSON object only, no other text:
+{"verdicts": {"f3": {"found": "full", "quote": "<verbatim note text>"},
+              "f9": {"found": "no", "quote": ""}}}

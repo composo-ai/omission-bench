@@ -1,0 +1,19 @@
+# The packages this repository imports, at the versions the study's environment recorded.
+#
+# This is a dependency list, not a snapshot of that environment: the environment was a
+# working tree with other projects in it, and its full freeze carried packages nothing
+# here imports. Nothing below is a claim that these versions are the only ones that work -
+# they are the ones the runs were made under.
+#
+# Python 3.14. Install with: pip install -r requirements.txt
+
+cohere==7.0.4         # embeddings, for clustering and content matching
+hdbscan==0.8.44       # the clustering recipe
+httpx==0.28.1         # the HTTP client under every model call
+numpy==2.4.6          # arrays, throughout
+openai==2.44.0        # the OpenAI batch fallback and the text-to-speech clients
+python-dotenv==1.2.2  # reads secrets.env
+requests==2.34.2      # the corpus fetchers
+scikit-learn==1.9.0   # the clustering recipe
+scipy==1.18.0         # the statistics
+umap-learn==0.5.12    # the clustering recipe

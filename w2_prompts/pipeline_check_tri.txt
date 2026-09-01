@@ -1,0 +1,32 @@
+CLINICAL NOTE UNDER REVIEW:
+{note}
+
+REFERENCE FACTS, extracted from the transcript of the consultation this note was written from.
+Each fact has an ID:
+{facts_block}
+
+For each reference fact, decide HOW FULLY the clinical note captures it:
+
+  "full"    - the note carries the fact and everything clinically load-bearing about it. Wording
+              may differ freely: a faithful paraphrase, a correct unit or dose conversion, an
+              accepted abbreviation, or the fact recorded in an unexpected section of the note is
+              still full capture.
+  "partial" - the note gestures at the fact but something material about it is missing or
+              weakened. Typical cases: the fact is there but its number, dose, frequency,
+              duration, laterality, body site or timing is gone; a hedge or condition has been
+              dropped or hardened ("consider antibiotics if it worsens" recorded as "antibiotics
+              started"); an explicit denial has become mere silence; one of two elements the fact
+              asserts is present and the other is not; the fact survives only as a vague mention
+              that would not tell the next clinician what was actually said.
+  "absent"  - the note does not carry the fact at all, in any form.
+
+Judge each fact on its own. Do not judge the note's style, length, ordering or formatting, and do
+not penalise it for carrying extra material. Do not use "partial" as a hedge for uncertainty: if
+the note carries the whole fact, say "full"; if it carries nothing of it, say "absent".
+
+Answer with one entry per fact ID, keyed by that exact ID. Do not renumber, reorder, merge or
+skip any ID. Every ID listed above must appear exactly once as a key, with the value "full",
+"partial" or "absent".
+
+Output a JSON object only, no other text:
+{"verdicts": {"f1": "full", "f2": "partial", "f3": "absent"}}

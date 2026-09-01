@@ -1,0 +1,2808 @@
+{
+ "arms": {
+  "checklist": {
+   "absolute": {
+    "det": {
+     "hi": 0.71406,
+     "k": 397,
+     "lo": 0.638578,
+     "n": 586,
+     "p": 0.677474
+    },
+    "fa": {
+     "hi": 0.573691,
+     "k": 114,
+     "lo": 0.443865,
+     "n": 224,
+     "p": 0.508929
+    },
+    "z": 4.446
+   },
+   "n_records": {
+    "clean": 224,
+    "commission": 404,
+    "omission": 586
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.715,
+     "per_replicate": [
+      0.7133,
+      0.7167
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5132,
+     "per_replicate": [
+      0.5175,
+      0.5088
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.6163,
+     "per_replicate": [
+      0.6221,
+      0.6105
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.6689,
+     "per_replicate": [
+      0.6623,
+      0.6755
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5705,
+     "per_replicate": [
+      0.5897,
+      0.5513
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.6432,
+     "per_replicate": [
+      0.6505,
+      0.6359
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.7438,
+    "per_replicate": [
+     0.7376,
+     0.75
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.6468,
+    "per_replicate": [
+     0.6485,
+     0.6451
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.1604,
+    "det_k": 94,
+    "fa": 0.0848,
+    "fa_k": 19,
+    "n_clean": 224,
+    "n_err": 586,
+    "threshold": 0.913044
+   }
+  },
+  "engineered-completeness": {
+   "absolute": {
+    "det": {
+     "hi": 0.108833,
+     "k": 49,
+     "lo": 0.063826,
+     "n": 586,
+     "p": 0.083618
+    },
+    "fa": {
+     "hi": 0.057196,
+     "k": 6,
+     "lo": 0.012333,
+     "n": 224,
+     "p": 0.026786
+    },
+    "z": 2.876
+   },
+   "n_records": {
+    "clean": 224,
+    "commission": 404,
+    "omission": 586
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.6783,
+     "per_replicate": [
+      0.6767,
+      0.68
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.557,
+     "per_replicate": [
+      0.5614,
+      0.5526
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.625,
+     "per_replicate": [
+      0.6337,
+      0.6163
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.6904,
+     "per_replicate": [
+      0.6921,
+      0.6887
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5769,
+     "per_replicate": [
+      0.5513,
+      0.6026
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5874,
+     "per_replicate": [
+      0.6019,
+      0.5728
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.7537,
+    "per_replicate": [
+     0.7748,
+     0.7327
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.6391,
+    "per_replicate": [
+     0.6416,
+     0.6365
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.0836,
+    "det_k": 49,
+    "fa": 0.0268,
+    "fa_k": 6,
+    "n_clean": 224,
+    "n_err": 586,
+    "threshold": 8.0
+   }
+  },
+  "engineered-freetext-critical": {
+   "absolute": {
+    "det": {
+     "hi": 0.122068,
+     "k": 56,
+     "lo": 0.074326,
+     "n": 586,
+     "p": 0.095563
+    },
+    "fa": {
+     "hi": 0.031964,
+     "k": 2,
+     "lo": 0.002452,
+     "n": 224,
+     "p": 0.008929
+    },
+    "z": 4.277
+   },
+   "n_records": {
+    "clean": 224,
+    "commission": 404,
+    "omission": 586
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.6783,
+     "per_replicate": [
+      0.6767,
+      0.68
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.557,
+     "per_replicate": [
+      0.5614,
+      0.5526
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.625,
+     "per_replicate": [
+      0.6337,
+      0.6163
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.6904,
+     "per_replicate": [
+      0.6921,
+      0.6887
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5769,
+     "per_replicate": [
+      0.5513,
+      0.6026
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5874,
+     "per_replicate": [
+      0.6019,
+      0.5728
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.7537,
+    "per_replicate": [
+     0.7748,
+     0.7327
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.6391,
+    "per_replicate": [
+     0.6416,
+     0.6365
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.0836,
+    "det_k": 49,
+    "fa": 0.0268,
+    "fa_k": 6,
+    "n_clean": 224,
+    "n_err": 586,
+    "threshold": 8.0
+   }
+  },
+  "gepa-optimized": {
+   "absolute": {
+    "det": {
+     "hi": 0.266158,
+     "k": 135,
+     "lo": 0.198105,
+     "n": 586,
+     "p": 0.230375
+    },
+    "fa": {
+     "hi": 0.27738,
+     "k": 49,
+     "lo": 0.169604,
+     "n": 224,
+     "p": 0.21875
+    },
+    "z": 0.353
+   },
+   "n_records": {
+    "clean": 224,
+    "commission": 404,
+    "omission": 586
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.5567,
+     "per_replicate": [
+      0.5767,
+      0.5367
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5175,
+     "per_replicate": [
+      0.5088,
+      0.5263
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.5581,
+     "per_replicate": [
+      0.5872,
+      0.5291
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.5662,
+     "per_replicate": [
+      0.5762,
+      0.5563
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.4872,
+     "per_replicate": [
+      0.5128,
+      0.4615
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5485,
+     "per_replicate": [
+      0.5728,
+      0.5243
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.8614,
+    "per_replicate": [
+     0.854,
+     0.8688
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.5495,
+    "per_replicate": [
+     0.5666,
+     0.5324
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.0768,
+    "det_k": 45,
+    "fa": 0.0759,
+    "fa_k": 17,
+    "n_clean": 224,
+    "n_err": 586,
+    "threshold": 6.0
+   }
+  },
+  "geval": {
+   "absolute": {
+    "det": {
+     "hi": 0.305202,
+     "k": 157,
+     "lo": 0.233657,
+     "n": 586,
+     "p": 0.267918
+    },
+    "fa": {
+     "hi": 0.174728,
+     "k": 28,
+     "lo": 0.087917,
+     "n": 224,
+     "p": 0.125
+    },
+    "z": 4.334
+   },
+   "n_records": {
+    "clean": 224,
+    "commission": 404,
+    "omission": 586
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.5917,
+     "per_replicate": [
+      0.59,
+      0.5933
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5351,
+     "per_replicate": [
+      0.5263,
+      0.5439
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.5494,
+     "per_replicate": [
+      0.5465,
+      0.5523
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.5993,
+     "per_replicate": [
+      0.5894,
+      0.6093
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5192,
+     "per_replicate": [
+      0.5256,
+      0.5128
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5413,
+     "per_replicate": [
+      0.5437,
+      0.5388
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.8899,
+    "per_replicate": [
+     0.8837,
+     0.896
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.5683,
+    "per_replicate": [
+     0.5648,
+     0.5717
+    ]
+   },
+   "swept_fa10": null
+  },
+  "ragas": {
+   "absolute": {
+    "det": {
+     "hi": 0.995299,
+     "k": 580,
+     "lo": 0.977844,
+     "n": 586,
+     "p": 0.989761
+    },
+    "fa": {
+     "hi": 0.995435,
+     "k": 221,
+     "lo": 0.961371,
+     "n": 224,
+     "p": 0.986607
+    },
+    "z": 0.383
+   },
+   "n_records": {
+    "clean": 224,
+    "commission": 404,
+    "omission": 586
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 148,
+     "paired": 0.9054,
+     "per_replicate": [
+      0.9155,
+      0.8953
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5482,
+     "per_replicate": [
+      0.5965,
+      0.5
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 84,
+     "paired": 0.8155,
+     "per_replicate": [
+      0.8214,
+      0.8095
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 149,
+     "paired": 0.8339,
+     "per_replicate": [
+      0.8557,
+      0.8121
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.8397,
+     "per_replicate": [
+      0.8974,
+      0.7821
+     ]
+    },
+    "supporting": {
+     "n_pairs": 101,
+     "paired": 0.7599,
+     "per_replicate": [
+      0.7525,
+      0.7673
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 200,
+    "paired": 0.7124,
+    "per_replicate": [
+     0.7298,
+     0.695
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 289,
+    "paired": 0.8088,
+    "per_replicate": [
+     0.8253,
+     0.7924
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.2086,
+    "det_k": 121,
+    "fa": 0.0995,
+    "fa_k": 22,
+    "n_clean": 221,
+    "n_err": 580,
+    "threshold": 0.836364
+   }
+  },
+  "ragas-completeness": {
+   "n_records": {
+    "clean": 224,
+    "commission": 404,
+    "omission": 586
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 148,
+     "paired": 0.9206,
+     "per_replicate": [
+      0.9358,
+      0.9054
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5175,
+     "per_replicate": [
+      0.5614,
+      0.4737
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 84,
+     "paired": 0.8363,
+     "per_replicate": [
+      0.8393,
+      0.8333
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 149,
+     "paired": 0.8523,
+     "per_replicate": [
+      0.8725,
+      0.8322
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.859,
+     "per_replicate": [
+      0.9103,
+      0.8077
+     ]
+    },
+    "supporting": {
+     "n_pairs": 101,
+     "paired": 0.7475,
+     "per_replicate": [
+      0.7475,
+      0.7475
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 200,
+    "paired": 0.6647,
+    "per_replicate": [
+     0.6818,
+     0.6475
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 289,
+    "paired": 0.8166,
+    "per_replicate": [
+     0.8339,
+     0.7993
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.2086,
+    "det_k": 121,
+    "fa": 0.0995,
+    "fa_k": 22,
+    "n_clean": 221,
+    "n_err": 580,
+    "threshold": 0.836364
+   }
+  },
+  "ragas-faithfulness": {
+   "n_records": {
+    "clean": 224,
+    "commission": 404,
+    "omission": 586
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 148,
+     "paired": 0.549,
+     "per_replicate": [
+      0.6182,
+      0.4797
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5702,
+     "per_replicate": [
+      0.5965,
+      0.5439
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 84,
+     "paired": 0.5357,
+     "per_replicate": [
+      0.5417,
+      0.5298
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 149,
+     "paired": 0.5403,
+     "per_replicate": [
+      0.5872,
+      0.4933
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5128,
+     "per_replicate": [
+      0.6154,
+      0.4103
+     ]
+    },
+    "supporting": {
+     "n_pairs": 101,
+     "paired": 0.5767,
+     "per_replicate": [
+      0.5891,
+      0.5644
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 200,
+    "paired": 0.8002,
+    "per_replicate": [
+     0.7955,
+     0.805
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 289,
+    "paired": 0.5493,
+    "per_replicate": [
+     0.5917,
+     0.5069
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.1155,
+    "det_k": 67,
+    "fa": 0.0995,
+    "fa_k": 22,
+    "n_clean": 221,
+    "n_err": 580,
+    "threshold": 0.948149
+   }
+  },
+  "v14-asis": {
+   "absolute": {
+    "det": {
+     "hi": 0.195961,
+     "k": 96,
+     "lo": 0.136063,
+     "n": 586,
+     "p": 0.163823
+    },
+    "fa": {
+     "hi": 0.169691,
+     "k": 27,
+     "lo": 0.084176,
+     "n": 224,
+     "p": 0.120536
+    },
+    "z": 1.535
+   },
+   "n_records": {
+    "clean": 224,
+    "commission": 404,
+    "omission": 586
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.535,
+     "per_replicate": [
+      0.5367,
+      0.5333
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5132,
+     "per_replicate": [
+      0.5263,
+      0.5
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.4913,
+     "per_replicate": [
+      0.4884,
+      0.4942
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.5364,
+     "per_replicate": [
+      0.543,
+      0.5298
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5,
+     "per_replicate": [
+      0.5,
+      0.5
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.4976,
+     "per_replicate": [
+      0.4951,
+      0.5
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.8861,
+    "per_replicate": [
+     0.8886,
+     0.8837
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.5179,
+    "per_replicate": [
+     0.5205,
+     0.5154
+    ]
+   },
+   "swept_fa10": null
+  },
+  "v14-incl": {
+   "absolute": {
+    "det": {
+     "hi": 0.292816,
+     "k": 150,
+     "lo": 0.222308,
+     "n": 586,
+     "p": 0.255973
+    },
+    "fa": {
+     "hi": 0.169691,
+     "k": 27,
+     "lo": 0.084176,
+     "n": 224,
+     "p": 0.120536
+    },
+    "z": 4.172
+   },
+   "n_records": {
+    "clean": 224,
+    "commission": 404,
+    "omission": 586
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.5933,
+     "per_replicate": [
+      0.5933,
+      0.5933
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5175,
+     "per_replicate": [
+      0.5175,
+      0.5175
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.5174,
+     "per_replicate": [
+      0.5174,
+      0.5174
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.5927,
+     "per_replicate": [
+      0.6026,
+      0.5828
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5256,
+     "per_replicate": [
+      0.5385,
+      0.5128
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5146,
+     "per_replicate": [
+      0.4951,
+      0.534
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.8874,
+    "per_replicate": [
+     0.8861,
+     0.8886
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.5563,
+    "per_replicate": [
+     0.5563,
+     0.5563
+    ]
+   },
+   "swept_fa10": null
+  },
+  "v14-noexcl": {
+   "absolute": {
+    "det": {
+     "hi": 0.161169,
+     "k": 77,
+     "lo": 0.106431,
+     "n": 586,
+     "p": 0.131399
+    },
+    "fa": {
+     "hi": 0.169691,
+     "k": 27,
+     "lo": 0.084176,
+     "n": 224,
+     "p": 0.120536
+    },
+    "z": 0.413
+   },
+   "n_records": {
+    "clean": 224,
+    "commission": 404,
+    "omission": 586
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.52,
+     "per_replicate": [
+      0.5167,
+      0.5233
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.4912,
+     "per_replicate": [
+      0.5,
+      0.4825
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.4884,
+     "per_replicate": [
+      0.4884,
+      0.4884
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.505,
+     "per_replicate": [
+      0.5033,
+      0.5066
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.4936,
+     "per_replicate": [
+      0.5,
+      0.4872
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5097,
+     "per_replicate": [
+      0.5097,
+      0.5097
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.8899,
+    "per_replicate": [
+     0.8936,
+     0.8861
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.5051,
+    "per_replicate": [
+     0.5051,
+     0.5051
+    ]
+   },
+   "swept_fa10": null
+  }
+ },
+ "cost": {
+  "arms": {
+   "checklist": {
+    "calls_per_note": 1.0,
+    "n_note_judgements": 1214,
+    "usd_per_note": 0.0068
+   },
+   "engineered-completeness": {
+    "calls_per_note": 1.0,
+    "n_note_judgements": 1214,
+    "usd_per_note": 0.0052
+   },
+   "gepa-optimized": {
+    "calls_per_note": 1.0,
+    "n_note_judgements": 1214,
+    "usd_per_note": 0.0089
+   },
+   "geval": {
+    "calls_per_note": 2.0,
+    "n_note_judgements": 1214,
+    "usd_per_note": 0.0081
+   },
+   "ragas": {
+    "calls_per_note": 1.98,
+    "n_note_judgements": 1214,
+    "usd_per_note": 0.0305
+   },
+   "v14-asis": {
+    "calls_per_note": 1.0,
+    "n_note_judgements": 1214,
+    "usd_per_note": 0.0056
+   },
+   "v14-incl": {
+    "calls_per_note": 1.0,
+    "n_note_judgements": 1214,
+    "usd_per_note": 0.0055
+   },
+   "v14-noexcl": {
+    "calls_per_note": 1.0,
+    "n_note_judgements": 1214,
+    "usd_per_note": 0.0054
+   }
+  },
+  "grid": {
+   "F-bin-k1": {
+    "calls_per_note": 1.0,
+    "n_note_judgements": 1821,
+    "usd_per_note": 0.0057
+   },
+   "F-bin-k8": {
+    "calls_per_note": 8.0,
+    "n_note_judgements": 1821,
+    "usd_per_note": 0.0332
+   },
+   "F-score-k1": {
+    "calls_per_note": 1.0,
+    "n_note_judgements": 1821,
+    "usd_per_note": 0.0047
+   },
+   "F-score-k8": {
+    "calls_per_note": 8.0,
+    "n_note_judgements": 1821,
+    "usd_per_note": 0.0352
+   },
+   "FC-bin-k1": {
+    "calls_per_note": 1.0,
+    "n_note_judgements": 1821,
+    "usd_per_note": 0.0047
+   },
+   "FC-bin-k8": {
+    "calls_per_note": 8.0,
+    "n_note_judgements": 1821,
+    "usd_per_note": 0.035
+   },
+   "FC-score-k1": {
+    "calls_per_note": 1.0,
+    "n_note_judgements": 1821,
+    "usd_per_note": 0.0049
+   },
+   "FC-score-k8": {
+    "calls_per_note": 8.0,
+    "n_note_judgements": 1821,
+    "usd_per_note": 0.0368
+   }
+  },
+  "pipeline_marginal": {
+   "B2": {
+    "calls_per_note": 1.0,
+    "n_note_judgements": 198,
+    "usd_per_note": 0.0077
+   },
+   "B3": {
+    "calls_per_note": 1.63,
+    "n_note_judgements": 198,
+    "usd_per_note": 0.044
+   }
+  },
+  "pipeline_stages_per_consultation": {
+   "audit": {
+    "n_consultations": 37,
+    "usd": 0.3194
+   },
+   "extract": {
+    "n_consultations": 37,
+    "usd": 0.0868
+   }
+  },
+  "production_usd_per_note": {
+   "B2": 0.0945,
+   "B3": 0.4502
+  }
+ },
+ "grid": {
+  "F-bin-k1": {
+   "absolute": {
+    "det": {
+     "hi": 0.116795,
+     "k": 84,
+     "lo": 0.07785,
+     "n": 879,
+     "p": 0.095563
+    },
+    "fa": {
+     "hi": 0.124599,
+     "k": 30,
+     "lo": 0.063257,
+     "n": 336,
+     "p": 0.089286
+    },
+    "z": 0.336
+   },
+   "n_records": {
+    "clean": 336,
+    "commission": 606,
+    "omission": 879
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.4978,
+     "per_replicate": [
+      0.5,
+      0.4867,
+      0.5067
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.4942,
+     "per_replicate": [
+      0.4825,
+      0.4825,
+      0.5175
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.5078,
+     "per_replicate": [
+      0.5116,
+      0.4884,
+      0.5233
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.5011,
+     "per_replicate": [
+      0.5066,
+      0.4901,
+      0.5066
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5,
+     "per_replicate": [
+      0.4744,
+      0.5128,
+      0.5128
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.4984,
+     "per_replicate": [
+      0.5,
+      0.4709,
+      0.5243
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.8746,
+    "per_replicate": [
+     0.8861,
+     0.8589,
+     0.8787
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.5,
+    "per_replicate": [
+     0.5,
+     0.4863,
+     0.5137
+    ]
+   },
+   "swept_fa10": null
+  },
+  "F-bin-k8": {
+   "absolute": {
+    "det": {
+     "hi": 0.116795,
+     "k": 84,
+     "lo": 0.07785,
+     "n": 879,
+     "p": 0.095563
+    },
+    "fa": {
+     "hi": 0.107528,
+     "k": 25,
+     "lo": 0.050903,
+     "n": 336,
+     "p": 0.074405
+    },
+    "z": 1.154
+   },
+   "n_records": {
+    "clean": 336,
+    "commission": 606,
+    "omission": 879
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.51,
+     "per_replicate": [
+      0.5133,
+      0.5133,
+      0.5033
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5,
+     "per_replicate": [
+      0.5088,
+      0.5088,
+      0.4825
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.5116,
+     "per_replicate": [
+      0.5058,
+      0.5349,
+      0.4942
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.5166,
+     "per_replicate": [
+      0.5298,
+      0.5199,
+      0.5
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.4915,
+     "per_replicate": [
+      0.4872,
+      0.5256,
+      0.4615
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5032,
+     "per_replicate": [
+      0.4903,
+      0.5146,
+      0.5049
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.9043,
+    "per_replicate": [
+     0.9035,
+     0.9109,
+     0.8985
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.5085,
+    "per_replicate": [
+     0.5102,
+     0.5188,
+     0.4966
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.1138,
+    "det_k": 100,
+    "fa": 0.0893,
+    "fa_k": 30,
+    "n_clean": 336,
+    "n_err": 879,
+    "threshold": 7.5
+   }
+  },
+  "F-score-k1": {
+   "absolute": {
+    "det": {
+     "hi": 0.019344,
+     "k": 9,
+     "lo": 0.005396,
+     "n": 879,
+     "p": 0.010239
+    },
+    "fa": {
+     "hi": 0.034357,
+     "k": 5,
+     "lo": 0.006373,
+     "n": 336,
+     "p": 0.014881
+    },
+    "z": -0.678
+   },
+   "n_records": {
+    "clean": 336,
+    "commission": 606,
+    "omission": 879
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.5656,
+     "per_replicate": [
+      0.5533,
+      0.5367,
+      0.6067
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5088,
+     "per_replicate": [
+      0.5175,
+      0.4825,
+      0.5263
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.5465,
+     "per_replicate": [
+      0.5116,
+      0.5698,
+      0.5581
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.5762,
+     "per_replicate": [
+      0.5596,
+      0.5629,
+      0.606
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5171,
+     "per_replicate": [
+      0.5513,
+      0.4487,
+      0.5513
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.521,
+     "per_replicate": [
+      0.4903,
+      0.5291,
+      0.5437
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.9109,
+    "per_replicate": [
+     0.9035,
+     0.9109,
+     0.9183
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.5489,
+    "per_replicate": [
+     0.5341,
+     0.5358,
+     0.5768
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.0102,
+    "det_k": 9,
+    "fa": 0.0149,
+    "fa_k": 5,
+    "n_clean": 336,
+    "n_err": 879,
+    "threshold": 8.0
+   }
+  },
+  "F-score-k8": {
+   "absolute": {
+    "det": {
+     "hi": 0.036247,
+     "k": 21,
+     "lo": 0.015678,
+     "n": 879,
+     "p": 0.023891
+    },
+    "fa": {
+     "hi": 0.042372,
+     "k": 7,
+     "lo": 0.010128,
+     "n": 336,
+     "p": 0.020833
+    },
+    "z": 0.318
+   },
+   "n_records": {
+    "clean": 336,
+    "commission": 606,
+    "omission": 879
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.5889,
+     "per_replicate": [
+      0.59,
+      0.5867,
+      0.59
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5351,
+     "per_replicate": [
+      0.5263,
+      0.5439,
+      0.5351
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.6008,
+     "per_replicate": [
+      0.6047,
+      0.593,
+      0.6047
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.6126,
+     "per_replicate": [
+      0.6093,
+      0.6126,
+      0.6159
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.547,
+     "per_replicate": [
+      0.5897,
+      0.4872,
+      0.5641
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5502,
+     "per_replicate": [
+      0.5388,
+      0.568,
+      0.5437
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.9439,
+    "per_replicate": [
+     0.9455,
+     0.948,
+     0.9381
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.5819,
+    "per_replicate": [
+     0.5819,
+     0.5802,
+     0.5836
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.0239,
+    "det_k": 21,
+    "fa": 0.0208,
+    "fa_k": 7,
+    "n_clean": 336,
+    "n_err": 879,
+    "threshold": 8.0
+   }
+  },
+  "FC-bin-k1": {
+   "absolute": {
+    "det": {
+     "hi": 0.435508,
+     "k": 354,
+     "lo": 0.370799,
+     "n": 879,
+     "p": 0.40273
+    },
+    "fa": {
+     "hi": 0.370078,
+     "k": 107,
+     "lo": 0.270931,
+     "n": 336,
+     "p": 0.318452
+    },
+    "z": 2.708
+   },
+   "n_records": {
+    "clean": 336,
+    "commission": 606,
+    "omission": 879
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.5389,
+     "per_replicate": [
+      0.53,
+      0.5667,
+      0.52
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5234,
+     "per_replicate": [
+      0.5,
+      0.5439,
+      0.5263
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.5504,
+     "per_replicate": [
+      0.5349,
+      0.5581,
+      0.5581
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.5651,
+     "per_replicate": [
+      0.543,
+      0.5828,
+      0.5695
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5,
+     "per_replicate": [
+      0.5385,
+      0.5385,
+      0.4231
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5162,
+     "per_replicate": [
+      0.4951,
+      0.534,
+      0.5194
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.7921,
+    "per_replicate": [
+     0.7921,
+     0.797,
+     0.7871
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.5392,
+    "per_replicate": [
+     0.5256,
+     0.5597,
+     0.5324
+    ]
+   },
+   "swept_fa10": null
+  },
+  "FC-bin-k8": {
+   "absolute": {
+    "det": {
+     "hi": 0.456135,
+     "k": 372,
+     "lo": 0.39095,
+     "n": 879,
+     "p": 0.423208
+    },
+    "fa": {
+     "hi": 0.373142,
+     "k": 108,
+     "lo": 0.273753,
+     "n": 336,
+     "p": 0.321429
+    },
+    "z": 3.246
+   },
+   "n_records": {
+    "clean": 336,
+    "commission": 606,
+    "omission": 879
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.6078,
+     "per_replicate": [
+      0.5933,
+      0.6133,
+      0.6167
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5322,
+     "per_replicate": [
+      0.4737,
+      0.5439,
+      0.5789
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.6008,
+     "per_replicate": [
+      0.6047,
+      0.6279,
+      0.5698
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.6325,
+     "per_replicate": [
+      0.6026,
+      0.649,
+      0.6457
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5385,
+     "per_replicate": [
+      0.4872,
+      0.5513,
+      0.5769
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5502,
+     "per_replicate": [
+      0.5631,
+      0.5583,
+      0.5291
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.8688,
+    "per_replicate": [
+     0.8639,
+     0.8738,
+     0.8688
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.591,
+    "per_replicate": [
+     0.5734,
+     0.6041,
+     0.5956
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.0,
+    "det_k": 0,
+    "fa": 0.0,
+    "fa_k": 0,
+    "n_clean": 336,
+    "n_err": 879,
+    "threshold": 0.0
+   }
+  },
+  "FC-score-k1": {
+   "absolute": {
+    "det": {
+     "hi": 0.062666,
+     "k": 41,
+     "lo": 0.034567,
+     "n": 879,
+     "p": 0.046644
+    },
+    "fa": {
+     "hi": 0.086624,
+     "k": 19,
+     "lo": 0.036497,
+     "n": 336,
+     "p": 0.056548
+    },
+    "z": -0.713
+   },
+   "n_records": {
+    "clean": 336,
+    "commission": 606,
+    "omission": 879
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.6,
+     "per_replicate": [
+      0.6233,
+      0.6,
+      0.5767
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5585,
+     "per_replicate": [
+      0.5965,
+      0.614,
+      0.4649
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.5756,
+     "per_replicate": [
+      0.6221,
+      0.5698,
+      0.5349
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.6247,
+     "per_replicate": [
+      0.6291,
+      0.6556,
+      0.5894
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5256,
+     "per_replicate": [
+      0.5641,
+      0.4872,
+      0.5256
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5485,
+     "per_replicate": [
+      0.6214,
+      0.5437,
+      0.4806
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.8952,
+    "per_replicate": [
+     0.901,
+     0.8861,
+     0.8985
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.5848,
+    "per_replicate": [
+     0.6177,
+     0.5939,
+     0.5427
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.0466,
+    "det_k": 41,
+    "fa": 0.0565,
+    "fa_k": 19,
+    "n_clean": 336,
+    "n_err": 879,
+    "threshold": 8.0
+   }
+  },
+  "FC-score-k8": {
+   "absolute": {
+    "det": {
+     "hi": 0.103157,
+     "k": 73,
+     "lo": 0.06657,
+     "n": 879,
+     "p": 0.083049
+    },
+    "fa": {
+     "hi": 0.097142,
+     "k": 22,
+     "lo": 0.043634,
+     "n": 336,
+     "p": 0.065476
+    },
+    "z": 1.021
+   },
+   "n_records": {
+    "clean": 336,
+    "commission": 606,
+    "omission": 879
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.69,
+     "per_replicate": [
+      0.71,
+      0.6933,
+      0.6667
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5263,
+     "per_replicate": [
+      0.4737,
+      0.614,
+      0.4912
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.6066,
+     "per_replicate": [
+      0.6802,
+      0.5814,
+      0.5581
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.6832,
+     "per_replicate": [
+      0.702,
+      0.6887,
+      0.6589
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.5684,
+     "per_replicate": [
+      0.5769,
+      0.6282,
+      0.5
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.5858,
+     "per_replicate": [
+      0.6165,
+      0.5874,
+      0.5534
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.9389,
+    "per_replicate": [
+     0.9554,
+     0.9381,
+     0.9233
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.6337,
+    "per_replicate": [
+     0.6553,
+     0.6451,
+     0.6007
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.083,
+    "det_k": 73,
+    "fa": 0.0655,
+    "fa_k": 22,
+    "n_clean": 336,
+    "n_err": 879,
+    "threshold": 8.0
+   }
+  }
+ },
+ "grid_best_on_confirmation_substrate": [
+  {
+   "det": {
+    "hi": 0.198011,
+    "k": 17,
+    "lo": 0.082625,
+    "n": 131,
+    "p": 0.129771
+   },
+   "fa": {
+    "hi": 0.171626,
+    "k": 3,
+    "lo": 0.021945,
+    "n": 47,
+    "p": 0.06383
+   },
+   "replicate": 1
+  },
+  {
+   "det": {
+    "hi": 0.171405,
+    "k": 14,
+    "lo": 0.064735,
+    "n": 131,
+    "p": 0.10687
+   },
+   "fa": {
+    "hi": 0.199315,
+    "k": 4,
+    "lo": 0.033594,
+    "n": 47,
+    "p": 0.085106
+   },
+   "replicate": 2
+  },
+  {
+   "det": {
+    "hi": 0.153297,
+    "k": 12,
+    "lo": 0.053178,
+    "n": 131,
+    "p": 0.091603
+   },
+   "fa": {
+    "hi": 0.251739,
+    "k": 6,
+    "lo": 0.059846,
+    "n": 47,
+    "p": 0.12766
+   },
+   "replicate": 3
+  }
+ ],
+ "matched_substrate_151": {
+  "grid_FC_score_k8_per_replicate": [
+   0.6221,
+   0.6489,
+   0.5305
+  ],
+  "pipeline_B2": {
+   "n_pairs": 131,
+   "paired": 0.8015,
+   "per_replicate": [
+    0.8015
+   ]
+  },
+  "ragas_completeness": {
+   "n_pairs": 128,
+   "paired": 0.8008,
+   "per_replicate": [
+    0.8203,
+    0.7812
+   ]
+  },
+  "ragas_faithfulness": {
+   "n_pairs": 128,
+   "paired": 0.5469,
+   "per_replicate": [
+    0.6289,
+    0.4648
+   ]
+  }
+ },
+ "pipeline": {
+  "B2": {
+   "n_records": {
+    "clean": 47,
+    "commission": 20,
+    "omission": 131
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 62,
+     "paired": 0.9355,
+     "per_replicate": [
+      0.9355
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 33,
+     "paired": 0.5606,
+     "per_replicate": [
+      0.5606
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 36,
+     "paired": 0.7917,
+     "per_replicate": [
+      0.7917
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 58,
+     "paired": 0.8362,
+     "per_replicate": [
+      0.8362
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 19,
+     "paired": 0.8684,
+     "per_replicate": [
+      0.8684
+     ]
+    },
+    "supporting": {
+     "n_pairs": 54,
+     "paired": 0.7407,
+     "per_replicate": [
+      0.7407
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 20,
+    "paired": 0.65,
+    "per_replicate": [
+     0.65
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 131,
+    "paired": 0.8015,
+    "per_replicate": [
+     0.8015
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.1603,
+    "det_k": 21,
+    "fa": 0.0851,
+    "fa_k": 4,
+    "n_clean": 47,
+    "n_err": 131,
+    "threshold": 0.894737
+   }
+  },
+  "B3": {
+   "n_records": {
+    "clean": 47,
+    "commission": 20,
+    "omission": 131
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 62,
+     "paired": 0.8629,
+     "per_replicate": [
+      0.8629
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 33,
+     "paired": 0.4697,
+     "per_replicate": [
+      0.4697
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 36,
+     "paired": 0.8194,
+     "per_replicate": [
+      0.8194
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 58,
+     "paired": 0.8017,
+     "per_replicate": [
+      0.8017
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 19,
+     "paired": 0.6579,
+     "per_replicate": [
+      0.6579
+     ]
+    },
+    "supporting": {
+     "n_pairs": 54,
+     "paired": 0.7315,
+     "per_replicate": [
+      0.7315
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 20,
+    "paired": 0.5,
+    "per_replicate": [
+     0.5
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 131,
+    "paired": 0.7519,
+    "per_replicate": [
+     0.7519
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.1832,
+    "det_k": 24,
+    "fa": 0.0851,
+    "fa_k": 4,
+    "n_clean": 47,
+    "n_err": 131,
+    "threshold": 0.879167
+   }
+  },
+  "B3-predicate": {
+   "absolute": {
+    "det": {
+     "hi": 0.283266,
+     "k": 27,
+     "lo": 0.145693,
+     "n": 131,
+     "p": 0.206107
+    },
+    "fa": {
+     "hi": 0.11113,
+     "k": 1,
+     "lo": 0.003766,
+     "n": 47,
+     "p": 0.021277
+    },
+    "z": 2.986
+   },
+   "by_residual_detection": {
+    "complete": {
+     "hi": 0.462823,
+     "k": 21,
+     "lo": 0.233417,
+     "n": 62,
+     "p": 0.33871
+    },
+    "partial-strong": {
+     "hi": 0.10427,
+     "k": 0,
+     "lo": 0.0,
+     "n": 33,
+     "p": 0.0
+    },
+    "partial-weak": {
+     "hi": 0.318908,
+     "k": 6,
+     "lo": 0.078704,
+     "n": 36,
+     "p": 0.166667
+    }
+   },
+   "critical_severity_pairs": {
+    "hi": 0.455759,
+    "k": 19,
+    "lo": 0.220833,
+    "n": 58,
+    "p": 0.327586
+   },
+   "n_records": {
+    "clean": 47,
+    "commission": 20,
+    "omission": 131
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 62,
+     "paired": 0.8629,
+     "per_replicate": [
+      0.8629
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 33,
+     "paired": 0.4697,
+     "per_replicate": [
+      0.4697
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 36,
+     "paired": 0.8194,
+     "per_replicate": [
+      0.8194
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 58,
+     "paired": 0.8017,
+     "per_replicate": [
+      0.8017
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 19,
+     "paired": 0.6579,
+     "per_replicate": [
+      0.6579
+     ]
+    },
+    "supporting": {
+     "n_pairs": 54,
+     "paired": 0.7315,
+     "per_replicate": [
+      0.7315
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 20,
+    "paired": 0.5,
+    "per_replicate": [
+     0.5
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 131,
+    "paired": 0.7519,
+    "per_replicate": [
+     0.7519
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.1832,
+    "det_k": 24,
+    "fa": 0.0851,
+    "fa_k": 4,
+    "n_clean": 47,
+    "n_err": 131,
+    "threshold": 0.879167
+   }
+  },
+  "B3-score-at-predicate-FA": {
+   "det": 0.0763,
+   "det_k": 10,
+   "fa": 0.0213,
+   "fa_k": 1,
+   "n_clean": 47,
+   "n_err": 131,
+   "ratio_predicate_over_score": 2.7,
+   "threshold": 0.844444
+  }
+ },
+ "pipeline_evalset": {
+  "B3": {
+   "n_records": {
+    "clean": 112,
+    "commission": 202,
+    "omission": 293
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.8933,
+     "per_replicate": [
+      0.8933
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5175,
+     "per_replicate": [
+      0.5175
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.8081,
+     "per_replicate": [
+      0.8081
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.851,
+     "per_replicate": [
+      0.851
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.6667,
+     "per_replicate": [
+      0.6667
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.7621,
+     "per_replicate": [
+      0.7621
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.6609,
+    "per_replicate": [
+     0.6609
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.7952,
+    "per_replicate": [
+     0.7952
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.1809,
+    "det_k": 53,
+    "fa": 0.0804,
+    "fa_k": 9,
+    "n_clean": 112,
+    "n_err": 293,
+    "threshold": 0.879167
+   }
+  },
+  "B3-predicate": {
+   "absolute": {
+    "det": {
+     "hi": 0.29811,
+     "k": 72,
+     "lo": 0.199938,
+     "n": 293,
+     "p": 0.245734
+    },
+    "fa": {
+     "hi": 0.075805,
+     "k": 3,
+     "lo": 0.009151,
+     "n": 112,
+     "p": 0.026786
+    },
+    "z": 5.074
+   },
+   "by_residual_detection": {
+    "complete": {
+     "hi": 0.479951,
+     "k": 60,
+     "lo": 0.325043,
+     "n": 150,
+     "p": 0.4
+    },
+    "partial-strong": {
+     "hi": 0.063139,
+     "k": 0,
+     "lo": 0.0,
+     "n": 57,
+     "p": 0.0
+    },
+    "partial-weak": {
+     "hi": 0.228237,
+     "k": 12,
+     "lo": 0.081658,
+     "n": 86,
+     "p": 0.139535
+    }
+   },
+   "critical_severity_pairs": {
+    "hi": 0.477016,
+    "k": 60,
+    "lo": 0.322779,
+    "n": 151,
+    "p": 0.397351
+   },
+   "n_records": {
+    "clean": 112,
+    "commission": 202,
+    "omission": 293
+   },
+   "paired_by_residual": {
+    "complete": {
+     "n_pairs": 150,
+     "paired": 0.8933,
+     "per_replicate": [
+      0.8933
+     ]
+    },
+    "partial-strong": {
+     "n_pairs": 57,
+     "paired": 0.5175,
+     "per_replicate": [
+      0.5175
+     ]
+    },
+    "partial-weak": {
+     "n_pairs": 86,
+     "paired": 0.8081,
+     "per_replicate": [
+      0.8081
+     ]
+    }
+   },
+   "paired_by_severity": {
+    "critical": {
+     "n_pairs": 151,
+     "paired": 0.851,
+     "per_replicate": [
+      0.851
+     ]
+    },
+    "peripheral": {
+     "n_pairs": 39,
+     "paired": 0.6667,
+     "per_replicate": [
+      0.6667
+     ]
+    },
+    "supporting": {
+     "n_pairs": 103,
+     "paired": 0.7621,
+     "per_replicate": [
+      0.7621
+     ]
+    }
+   },
+   "paired_commissions": {
+    "n_pairs": 202,
+    "paired": 0.6609,
+    "per_replicate": [
+     0.6609
+    ]
+   },
+   "paired_omissions": {
+    "n_pairs": 293,
+    "paired": 0.7952,
+    "per_replicate": [
+     0.7952
+    ]
+   },
+   "swept_fa10": {
+    "det": 0.1809,
+    "det_k": 53,
+    "fa": 0.0804,
+    "fa_k": 9,
+    "n_clean": 112,
+    "n_err": 293,
+    "threshold": 0.879167
+   }
+  }
+ },
+ "pipeline_replicates": {
+  "B2": {
+   "commissions": {
+    "max": 0.7,
+    "mean": 0.65,
+    "min": 0.6,
+    "n_runs": 3,
+    "per_replicate": [
+     0.65,
+     0.6,
+     0.7
+    ],
+    "range": 0.1,
+    "sd": 0.05
+   },
+   "omissions": {
+    "max": 0.8015,
+    "mean": 0.7863,
+    "min": 0.771,
+    "n_runs": 3,
+    "per_replicate": [
+     0.8015,
+     0.771,
+     0.7863
+    ],
+    "range": 0.0305,
+    "sd": 0.0153
+   }
+  },
+  "B3": {
+   "commissions": {
+    "max": 0.7,
+    "mean": 0.6167,
+    "min": 0.5,
+    "n_runs": 3,
+    "per_replicate": [
+     0.5,
+     0.65,
+     0.7
+    ],
+    "range": 0.2,
+    "sd": 0.1041
+   },
+   "omissions": {
+    "max": 0.7672,
+    "mean": 0.7621,
+    "min": 0.7519,
+    "n_runs": 3,
+    "per_replicate": [
+     0.7519,
+     0.7672,
+     0.7672
+    ],
+    "range": 0.0153,
+    "sd": 0.0088
+   }
+  },
+  "critical_rule": {
+   "critical_spread": {
+    "max": 0.3793,
+    "mean": 0.3506,
+    "min": 0.3276,
+    "n_runs": 3,
+    "per_replicate": [
+     0.3276,
+     0.3793,
+     0.3448
+    ],
+    "range": 0.0517,
+    "sd": 0.0263
+   },
+   "detection_spread": {
+    "max": 0.229,
+    "mean": 0.2163,
+    "min": 0.2061,
+    "n_runs": 3,
+    "per_replicate": [
+     0.2061,
+     0.229,
+     0.2137
+    ],
+    "range": 0.0229,
+    "sd": 0.0117
+   },
+   "false_alarm_spread": {
+    "max": 0.0213,
+    "mean": 0.0213,
+    "min": 0.0213,
+    "n_runs": 3,
+    "per_replicate": [
+     0.0213,
+     0.0213,
+     0.0213
+    ],
+    "range": 0.0,
+    "sd": 0.0
+   },
+   "majority_of_three": {
+    "critical": {
+     "k": 20,
+     "n": 58,
+     "p": 0.3448,
+     "wilson": [
+      0.2356,
+      0.4733
+     ]
+    },
+    "detection": {
+     "k": 28,
+     "n": 131,
+     "p": 0.2137,
+     "wilson": [
+      0.1522,
+      0.2916
+     ]
+    },
+    "false_alarms": {
+     "k": 1,
+     "n": 47,
+     "p": 0.0213,
+     "wilson": [
+      0.0038,
+      0.1111
+     ]
+    },
+    "n_replicates_voting": 3
+   },
+   "per_replicate": {
+    "1": {
+     "critical": {
+      "k": 19,
+      "n": 58,
+      "p": 0.3276,
+      "wilson": [
+       0.2208,
+       0.4558
+      ]
+     },
+     "detection": {
+      "k": 27,
+      "n": 131,
+      "p": 0.2061,
+      "wilson": [
+       0.1457,
+       0.2833
+      ]
+     },
+     "false_alarms": {
+      "k": 1,
+      "n": 47,
+      "p": 0.0213,
+      "wilson": [
+       0.0038,
+       0.1111
+      ]
+     }
+    },
+    "2": {
+     "critical": {
+      "k": 22,
+      "n": 58,
+      "p": 0.3793,
+      "wilson": [
+       0.2656,
+       0.508
+      ]
+     },
+     "detection": {
+      "k": 30,
+      "n": 131,
+      "p": 0.229,
+      "wilson": [
+       0.1654,
+       0.3081
+      ]
+     },
+     "false_alarms": {
+      "k": 1,
+      "n": 47,
+      "p": 0.0213,
+      "wilson": [
+       0.0038,
+       0.1111
+      ]
+     }
+    },
+    "3": {
+     "critical": {
+      "k": 20,
+      "n": 58,
+      "p": 0.3448,
+      "wilson": [
+       0.2356,
+       0.4733
+      ]
+     },
+     "detection": {
+      "k": 28,
+      "n": 131,
+      "p": 0.2137,
+      "wilson": [
+       0.1522,
+       0.2916
+      ]
+     },
+     "false_alarms": {
+      "k": 1,
+      "n": 47,
+      "p": 0.0213,
+      "wilson": [
+       0.0038,
+       0.1111
+      ]
+     }
+    }
+   }
+  }
+ }
+}

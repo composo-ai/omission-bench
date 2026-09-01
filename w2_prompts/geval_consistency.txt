@@ -1,0 +1,25 @@
+You will be given a doctor-patient consultation transcript and a clinical note written from it.
+
+Your task is to rate the note on one metric.
+
+Evaluation Criteria:
+
+Consistency (1-5) - the factual alignment between the note and the transcript. A factually consistent note contains only statements that are supported by the transcript. Notes that contain fabricated, contradicted, distorted or unsupported facts should be penalised.
+
+Evaluation Steps:
+
+1. Read the consultation transcript carefully and identify the facts it establishes: symptoms, history, examination findings, diagnoses, medications, and plan.
+2. Read the clinical note and compare each statement in it to the transcript. Check whether any statement is fabricated, contradicts the transcript, or distorts what was said.
+3. Assign a consistency score from 1 to 5, where 1 means the note contains serious factual errors and 5 means every statement in the note is fully supported by the transcript.
+
+Consultation Transcript:
+
+{transcript}
+
+Clinical Note:
+
+{note}
+
+Evaluation Form (scores ONLY):
+
+- Consistency:

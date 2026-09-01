@@ -1,0 +1,7 @@
+CONSULTATION TRANSCRIPT:
+{transcript}
+
+List the clinically material facts a clinical note of this consultation should capture: presenting complaint and key history, significant positive and negative findings, examination findings, diagnoses or working impressions, medications and allergies, the management plan, safety-netting advice and red flags. One atomic fact per item. Include only facts stated in the transcript.
+
+Output a JSON object only, no other text:
+{"facts": ["<fact 1>", "<fact 2>"]}

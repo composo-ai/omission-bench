@@ -1,0 +1,215 @@
+{
+ "what": "what the released benchmark holds: the build cohorts and error classes, and how the omission half divides by surviving trace and by severity",
+ "panels": {
+  "a": {
+   "title": "Composition of the released set",
+   "groups": [
+    {
+     "group": "The released set",
+     "rows": [
+      {
+       "item": "Pairs released",
+       "value": 500,
+       "source": "master/dataset_v2.json: pairs[]",
+       "findings": "15.4 l.357",
+       "note": "a pair is one edited note and the verified-clean twin of the consultation it came from"
+      },
+      {
+       "item": "Pairs in the evaluation set",
+       "value": 495,
+       "source": "master/dataset_v2.json: pairs[].eval_set",
+       "findings": "15.4 l.357",
+       "note": "the remaining 5 were seen by the prompt optimiser and are excluded for every judge, so all judges score an identical item set"
+      },
+      {
+       "item": "Consultations",
+       "value": 117,
+       "source": "master/dataset_v2.json: pairs[].key",
+       "findings": "15.4 l.357",
+       "note": "112 of them in the evaluation set"
+      },
+      {
+       "item": "Verified-clean twins",
+       "value": 112,
+       "source": "master/dataset_v2.json: distinct pairs[].clean per evaluation consultation",
+       "findings": "18.1 l.570",
+       "note": "one per evaluation consultation; the same note with the fact intact"
+      },
+      {
+       "item": "Matched pairs: the same fact removed at two different trace levels",
+       "value": 45,
+       "source": "master/dataset_v2.json: pairs[].matched_pair_ids",
+       "findings": "15.4 l.357",
+       "note": "the build proposed 122 pairs naming a partner; in 45 couples both members survived verification (90 pairs)"
+      }
+     ]
+    },
+    {
+     "group": "What the evaluation set's 495 pairs test",
+     "rows": [
+      {
+       "item": "Omissions",
+       "value": 293,
+       "source": "master/dataset_v2.json: pairs[].type",
+       "findings": "18.1 l.570",
+       "note": "complete 150, fragment trace 86, restatement trace 57"
+      },
+      {
+       "item": "Commissions",
+       "value": 202,
+       "source": "master/dataset_v2.json: pairs[].type",
+       "findings": "18.1 l.570",
+       "note": "additions 95, alterations 107"
+      }
+     ]
+    },
+    {
+     "group": "Where the 500 pairs came from",
+     "rows": [
+      {
+       "item": "Add-or-change controls, carried over untouched",
+       "value": 202,
+       "source": "master/dataset_v2.json: pairs[].source == frozen_add_change",
+       "findings": "15.4 l.361"
+      },
+      {
+       "item": "Built new against the fact-site map",
+       "value": 185,
+       "source": "master/dataset_v2.json: pairs[].source == factorial",
+       "findings": "15.4 l.362"
+      },
+      {
+       "item": "Complete omissions from the earlier build",
+       "value": 79,
+       "source": "master/dataset_v2.json: pairs[].source == frozen_omit",
+       "findings": "15.4 l.363",
+       "note": "built by model rewrite rather than span deletion, and graded by the older single-arm severity pass"
+      },
+      {
+       "item": "Relabelled partial-omission seeds",
+       "value": 34,
+       "source": "master/dataset_v2.json: pairs[].source == partial_seed",
+       "findings": "15.4 l.364",
+       "note": "surviving-mention counts run 1 to 9, because they predate the site map"
+      }
+     ]
+    }
+   ]
+  },
+  "b": {
+   "title": "The omission half by surviving trace and severity",
+   "denominator": "293 omission pairs in the evaluation set, with the newly built cohort alone in brackets",
+   "rows": [
+    {
+     "trace": "complete",
+     "released_label": "complete",
+     "cells": [
+      {
+       "severity": "critical",
+       "pairs": 85,
+       "factorial_only": 20,
+       "unpopulated": false
+      },
+      {
+       "severity": "supporting",
+       "pairs": 36,
+       "factorial_only": 22,
+       "unpopulated": false
+      },
+      {
+       "severity": "peripheral",
+       "pairs": 29,
+       "factorial_only": 29,
+       "unpopulated": false
+      }
+     ],
+     "total": 150,
+     "total_factorial_only": 71
+    },
+    {
+     "trace": "fragment trace",
+     "released_label": "partial-weak",
+     "cells": [
+      {
+       "severity": "critical",
+       "pairs": 44,
+       "factorial_only": 29,
+       "unpopulated": false
+      },
+      {
+       "severity": "supporting",
+       "pairs": 34,
+       "factorial_only": 31,
+       "unpopulated": false
+      },
+      {
+       "severity": "peripheral",
+       "pairs": 8,
+       "factorial_only": 8,
+       "unpopulated": false
+      }
+     ],
+     "total": 86,
+     "total_factorial_only": 68
+    },
+    {
+     "trace": "restatement trace",
+     "released_label": "partial-strong",
+     "cells": [
+      {
+       "severity": "critical",
+       "pairs": 22,
+       "factorial_only": 11,
+       "unpopulated": false
+      },
+      {
+       "severity": "supporting",
+       "pairs": 33,
+       "factorial_only": 33,
+       "unpopulated": false
+      },
+      {
+       "severity": "peripheral",
+       "pairs": 2,
+       "factorial_only": 2,
+       "unpopulated": true
+      }
+     ],
+     "total": 57,
+     "total_factorial_only": 46
+    }
+   ],
+   "column_totals": [
+    {
+     "severity": "critical",
+     "pairs": 151,
+     "factorial_only": 60
+    },
+    {
+     "severity": "supporting",
+     "pairs": 103,
+     "factorial_only": 86
+    },
+    {
+     "severity": "peripheral",
+     "pairs": 39,
+     "factorial_only": 39
+    }
+   ],
+   "grand_total": 293,
+   "grand_total_factorial_only": 185,
+   "unpopulated_note": "A restatement trace needs a fact stated twice in earnest, and peripheral facts are both the rarest and the least redundant in the corpus, so the restatement-trace peripheral cell holds 2 pairs and is reported as unpopulated rather than measured.",
+   "findings": "15.4 l.375-385"
+  }
+ },
+ "vocabulary": {
+  "complete": "every mapped mention of the fact is removed from the note; the released data labels this level `complete`",
+  "fragment trace": "one fragmentary or partial restatement of the removed fact survives elsewhere in the note; labelled `partial-weak`",
+  "restatement trace": "a second, independently stated mention of the same fact survives elsewhere in the note; labelled `partial-strong`"
+ },
+ "caption": "**The omission half by surviving trace and severity.** How much of the removed fact survives elsewhere in the note, against how much the loss matters. Severity is graded per fact on a written rubric by two models from different families, taking the lower grade where they disagree. Bracketed figures are the newly built cohort alone, which is the internally uniform one.",
+ "caption_a": "**Composition of the released set.** What the benchmark holds, what its evaluation pairs test, and where the pairs came from. All 202 add-or-change controls are pairs carried over from an earlier build, while most omission pairs are newly built against the fact-site map, so a comparison between the two error classes is also a comparison across construction cohorts; A.7 records the four sources per pair.",
+ "sources": [
+  "master/dataset_v2.json"
+ ]
+}

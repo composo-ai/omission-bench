@@ -1,0 +1,188 @@
+{
+ "what": "the census: notes, consultations and verified findings by product",
+ "caption": "Three commercial ambient scribes wrote notes from the same consultations. Every note went through 12 independent discovery passes, which produced 13,678 candidate findings; the ones the discovering model rated high or medium importance (5,898) went to a panel of two skeptics from different model families with a third family breaking ties, which verified 618, a survival rate of 10.48% [9.72, 11.29]. Findings per note is verified findings divided by that product's notes, with the standard deviation beside it; over all 565 notes the median is 0 and the maximum 18. Intervals are Wilson 95%. Scribe A is generated through an API at two note templates per consultation, so it contributes two notes where the other two contribute one, and its two templates land almost identically (0.447 and 0.461 findings per note), so the gap to the other products is not a property of one template. Notes span four strata: 228 PriMock57, 180 ACI-Bench, 120 authored, 37 trap-blind.",
+ "columns": {
+  "notes": "panel-covered notes written by that product",
+  "consultations": "distinct consultations those notes cover",
+  "verified_findings": "findings upheld by the two-family skeptic panel",
+  "per_note_mean": "verified findings per note, standard deviation in brackets",
+  "notes_with_any": "notes carrying at least one verified finding, Wilson 95%"
+ },
+ "rows": [
+  {
+   "product": "Scribe A",
+   "notes": 282,
+   "consultations": 141,
+   "verified_findings": 128,
+   "per_note_mean": 0.4539,
+   "per_note_sd": 1.0468,
+   "per_note_median": 0.0,
+   "per_note_max": 7,
+   "notes_with_any": {
+    "k": 60,
+    "n": 282,
+    "p": 0.212766,
+    "lo": 0.169025,
+    "hi": 0.264228
+   }
+  },
+  {
+   "product": "Scribe B",
+   "notes": 141,
+   "consultations": 141,
+   "verified_findings": 215,
+   "per_note_mean": 1.5248,
+   "per_note_sd": 2.6446,
+   "per_note_median": 0,
+   "per_note_max": 13,
+   "notes_with_any": {
+    "k": 57,
+    "n": 141,
+    "p": 0.404255,
+    "lo": 0.326834,
+    "hi": 0.486756
+   }
+  },
+  {
+   "product": "Scribe C",
+   "notes": 142,
+   "consultations": 142,
+   "verified_findings": 275,
+   "per_note_mean": 1.9366,
+   "per_note_sd": 3.2621,
+   "per_note_median": 0.0,
+   "per_note_max": 18,
+   "notes_with_any": {
+    "k": 60,
+    "n": 142,
+    "p": 0.422535,
+    "lo": 0.344382,
+    "hi": 0.50477
+   }
+  },
+  {
+   "product": "Pooled",
+   "notes": 565,
+   "consultations": 142,
+   "verified_findings": 618,
+   "per_note_mean": 1.0938,
+   "per_note_sd": 2.3178,
+   "per_note_median": 0,
+   "per_note_max": 18,
+   "notes_with_any": {
+    "k": 177,
+    "n": 565,
+    "p": 0.313274,
+    "lo": 0.276399,
+    "hi": 0.352672
+   }
+  }
+ ],
+ "pipeline": {
+  "discovery_passes_per_note": 12,
+  "candidates": 13678,
+  "reached_the_panel": 5898,
+  "verified": 618,
+  "panel_survival": {
+   "k": 618,
+   "n": 5898,
+   "p": 0.104781,
+   "lo": 0.097221,
+   "hi": 0.112857
+  }
+ },
+ "scribe_a_templates": {
+  "detailed": {
+   "notes": 141,
+   "verified_findings": 63,
+   "per_note_mean": 0.4468,
+   "notes_with_any": {
+    "k": 29,
+    "n": 141,
+    "p": 0.205674,
+    "lo": 0.147194,
+    "hi": 0.279766
+   }
+  },
+  "short": {
+   "notes": 141,
+   "verified_findings": 65,
+   "per_note_mean": 0.461,
+   "notes_with_any": {
+    "k": 31,
+    "n": 141,
+    "p": 0.219858,
+    "lo": 0.159433,
+    "hi": 0.295143
+   }
+  }
+ },
+ "strata": {
+  "PriMock57": {
+   "notes": 228,
+   "verified_findings": 372,
+   "per_note_mean": 1.6316,
+   "notes_with_any": {
+    "k": 99,
+    "n": 228,
+    "p": 0.434211,
+    "lo": 0.37149,
+    "hi": 0.499111
+   }
+  },
+  "ACI-Bench": {
+   "notes": 180,
+   "verified_findings": 178,
+   "per_note_mean": 0.9889,
+   "notes_with_any": {
+    "k": 51,
+    "n": 180,
+    "p": 0.283333,
+    "lo": 0.222566,
+    "hi": 0.353156
+   }
+  },
+  "authored": {
+   "notes": 120,
+   "verified_findings": 57,
+   "per_note_mean": 0.475,
+   "notes_with_any": {
+    "k": 22,
+    "n": 120,
+    "p": 0.183333,
+    "lo": 0.124303,
+    "hi": 0.262009
+   }
+  },
+  "trap-blind": {
+   "notes": 37,
+   "verified_findings": 11,
+   "per_note_mean": 0.2973,
+   "notes_with_any": {
+    "k": 5,
+    "n": 37,
+    "p": 0.135135,
+    "lo": 0.059133,
+    "hi": 0.279774
+   }
+  }
+ },
+ "notes": [
+  "Scribe A's 282 notes cover 141 consultations, two templates each; the other two products write one note per consultation.",
+  "One trap-blind consultation has no note from Scribe A or Scribe B, so their denominators are 141 consultations rather than 142. the paper (line 470) records this gap for Scribe A only.",
+  "Seven notes on disk are excluded from the census and named in master/findings_rates.json: four audio-variant capture probes and three notes whose consultation has no transcript in the master corpus.",
+  "Panel coverage is 1.0, so every rate here is over panel-covered notes."
+ ],
+ "conflicts": [],
+ "sources": {
+  "findings": [
+   "16.1 (lines 397-407)",
+   "16.5 (lines 464-483)"
+  ],
+  "artifacts": [
+   "master/findings_master.json",
+   "master/findings_verified_master.json",
+   "master/findings_rates.json"
+  ]
+ }
+}
